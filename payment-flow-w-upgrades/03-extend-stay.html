@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Extra-Night Upgrades | Orlando Getaway Checkout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fe5925">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+  <link href="assets/css/brand.css" rel="stylesheet">
+  <style>
+    .up-grid { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 24px; align-items: stretch; width: 100%; max-width: var(--maxw); }
+    @media (max-width: 900px) { .up-grid { grid-template-columns: 1fr; } }
+    .up-summary { display: flex; flex-direction: column; }
+    .up-summary > .pf-card { flex: 1 1 auto; }
+    @media (min-width: 901px) { .up-summary { position: sticky; top: 20px; } }
+
+    .tk-headline { font-size: 30px; font-weight: 800; color: var(--ink); margin: 0 0 20px; line-height: 1.1; }
+    .tk-lead { font-size: 22px; font-weight: 700; color: var(--ink); margin: 0 0 10px; }
+    .tk-desc { font-size: 15px; line-height: 1.6; color: var(--text); margin: 0 0 24px; }
+    .tk-desc strong { color: var(--coral-dark); }
+    .tk-save { font-size: 20px; font-weight: 800; color: var(--ink); margin: 0 0 16px; }
+
+    .tk-card { display: flex; gap: 24px; background: var(--bg); border-radius: 20px; padding: 20px; align-items: center; margin-bottom: 16px; }
+    @media (max-width: 620px) { .tk-card { flex-direction: column; } }
+    .tk-card__img { flex: 1 1 0; min-width: 0; align-self: stretch; }
+    .tk-card__img img { width: 100%; height: 100%; min-height: 180px; object-fit: cover; border-radius: 12px; }
+    .tk-card__body { flex: 1 1 0; min-width: 0; }
+    .tk-card__name { font-size: 28px; font-weight: 800; color: var(--ink); margin: 0 0 6px; }
+    .tk-card__tag { font-size: 16px; font-weight: 700; color: var(--ink); margin: 0 0 10px; }
+    .tk-card__copy { font-size: 13px; color: var(--muted); line-height: 1.4; margin: 0; }
+    .tk-card__copy strong { color: var(--coral-dark); }
+
+    .en-qty { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0 0 8px; }
+    @media (max-width: 560px) { .en-qty { grid-template-columns: 1fr; } }
+    .en-qty__opt {
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      border: 2px solid transparent; border-radius: 12px; padding: 16px 18px;
+      background: #f7f7f7; cursor: pointer; text-align: left; font: inherit;
+    }
+    .en-qty__opt.is-selected { border-color: var(--navy); background: #e5f5ff; }
+    .en-qty__label { font-size: 16px; font-weight: 600; color: var(--ink); }
+    .en-qty__price { font-size: 16px; font-weight: 800; color: var(--ink); }
+
+    .os-rating { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--muted); }
+    .up-list { margin: 16px 0; display: flex; flex-direction: column; gap: 8px; font-size: 14px; }
+    .up-list .row { display: flex; justify-content: space-between; gap: 8px; }
+    .up-list .k { color: var(--text); }
+    .up-list .v { font-weight: 600; color: var(--ink); }
+    .up-upgrades-title { font-weight: 800; color: var(--ink); margin: 14px 0 8px; }
+    .up-total { display: flex; justify-content: space-between; font-size: 20px; font-weight: 900; color: var(--ink); border-top: 1px solid var(--line); padding-top: 12px; margin-top: 6px; }
+
+    @media (max-width: 767px) {
+      .tk-headline { font-size: 22px; margin: 0 0 12px; }
+      .tk-lead { font-size: 18px; }
+      .tk-desc { font-size: 14px; margin: 0 0 16px; }
+      .tk-card__name { font-size: 22px; }
+      .up-list { margin: 12px 0; }
+      .up-total { font-size: 18px; padding-top: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="pf-navbar">
+    <img class="pf-navbar__logo" src="assets/images/vacationvip-logo.svg" alt="VacationVIP" width="254" height="33">
+  </header>
+
+  <main class="pf-main">
+    <div class="up-grid">
+      <section class="pf-card">
+        <div class="pf-card__pad">
+          <h1 class="tk-headline">Extra-night upgrades</h1>
+          <p class="tk-lead">$49/night, up to 2 extra nights</p>
+          <p class="tk-desc">Want more time? Add extra nights for just <strong class="en-price">$49</strong>/night and make it the vacation you will love even more.</p>
+
+          <h2 class="tk-save">How many extra nights?</h2>
+          <div class="en-qty" role="radiogroup" aria-label="Extra nights">
+            <button type="button" class="en-qty__opt is-selected" data-qty="1" aria-pressed="true">
+              <span class="en-qty__label">1 extra night</span>
+              <span class="en-qty__price" data-en-total="1">$49</span>
+            </button>
+            <button type="button" class="en-qty__opt" data-qty="2" aria-pressed="false">
+              <span class="en-qty__label">2 extra nights</span>
+              <span class="en-qty__price" data-en-total="2">$98</span>
+            </button>
+          </div>
+
+          <div class="tk-card">
+            <div class="tk-card__img"><img src="assets/images/resort.webp" alt="Westgate Vacation Villas Resort" width="1024" height="768"></div>
+            <div class="tk-card__body">
+              <div class="tk-card__name">Extra nights</div>
+              <div class="tk-card__tag">Exclusive online-only rate</div>
+              <p class="tk-card__copy"><strong>Just <span class="en-price">$49</span> per night</strong> &mdash; add up to 2 extra nights during checkout. This price won&rsquo;t be offered again.</p>
+            </div>
+          </div>
+
+          <div class="pf-actionbar">
+            <button type="button" class="pf-btn cont" id="addBtn">Add 1 extra night &middot; $49</button>
+            <button type="button" class="pf-btn pf-btn--ghost skip" id="skipBtn">No thanks</button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="up-summary">
+        <div class="pf-card">
+          <div class="pf-card__pad">
+            <h2 class="pf-title" style="margin-bottom:14px;">Package Summary</h2>
+            <div class="os-review-head">
+              <img class="pf-summary__img" src="assets/images/resort.webp" alt="Westgate Vacation Villas Resort" width="1024" height="768">
+              <div class="os-review-info">
+                <div class="pf-summary__name" id="sumName">Westgate Vacation Villas Resort</div>
+                <div class="os-rating">
+                  <img class="os-rating__bubbles" src="assets/images/ta-rating.webp" alt="Rated 4 out of 5" loading="lazy" width="110" height="22">
+                  <span class="os-rating__reviews"><strong id="sumReviews">4,734</strong> reviews</span>
+                </div>
+                <p class="os-purchased">Over 8,239 People Have Purchased This Product</p>
+              </div>
+            </div>
+
+            <div class="up-paid-banner"><i data-lucide="badge-check" class="pf-i"></i><span>Payment confirmed &mdash; your package is <strong>paid &amp; secured</strong></span></div>
+
+            <div class="up-list">
+              <div class="row"><span class="k"><i data-lucide="badge-check" class="pf-i"></i>Confirmation #</span><span class="v" id="sumConf">&mdash;</span></div>
+              <div class="row"><span class="k"><i data-lucide="users" class="pf-i"></i>Guests</span><span class="v" id="sumGuests">2 Adults, 2 Children</span></div>
+              <div class="row"><span class="k"><i data-lucide="calendar-check" class="pf-i"></i>Preferred check-in</span><span class="v" id="sumCheckIn">&mdash;</span></div>
+              <div class="row"><span class="k"><i data-lucide="calendar-x" class="pf-i"></i>Preferred check-out</span><span class="v" id="sumCheckOut">&mdash;</span></div>
+              <div class="row"><span class="k"><i data-lucide="banknote" class="pf-i"></i>Booking Fee</span><span class="v">$0</span></div>
+              <div class="row"><span class="k"><i data-lucide="package" class="pf-i"></i>Package Price</span><span class="v" id="sumPkg">$99</span></div>
+            </div>
+
+            <div class="up-upgrades-title">Upgrades</div>
+            <div id="upgradeList"></div>
+
+            <div class="up-total"><span>Total price</span><span id="sumTotal">$99</span></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <div class="pf-toast-wrap" id="toastWrap" aria-live="polite"></div>
+
+  <div class="pf-modal" id="retainModal" role="dialog" aria-modal="true" aria-labelledby="retainTitle" aria-hidden="true">
+    <div class="pf-modal__card">
+      <button type="button" class="pf-modal__close" id="retainClose" aria-label="Close">&times;</button>
+      <div class="pf-modal__head">
+        <i data-lucide="sparkles" class="pf-modal__icon" aria-hidden="true"></i>
+        <h2 class="pf-modal__title" id="retainTitle">Wait! Are You Sure?</h2>
+      </div>
+      <div class="pf-modal__body">
+        <p>Want more time? Add extra nights for just <strong class="en-price">$49</strong>/night and make it the vacation you will love even more.</p>
+        <p><strong>So, do you want to add extra nights?</strong></p>
+      </div>
+      <div class="pf-modal__actions">
+        <button type="button" class="pf-btn" id="retainYes">Yes, Add Extra Nights</button>
+        <button type="button" class="pf-btn pf-btn--ghost" id="retainNo">Skip</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="pf-footer">
+    <img class="pf-footer__logo" src="assets/images/vacationvip-logo-f.svg" alt="VacationVIP" width="154" height="20">
+    <a class="pf-footer__bbb" href="https://www.bbb.org/us/fl/belle-isle/profile/vacation-certificates-and-vouchers/vacationvip-com-0733-235962636/#sealclick" target="_blank" rel="nofollow noopener">
+      <img src="assets/images/bbb-seal.png" alt="VacationVIP.com BBB Business Review" width="250" height="52">
+    </a>
+    <p class="pf-footer__legal">Sogno Tours, LLC d/b/a VacationVIP.com</p>
+    <p class="pf-footer__legal">5900 Lake Ellenor Drive Suite 300, Orlando, FL 32809</p>
+    <p class="pf-footer__legal"><a href="https://vacationvip.com/" target="_blank" rel="noopener">VacationVIP.com</a> | Copyright &copy; <span data-year>2026</span> | All Rights Reserved.</p>
+    <p class="pf-footer__legal">SOT: Florida: ST44683 | Washington: 603354522 | California: 2156600-50 | Hawaii: 7531</p>
+    <p class="pf-footer__legal">Price does not include hotel taxes which vary and are payable upon check-in.</p>
+    <p class="pf-footer__legal">*This FLASH SALE includes 4-days and 3-nights of accommodations at Westgate Vacation Villas Resort in Orlando, Florida</p>
+    <p class="pf-footer__legal">THIS ADVERTISING MATERIAL IS BEING USED FOR THE PURPOSE OF SOLICITING SALES OF TIMESHARE INTERESTS OR PLANS</p>
+    <div class="pf-footer__links">
+      <a href="../terms-and-conditions.html">Terms and Conditions</a>
+      <span>|</span>
+      <a href="../privacy-policy.html">Privacy Policy</a>
+    </div>
+    <img class="pf-footer__eho" src="assets/images/EHO-Logo.svg" alt="Equal Housing Opportunity">
+  </footer>
+
+  <script src="assets/libs/lucide/lucide.min.js"></script>
+  <script src="assets/js/flow-state.js"></script>
+  <script src="assets/js/legal-modal.js"></script>
+  <script>
+  (function () {
+    var NIGHT_CENTS = 4900; // $49 per extra night, max 2
+    var qty = 1;
+    var s = FlowState.get();
+
+    if (!s.confirmationNo) {
+      s = FlowState.set({ confirmationNo: "MV" + Math.floor(100000 + Math.random() * 899999) });
+    }
+
+    function moneyProse(cents) { return FlowState.money(cents).replace(/\.00$/, ""); }
+    Array.prototype.forEach.call(document.querySelectorAll(".en-price"), function (el) {
+      el.textContent = moneyProse(NIGHT_CENTS);
+    });
+    Array.prototype.forEach.call(document.querySelectorAll("[data-en-total]"), function (el) {
+      var n = parseInt(el.getAttribute("data-en-total"), 10) || 1;
+      el.textContent = moneyProse(NIGHT_CENTS * n);
+    });
+
+    document.getElementById("sumName").innerHTML = s.resortName;
+    document.getElementById("sumConf").textContent = s.confirmationNo;
+    document.getElementById("sumGuests").textContent = s.guestsLabel;
+    document.getElementById("sumPkg").textContent = FlowState.money(s.priceCents);
+    document.querySelectorAll("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
+
+    var fmt = function (t) { return t ? new Date(t).toLocaleDateString("en-US", { year: "numeric", month: "numeric", day: "numeric" }) : "\u2014"; };
+    document.getElementById("sumCheckIn").textContent = fmt(s.dates.checkIn);
+    document.getElementById("sumCheckOut").textContent = fmt(s.dates.checkOut);
+
+    var addBtn = document.getElementById("addBtn");
+    function syncAddLabel() {
+      var label = qty === 1 ? "Add 1 extra night" : "Add 2 extra nights";
+      addBtn.textContent = label + " \u00b7 " + moneyProse(NIGHT_CENTS * qty);
+    }
+    syncAddLabel();
+
+    document.querySelectorAll(".en-qty__opt").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        qty = parseInt(btn.getAttribute("data-qty"), 10) || 1;
+        document.querySelectorAll(".en-qty__opt").forEach(function (el) {
+          var on = el === btn;
+          el.classList.toggle("is-selected", on);
+          el.setAttribute("aria-pressed", on ? "true" : "false");
+        });
+        syncAddLabel();
+      });
+    });
+
+    function hasExtend() { return !!FlowState.findUpsell("extend_stay"); }
+    function updateTotals() { document.getElementById("sumTotal").textContent = FlowState.money(FlowState.totalCents()); }
+    var CART_OPTS = { editable: false };
+    PFUpsells.render("upgradeList", CART_OPTS);
+    updateTotals();
+
+    function goNext() { window.location.href = "03-bonus.html" + window.location.search; }
+
+    function addExtend(n) {
+      if (hasExtend()) { FlowState.removeUpsell("extend_stay"); }
+      FlowState.addUpsell("extend_stay", n, NIGHT_CENTS);
+      FlowState.markDecided("extend_stay");
+      PFUpsells.render("upgradeList", CART_OPTS);
+      updateTotals();
+      PFToast(n === 1 ? "1 extra night added!" : n + " extra nights added!");
+      setTimeout(goNext, 1800);
+    }
+
+    var modal = document.getElementById("retainModal");
+    function openModal() { modal.classList.add("is-open"); modal.setAttribute("aria-hidden", "false"); }
+    function closeModal() { modal.classList.remove("is-open"); modal.setAttribute("aria-hidden", "true"); }
+
+    addBtn.addEventListener("click", function () { addExtend(qty); });
+    document.getElementById("skipBtn").addEventListener("click", openModal);
+
+    function declineExtend() {
+      closeModal();
+      if (hasExtend()) { FlowState.removeUpsell("extend_stay"); }
+      FlowState.markDecided("extend_stay");
+      PFUpsells.render("upgradeList", CART_OPTS);
+      updateTotals();
+      goNext();
+    }
+    document.getElementById("retainYes").addEventListener("click", function () { closeModal(); addExtend(qty); });
+    document.getElementById("retainNo").addEventListener("click", declineExtend);
+    document.getElementById("retainClose").addEventListener("click", closeModal);
+    modal.addEventListener("click", function (e) { if (e.target === modal) closeModal(); });
+
+    if (window.lucide) lucide.createIcons();
+  })();
+  </script>
+</body>
+</html>

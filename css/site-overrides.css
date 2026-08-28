@@ -1,0 +1,2527 @@
+/* Extracted from the Webflow export's <head> <style> blocks. */
+
+    /* Top-level desktop zoom: render the whole layout at 90% without altering any
+       component dimensions, font sizes, or spacing. Scoped to desktop so the
+       responsive mobile/tablet layouts stay at their natural scale. */
+    @media screen and (min-width: 992px) {
+      body { zoom: 0.9; }
+    }
+  
+
+
+/* Photo gallery */
+.photoinstance {
+  cursor: pointer;
+  width: 64px;
+  transition: all 0.3s ease-in-out;
+}
+.photoinstance.active {
+  width: 880px;
+  z-index: 10;
+}
+.menusecondlevel,
+.photostrip,
+.guestrevphotogall,
+.acccardphotogall,
+.herophotosrow-2,
+.herophotosrow-3{
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+.menusecondlevel::-webkit-scrollbar,
+.photostrip::-webkit-scrollbar,
+.guestrevphotogall::-webkit-scrollbar,
+.acccardphotogall::-webkit-scrollbar,
+.herophotosrow-2::-webkit-scrollbar,
+.herophotosrow-3::-webkit-scrollbar {
+  display: none; /* Hide the scrollbar */
+}
+
+/* Hero background: fill the section edge-to-edge, no overlay/gradient */
+.hero {
+  background-image: url('../images/hero-home.webp') !important;
+  background-color: transparent !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: cover !important;
+}
+/* Phones: the original Webflow rule locks .hero to height:480px; overflow:clip,
+   which cuts off the stacked offer widget (attention bar + price + Reserve).
+   Let it size to its content like tablet already does, so nothing is clipped. */
+@media screen and (max-width: 479px) {
+  .hero { height: auto !important; overflow: visible !important; }
+}
+/* Mobile hero image — behind the branded splash ONLY (not the offer card), native size */
+@media screen and (max-width: 767px) {
+  .hero { background-image: none !important; }
+  .campaignlogoand-price {
+    background-image: url('../images/hero-bck-mobile.webp');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .flex-block-6 { justify-content: flex-start; padding-top: 40px; }
+}
+/* Hero attention box: white bar, square bottom corners (restores styling that
+   previously lived in the accommodations section's inline <style>). */
+.offerexpirecounter.acm-attention {
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+.acm-attention-icon { width: 44px; height: 44px; flex-shrink: 0; object-fit: contain; }
+.acm-attention-text { font-size: 16px; line-height: 1.4; color: #262626; margin: 0; text-align: left; flex: 0 1 auto; }
+.acm-attention-text strong { color: #071330; font-weight: 700; display: block; }
+.acm-attention-count { color: #ee1e27; font-weight: 700; }
+
+/* Topper Reserve button: match main coral pill CTA */
+.checkout-cta.toppercta {
+  background-color: #e9654a;
+  border-radius: 30px;
+  padding: 8px 26px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.checkout-cta.toppercta:hover {
+  background-color: #b64f39;
+}
+
+
+#video {
+	max-height: 90vh;
+  width: auto;
+  padding: 24px;
+  }
+
+
+/* --- rebuild additions --- */
+.vv-visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   Orlando V3 additions.
+   Appended to public/css/site-overrides.css by scripts/optimize-assets.mjs.
+   --------------------------------------------------------------------------- */
+
+/* §2 — CALL NOW button beneath RESERVE ONLINE on the hero offer card.
+   Equally prominent: same width and type scale, differentiated by fill only. */
+.cta-button--call {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 52px; /* >= 44px tap target */
+  margin-top: 10px;
+  padding: 14px 28px;
+  border: 2px solid #e9654a;
+  border-radius: 40px;
+  background: #fff;
+  color: #e9654a;
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .15s ease, color .15s ease;
+}
+
+.cta-button--call:hover,
+.cta-button--call:focus-visible {
+  background: #e9654a;
+  color: #fff;
+}
+
+.cta-call-microcopy {
+  margin: 8px 0 0;
+  color: #667085;
+  font-family: Roboto, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* §10 — sticky bar: CALL NOW to the left of the primary CTA. */
+.msc-actions {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  width: 100%;
+}
+
+.msc-call {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex: 0 0 auto;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 2px solid #215272;
+  border-radius: 40px;
+  background: #fff;
+  color: #215272;
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.msc-call svg,
+.msc-call i {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.msc-actions .msc-cta {
+  flex: 1 1 auto;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Under ~400px the phone CTA collapses to icon-only, keeping both tap targets. */
+@media screen and (max-width: 400px) {
+  .msc-call {
+    padding: 10px 14px;
+  }
+  .msc-call-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}
+
+/* §10 — taxes line. */
+.footer-taxes {
+  margin: 6px 0;
+  color: inherit;
+  font-family: Roboto, sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* §3 — gallery modules: expand affordance + modal. */
+.vv-gallery-item {
+  position: relative;
+}
+
+.vv-gallery-item img {
+  cursor: zoom-in;
+}
+
+.vv-gallery-expand {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+  background: rgba(7, 19, 48, .62);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color .15s ease;
+}
+
+.vv-gallery-expand:hover,
+.vv-gallery-expand:focus-visible {
+  background: rgba(7, 19, 48, .85);
+}
+
+.vv-gallery-expand svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.vv-gallery-modal[hidden] {
+  display: none;
+}
+
+.vv-gallery-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.vv-gallery-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(7, 19, 48, .88);
+}
+
+.vv-gallery-modal__panel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  /* audit #6 - the panel capped at 1100px and the image stopped at its 1024px
+     natural width, so on a 1920 screen the photo filled under half the viewport
+     and read as small. The cap now follows the viewport. */
+  max-width: min(1500px, 94vw);
+  max-height: 100%;
+}
+
+.vv-gallery-modal__img {
+  width: min(1500px, 94vw);
+  max-width: 100%;
+  /* 84vh, up from 72vh: the panel is only an image and one caption line, so the
+     spare height was dead backdrop. */
+  max-height: 84vh;
+  height: auto;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+.vv-gallery-modal__caption {
+  margin: 0;
+  color: #fff;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.vv-gallery-modal__close {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  color: #071330;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* Lock scroll without losing position (JS pins body via top offset). */
+body.vv-modal-open {
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* §13 — dead-click hygiene.
+   Decorative chrome must not read as interactive: no pointer cursor, no hover
+   lift, no button affordance. Anything that looks tappable must DO something. */
+.pb-container,
+.pb-container *,
+.campaignlogoand-price,
+.hero-title-badge,
+.priceblock,
+.priceblock *,
+.stayperiod-3,
+.sealsrow img,
+.sealstamp,
+img[alt^="Seal"] {
+  cursor: default;
+  pointer-events: none;
+  box-shadow: none;
+}
+
+/* Re-enable pointer events for anything genuinely interactive nested inside. */
+.campaignlogoand-price a,
+.campaignlogoand-price button,
+.priceblock a,
+.priceblock button {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.sealsrow img:hover,
+.sealstamp:hover,
+img[alt^="Seal"]:hover {
+  transform: none;
+  filter: none;
+  opacity: 1;
+}
+
+/* ===========================================================================
+   Orlando V3 — asset placement pass
+   =========================================================================== */
+
+/* A1 — hero title-badge lockup. Sits above the offer group where the Massanutten
+   page carried its "SHENANDOAH VALLEY, VA / RESORT GETAWAY" wordmark. */
+.hero-title-badge-img {
+  display: block;
+  width: 100%;
+  max-width: 620px;
+  height: auto;
+  margin: 0 auto 14px;
+  /* Decorative chrome: it must not read as tappable (§13). */
+  cursor: default;
+  pointer-events: none;
+}
+
+@media screen and (max-width: 991px) {
+  .hero-title-badge-img { max-width: 460px; margin-bottom: 10px; }
+}
+@media screen and (max-width: 479px) {
+  .hero-title-badge-img { max-width: 300px; margin-bottom: 8px; }
+}
+
+/* A6 — Westgate logo on the hero offer card, where the resort photo used to sit. */
+.offer-card-logo {
+  display: block;
+  width: auto;
+  max-width: 190px;
+  max-height: 74px;
+  height: auto;
+  margin: 0 auto 6px;
+  object-fit: contain;
+  cursor: default;
+  pointer-events: none;
+}
+
+@media screen and (max-width: 479px) {
+  .offer-card-logo { max-width: 140px; max-height: 56px; }
+}
+
+/* A7 — half-moon value badge matches Massanutten's percent tab.
+   `$540 VALUE` occupies that slot (`$540` over `VALUE`), not a full-width bar. */
+.property-sogno-wg-orlando-99 .price-family-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  padding-left: 124px;
+  padding-right: 80px;
+  position: relative;
+}
+
+@media screen and (max-width: 767px) {
+  .property-sogno-wg-orlando-99 .price-family-row {
+    padding-left: 137px;
+    padding-right: 57px;
+  }
+}
+
+.property-sogno-wg-orlando-99 .price-family-row .discount.discount-badge--absolute {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  flex: none;
+  order: 0;
+  width: auto;
+  max-width: none;
+  margin: 0;
+  padding: 20px 28px 20px 16px;
+  border-radius: 0 40px 40px 0;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  line-height: 0.95;
+  text-align: center;
+}
+
+/* The mobile hero copy of the badge stays out of the offer widget entirely. */
+.property-sogno-wg-orlando-99 .price-family-row .discount.discount-badge--absolute.hero-pct-badge {
+  display: none;
+}
+
+
+/* Explicit intrinsic ratio: no layout shift while the banner decodes. */
+
+
+/* B4 — water park access card as the bonus panel prop.
+   A DEFINITE width, not `width:100%`: the wrapper takes its size from this image,
+   so a percentage width is circular and collapsed the whole prop to 0px. */
+.bch-tickets-img.waterpark-access-card {
+  display: block;
+  width: 340px;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.bch-tickets:has(.waterpark-access-card) {
+  width: auto;
+  min-width: 340px;
+}
+
+@media screen and (max-width: 767px) {
+  .bch-tickets-img.waterpark-access-card { width: 260px; }
+  .bch-tickets:has(.waterpark-access-card) { min-width: 0; }
+}
+
+/* A5 — guest video testimonial row, under Guest Reviews. */
+.gr-testimonials {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 12px;
+  width: 100%;
+  margin: 26px 0 4px;
+}
+
+.gr-vid {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0d1f48;
+  cursor: pointer;
+  aspect-ratio: 4 / 5;
+}
+
+.gr-vid img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gr-vid-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gr-vid-play svg {
+  width: 42px;
+  height: 42px;
+  fill: #fff;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, .55));
+  transition: transform .15s ease;
+}
+
+.gr-vid:hover .gr-vid-play svg,
+.gr-vid:focus-visible .gr-vid-play svg {
+  transform: scale(1.12);
+}
+
+.gr-vid:focus-visible {
+  outline: 3px solid #fe5925;
+  outline-offset: 2px;
+}
+
+@media screen and (max-width: 991px) {
+  .gr-testimonials { grid-template-columns: repeat(4, 1fr); }
+}
+@media screen and (max-width: 560px) {
+  .gr-testimonials { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .gr-vid-play svg { width: 30px; height: 30px; }
+}
+
+/* A5 — testimonial video modal (shares the scroll-lock class with the gallery). */
+.vv-video-modal[hidden] { display: none; }
+
+.vv-video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.vv-video-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(7, 19, 48, .9);
+}
+
+.vv-video-modal__panel {
+  position: relative;
+  z-index: 1;
+  width: min(460px, 100%);
+  max-height: 100%;
+}
+
+.vv-video-modal__video {
+  width: 100%;
+  max-height: 82vh;
+  border-radius: 14px;
+  background: #000;
+  display: block;
+}
+
+.vv-video-modal__close {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  color: #071330;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* A1 — sticker uses Massanutten's 780/860px widths (then .ob-group zoom),
+   so 375px (iPhone SE) renders ~344px like the reference, not a 137px lockup. */
+.ob-sticker img.hero-title-badge-img {
+  width: 560px;
+  max-width: none;
+  height: auto;
+  aspect-ratio: 703 / 206;
+  object-fit: contain;
+}
+
+/* Nothing on this page may scroll the document sideways on desktop.
+   On phone Massanutten leaves overflow visible so the 344px sticker and
+   left-edge pill can sit flush; clip was shrinking the 375px layout. */
+.property-sogno-wg-orlando-99 .hero,
+.property-sogno-wg-orlando-99 .herocontainer {
+  max-width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .property-sogno-wg-orlando-99 .hero,
+  .property-sogno-wg-orlando-99 .herocontainer,
+  .property-sogno-wg-orlando-99 .campaignlogoand-price {
+    overflow-x: clip;
+  }
+}
+
+
+/* B7 — banner legibility at 375px.
+   The export's hero lets its offer group bleed past narrow viewports (the control
+   page does the same: its oversized sticker is deliberate). Rather than
+   re-engineer that layout, the banner is sized against the VIEWPORT so it stays
+   fully readable regardless of how wide its parent grows. */
+
+
+/* B7 (cont.) — on phones the export gives this slot a deliberate full-bleed
+   treatment (width:100vw with negative side margins). Rather than fight it, the
+   banner goes edge-to-edge there: nothing is clipped and the artwork stays
+   legible at 375px. */
+@media screen and (max-width: 767px) {
+
+
+}
+
+/* B4 (cont.) — the bonus panel now carries a matching pair of card graphics
+   (meal card left, water park card right). Same width so they read as a set;
+   a definite width because each wrapper sizes itself from its image. */
+.property-sogno-wg-orlando-99 .bch-card-img {
+  width: 340px;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 767px) {
+  .property-sogno-wg-orlando-99 .bch-card-img { width: 260px; }
+}
+
+/* §10 (cont.) — sticky bar must fit both CTAs at 375px.
+   The label grew from "Reserve Now" to "RESERVE ONLINE — $99 Per Package", which
+   overflowed once the CALL NOW button took its share of the row. */
+@media screen and (max-width: 420px) {
+  .msc-actions {
+    gap: 6px;
+    min-width: 0;
+  }
+  .msc-actions .msc-cta {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding-inline: 10px;
+    font-size: 13px;
+    line-height: 1.15;
+    text-align: center;
+    white-space: normal;
+  }
+  .msc-call {
+    flex: 0 0 auto;
+    padding: 10px 12px;
+    min-width: 44px;
+  }
+}
+
+/* ===========================================================================
+   Correction + polish pass
+   =========================================================================== */
+
+/* §1b — hero background from ONE stable path. Swapping the hero is now a
+   file replacement at /images/orlando-hero.webp, nothing else.
+   TODO: final hero image incoming from Stephan. */
+.property-sogno-wg-orlando-99 .hero {
+  background-image: url('../images/orlando-hero.webp') !important;
+}
+
+@media screen and (max-width: 767px) {
+  .property-sogno-wg-orlando-99 .campaignlogoand-price {
+    background-image: url('../images/orlando-hero.webp') !important;
+  }
+}
+
+/* §2b — half-moon value badge (Massanutten percent tab, Orlando copy). */
+.property-sogno-wg-orlando-99 .price-family-row .discount.discount-badge--absolute {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  order: 0;
+  flex: none;
+  width: auto;
+  max-width: none;
+  margin: 0;
+  padding: 20px 28px 20px 16px;
+  border-radius: 0 40px 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* §2c — price cluster: badge | $99 | Per Package, one row. */
+.property-sogno-wg-orlando-99 .price-family-row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding-left: 124px;
+  padding-right: 80px;
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  .property-sogno-wg-orlando-99 .price-family-row {
+    padding-left: 137px;
+    padding-right: 57px;
+  }
+}
+
+.property-sogno-wg-orlando-99 .price-family-row .newprice-3 {
+  margin: 0;
+}
+
+.property-sogno-wg-orlando-99 .price-family-row .stayperiod-3 {
+  margin: 0 0 0 12px;
+  text-align: left;
+  line-height: 1.1;
+}
+
+/* Mid-page block: same one-row treatment as Massanutten. */
+.property-sogno-wg-orlando-99 .hs-price-row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: auto;
+}
+
+.property-sogno-wg-orlando-99 .hs-badge {
+  order: 0;
+  flex: 0 0 auto;
+  width: auto;
+  margin: 0;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+  border-radius: 12px;
+}
+
+/* §1c — bonus banner flush to the hero's bottom edge, centred, below the card. */
+.property-sogno-wg-orlando-99 .campaignlogoand-price {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.property-sogno-wg-orlando-99 .flex-block-6,
+.property-sogno-wg-orlando-99 .offerwidget {
+  position: relative;
+  z-index: 2;   /* offer card sits above the banner */
+}
+
+/* §1d — offer card floats inside the hero with visible clearance, including at
+   least 24px below its three trust seals. */
+.property-sogno-wg-orlando-99 .offerwidget {
+  margin-block: 28px;
+}
+
+.property-sogno-wg-orlando-99 .sealset.trust-badges {
+  margin-bottom: 24px;
+}
+
+@media screen and (max-width: 767px) {
+  .property-sogno-wg-orlando-99 .offerwidget { margin-block: 24px; }
+  .property-sogno-wg-orlando-99 .sealset.trust-badges { margin-bottom: 24px; }
+}
+
+/* §6 — uniform image viewport across all four What's Included tab panels. */
+.property-sogno-wg-orlando-99 .rd-slider-wrap,
+.property-sogno-wg-orlando-99 .rd-slide {
+  width: 100%;
+}
+
+.property-sogno-wg-orlando-99 .rd-slide img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  object-fit: cover;
+  object-position: center 45%;
+  border-radius: 0 0 24px 24px;
+  /* §10 — no darkening filter on tab photography. */
+  filter: none;
+  cursor: default;
+}
+.property-sogno-wg-orlando-99 .rd-slide .vv-gallery-expand {
+  display: none;
+}
+
+/* ===========================================================================
+   Hero fit pass — banner anchoring, card compression, CALL NOW restore
+   =========================================================================== */
+
+/* The CALL NOW button in the bonus bar rendered as a raw blue link: these rules
+   were lost in a revert and never re-added, so the markup had no styling at all. */
+.bch-cta-actions {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.bch-call {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex: 0 0 auto;
+  min-height: 48px;
+  padding: 13px 22px;
+  border: 2px solid #fff;
+  border-radius: 40px;
+  background: transparent;
+  color: #fff;
+  font-family: Roboto, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;   /* kill the default link underline */
+  white-space: nowrap;
+}
+
+.bch-call:hover,
+.bch-call:focus-visible { background: rgba(255, 255, 255, .14); color: #fff; }
+
+.bch-call svg,
+.bch-call i { width: 18px; height: 18px; flex-shrink: 0; }
+
+.bch-cta-actions .bch-cta {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+}
+
+@media screen and (max-width: 400px) {
+  .bch-cta-actions { gap: 6px; }
+  .bch-call { padding: 12px 14px; min-width: 48px; }
+  .bch-call-text {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+  }
+  .bch-cta-actions .bch-cta { font-size: 13px; padding-inline: 10px; white-space: normal; }
+}
+
+/* HERO FIT — reference (104-tix @1440x900) measures: hero 751px, card 606px,
+   banner flush to the hero's bottom edge, photo strip starting at y=860 so it is
+   visible in a 900px viewport. Orlando measured 934 / 858 / floating / y=1044.
+   These rules close that gap. */
+
+/* Banner rests ON the hero's bottom edge, centred, beneath the offer card. */
+.property-sogno-wg-orlando-99 .campaignlogoand-price {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 0;
+}
+
+
+.property-sogno-wg-orlando-99 .flex-block-6,
+.property-sogno-wg-orlando-99 .offerwidget { position: relative; z-index: 2; }
+
+/* Card compression: trim the vertical padding the extra CTA + third bullet added. */
+.property-sogno-wg-orlando-99 .offerwidget {
+  margin-block: 20px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+.property-sogno-wg-orlando-99 .offerdetails { gap: 10px; }
+.property-sogno-wg-orlando-99 .includingslist { gap: 6px; margin-block: 8px; }
+.property-sogno-wg-orlando-99 .booking-disclaimer { margin-block: 8px; }
+.property-sogno-wg-orlando-99 .booking-disclaimer p { margin: 2px 0; }
+.property-sogno-wg-orlando-99 .cta-button--call { margin-top: 8px; min-height: 46px; padding-block: 11px; }
+.property-sogno-wg-orlando-99 .cta-call-microcopy { margin-top: 6px; }
+.property-sogno-wg-orlando-99 .sealset.trust-badges { margin-top: 10px; margin-bottom: 16px; }
+
+/* The banner column was 717px tall inside an 864px hero container, so "bottom of
+   the column" was 146px short of the hero's bottom edge. Stretch the column so
+   `margin-top:auto` actually pins the banner to the hero. */
+.property-sogno-wg-orlando-99 .herocontainer {
+  align-items: stretch;
+}
+
+.property-sogno-wg-orlando-99 .campaignlogoand-price {
+  flex: 1 1 auto;
+  align-self: stretch;
+}
+
+/* The Orlando banner art is 2.23:1 where the reference ribbon is 3.36:1, so at
+   equal width it stood ~85px taller and inflated the hero. Bound its HEIGHT and
+   let width follow, matching the reference ribbon's footprint. */
+
+
+@media screen and (max-width: 767px) {
+
+}
+
+/* Banner: the left column refuses to stretch to the hero's height, so pin the
+   banner to the hero's bottom edge directly. This is what "resting on the bottom
+   of the hero image" needs, and it takes the banner out of flow so the hero's
+   height is driven by the offer card alone. */
+.property-sogno-wg-orlando-99 .hero {
+  position: relative;
+  /* Reference gives the badge 25px of photo above it (hero padding-top:28px).
+     Orlando had 12px, which made the badge read as clipped at the hero's edge. */
+  padding-top: 28px;
+}
+
+
+/* Card compression: measured 828px against the reference's 606px. Trimmed from
+   internal padding/gaps only — no required content removed. */
+.property-sogno-wg-orlando-99 .offerdetails { gap: 6px; padding-block: 10px; }
+.property-sogno-wg-orlando-99 .widgettitle { gap: 4px; }
+.property-sogno-wg-orlando-99 .offer-card-logo { max-height: 80px; margin-bottom: 2px; }
+.property-sogno-wg-orlando-99 .priceanddiscount { padding-block: 8px; }
+.property-sogno-wg-orlando-99 .includingslist { gap: 4px; margin-block: 4px; padding-block: 4px; }
+.property-sogno-wg-orlando-99 .includingslist .listitem { line-height: 1.25; }
+.property-sogno-wg-orlando-99 .div-block-22 { padding-block: 6px; }
+.property-sogno-wg-orlando-99 .booking-disclaimer { margin-block: 4px; padding-bottom: 4px; }
+.property-sogno-wg-orlando-99 .sealset.trust-badges { margin-top: 6px; margin-bottom: 10px; padding-bottom: 6px; }
+
+@media screen and (max-width: 767px) {
+  /* On phones the banner returns to normal flow, full-bleed under the card. */
+
+
+}
+
+/* ===========================================================================
+   <GuestStories> — "Stories From Recent Guests" (separate from <GuestReviews>)
+   =========================================================================== */
+.gs {
+  padding: 48px 20px 56px;
+  background: #eef4fb;
+  text-align: center;
+}
+
+.gs-heading {
+  margin: 0 0 28px;
+  color: #0d1f48;
+  font-family: Roboto, sans-serif;
+  font-size: clamp(22px, 2.6vw, 34px);
+  font-weight: 900;
+}
+
+.gs-track {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px 4px 12px;
+  /* Match the guest-reviews content wrapper above (1480px) edge for edge;
+     the extra 8px absorbs this track's own 4px focus-ring padding. */
+  max-width: 1488px;
+  margin: 0 auto;
+}
+.gs-track::-webkit-scrollbar { display: none; }
+
+.gs-card {
+  position: relative;
+  /* Grow to fill the 1480px row (six across ≈ 234px each); the cap keeps
+     stragglers on a wrapped row from ballooning. */
+  flex: 1 1 168px;
+  max-width: 240px;
+  aspect-ratio: 4 / 5;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #0d1f48;
+  cursor: pointer;
+}
+
+.gs-card--featured {
+  flex: 0 0 300px;
+  aspect-ratio: 1 / 1;
+  border: 6px solid #fff;
+  box-shadow: 0 10px 26px rgba(13, 31, 72, .22);
+}
+
+.gs-card img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.gs-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gs-play svg {
+  width: 54px; height: 54px;
+  fill: #fff;
+  background: rgba(46, 134, 222, .82);
+  border-radius: 50%;
+  padding: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, .3);
+}
+.gs-card--featured .gs-play svg { width: 74px; height: 74px; }
+
+.gs-meta {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+  padding: 22px 10px 8px;
+  background: linear-gradient(to top, rgba(0,0,0,.72), transparent);
+  color: #fff;
+  text-align: left;
+}
+.gs-name { font-family: Roboto, sans-serif; font-size: 13px; font-weight: 700; }
+.gs-loc { font-family: Roboto, sans-serif; font-size: 12px; opacity: .92; }
+
+.gs-card:focus-visible { outline: 3px solid #fe5925; outline-offset: 2px; }
+
+@media screen and (max-width: 767px) {
+  .gs { padding: 32px 12px 40px; }
+  .gs-card { flex: 0 0 132px; }
+  .gs-card--featured { flex: 0 0 210px; }
+  .gs-play svg { width: 40px; height: 40px; padding: 9px; }
+}
+
+/* ===========================================================================
+   §1 BONUS BANNER — anchor to the LEFT column axis, scale, rounded top corners
+   Reference (104-tix @1440): banner 558x166, centre x=488, flush to hero bottom,
+   sharing the vertical axis of the price circle and play button.
+   Orlando's left column spans 0..976 (centre 488) but the banner was absolute to
+   the hero, so it centred at 720. Constrain its box to the left column instead.
+   =========================================================================== */
+.property-sogno-wg-orlando-99 .hero { position: relative; }
+
+
+/* §1d — the hero's left column keeps clear space beneath the play button so the
+   banner never rides up over the circle or badge. */
+.property-sogno-wg-orlando-99 .campaignlogoand-price {
+  padding-bottom: 12px;
+}
+
+@media screen and (max-width: 991px) {
+  /* Tablet: the columns are too narrow for an absolutely-placed banner — at 768
+     it overlapped the offer card. Return it to normal flow below the card. */
+
+
+}
+
+@media screen and (max-width: 767px) {
+  /* Phone: hero stacks — banner returns to flow, full-bleed under the card. */
+
+
+}
+
+/* ===========================================================================
+   §2 OFFER CARD — breathing room
+   Reference: card 606px in a 750px hero -> 85px top / 60px bottom clearance.
+   Orlando's card carries a CALL NOW button and a third bullet the reference has
+   not, so it cannot reach 85/60 inside a parity-height hero. Trimmed to clear the
+   32px minimum on both edges without removing any content, plus a right inset so
+   the card floats off the viewport edge as it does on the reference.
+   =========================================================================== */
+.property-sogno-wg-orlando-99 .offerwidget {
+  /* Centre the card in the hero and let equal margins guarantee the clearance.
+     A right margin was tried but it narrowed the left column, which moved the
+     price circle off the 488px axis the banner is aligned to - so it is not used. */
+  align-self: center;
+  /* The hero's top padding pushed the centred card 13px low (47/21 split). The
+     heavier bottom margin lifts it back so both edges clear the 32px minimum. */
+  margin-top: 32px;
+  margin-bottom: 58px;
+}
+
+/* Reclaim the ~20px needed for the bottom margin from internal spacing only. */
+.property-sogno-wg-orlando-99 .offerdetails { gap: 4px; padding-block: 8px; }
+.property-sogno-wg-orlando-99 .priceanddiscount { padding-block: 6px; }
+.property-sogno-wg-orlando-99 .includingslist { gap: 3px; margin-block: 3px; padding-block: 3px; }
+
+/* Half-moon hangs ~17px below the $99 row. Massanutten clears it with 16px
+   price-block padding + 8px list padding. Card compression above collapsed
+   that, so the badge overlapped the first amenity. */
+.property-sogno-wg-orlando-99 .priceanddiscount.pricing-section--highlighted {
+  padding-block: 16px;
+}
+.property-sogno-wg-orlando-99 .includingslist {
+  gap: 8px;
+  margin-top: 8px;
+  margin-bottom: 0;
+  padding: 8px 32px;
+}
+.property-sogno-wg-orlando-99 .div-block-22 { padding-block: 4px; }
+.property-sogno-wg-orlando-99 .booking-disclaimer { margin-block: 3px; padding-bottom: 3px; }
+.property-sogno-wg-orlando-99 .sealset.trust-badges { margin-top: 4px; margin-bottom: 6px; padding-bottom: 4px; }
+
+@media screen and (max-width: 991px) {
+  .property-sogno-wg-orlando-99 .offerwidget { margin-top: 24px; margin-bottom: 32px; }
+}
+
+/* ===========================================================================
+   §3 PRICE CLUSTER — centring
+   The export left `padding-right: 91px` on the price row (it once made space for
+   an absolutely-positioned discount badge). With the badge now in flow, that
+   padding pushed the centred "$99 / Per Package" pair 41px left of the card's
+   centreline and clipped the "$540 VALUE" bar to 293px of the card's 374px.
+   =========================================================================== */
+.property-sogno-wg-orlando-99 .price-family-row {
+  padding-right: 0;
+  padding-left: 0;
+  column-gap: 10px;
+  align-items: baseline;
+  justify-content: center;
+}
+
+/* "Per Package" reads as one unit with the numerals: same baseline, tight gap,
+   and its two words stacked so no dead space opens to the right. */
+.property-sogno-wg-orlando-99 .price-family-row .stayperiod-3 {
+  text-align: left;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.property-sogno-wg-orlando-99 .price-family-row .newprice-3 { margin: 0; }
+
+/* ===========================================================================
+   §5c — the expand affordance is a dark chip that sat on every thumbnail at
+   rest. Scope it to hover/focus on pointer devices; keep it permanently visible
+   where there is no hover (touch), since it is the only cue the tile opens.
+   =========================================================================== */
+.vv-gallery-expand {
+  opacity: 0;
+  transition: opacity .15s ease, background-color .15s ease;
+}
+
+.vv-gallery-item:hover .vv-gallery-expand,
+.vv-gallery-item:focus-within .vv-gallery-expand,
+.vv-gallery-expand:focus-visible {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .vv-gallery-expand { opacity: 1; }
+}
+
+/* ===========================================================================
+   HERO FORMAT PARITY — reference content band
+   Measured on 104-winter at two widths: card 1001..1375 @1728 and 857..1231
+   @1440, badge/circle/banner all on ONE axis (632 and 488 respectively).
+   That resolves to a FIXED 1022px content band, centred:
+       left column 558 + gap 90 + card 374 = 1022
+   so the shared axis is always (viewport/2 - 232).
+
+   NOTE: the export applies `body { zoom: 0.9 }` above 992px, so every authored
+   length renders at 0.9x. All values below are divided by 0.9 to land on the
+   reference's RENDERED geometry.
+   =========================================================================== */
+.property-sogno-wg-orlando-99 .herocontainer {
+  max-width: 1136px;   /* 1022 / 0.9 */
+  margin-inline: auto;
+  column-gap: 100px;   /* 90 / 0.9 */
+  padding-right: 0;
+  padding-left: 0;
+}
+
+/* The card must not flex-shrink on large desktop, or the band maths collapses. */
+@media screen and (min-width: 1200px) {
+  .property-sogno-wg-orlando-99 .offerwidget {
+    flex: 0 0 416px;     /* 374 / 0.9 */
+    width: 416px;
+    min-width: 416px;
+    max-width: 416px;
+    box-sizing: border-box;
+  }
+}
+
+/* Banner centres on the same axis as the badge and price circle, at any width. */
+
+
+@media screen and (max-width: 991px) {
+  .property-sogno-wg-orlando-99 .herocontainer {
+    max-width: 100%;
+    column-gap: 32px;
+    padding-inline: 24px;
+  }
+
+  /* Same image, just scaled to the viewport - no width cap, no full-bleed math. */
+
+
+}
+
+@media screen and (max-width: 767px) {
+  .property-sogno-wg-orlando-99 .herocontainer { padding-inline: 0; column-gap: 0; }
+  .property-sogno-wg-orlando-99 .offerwidget {
+    flex: 1 1 auto; width: auto; min-width: 0; max-width: 100%;
+  }
+
+}
+
+/* ===========================================================================
+   Offer card + banner finishing
+   =========================================================================== */
+
+/* The inner card must never cast the outer card's shadow. The inner .offerdetails
+   carried the same `0 3px 3px #0003` as the card that wraps it, which read as a
+   doubled line under the trust seals. */
+.property-sogno-wg-orlando-99 .offerdetails {
+  box-shadow: none;
+}
+
+/* Desktop is the rounded card. Mobile is flat top AND bottom, which is what the
+   Webflow export already did at <=991px until an unscoped 20px radius here
+   overrode it. */
+@media screen and (min-width: 992px) {
+  .property-sogno-wg-orlando-99 .offerwidget { border-radius: 20px; }
+  .property-sogno-wg-orlando-99 .offerdetails { border-radius: 0 0 20px 20px; }
+}
+
+@media screen and (max-width: 991px) {
+  .property-sogno-wg-orlando-99 .offerwidget,
+  .property-sogno-wg-orlando-99 .offerdetails { border-radius: 0; }
+}
+
+/* THE 8px SEAM under the mobile bonus bar.
+   The export ships `position: static; top: 8px` on .offerwidget - `top` is inert
+   while the element is static, so it never showed. Our own `position: relative`
+   (added so the card layers above the banner) made the element positioned and
+   woke that dormant 8px up, pushing the card down off the banner. Neutralised
+   here so the bonus bar sits flush on the card's top edge. */
+.property-sogno-wg-orlando-99 .offerwidget {
+  top: 0;
+}
+
+/* Wherever the banner and card stack (<=991px), the card meets the bonus bar
+   with no margin either - a 24px gap at tablet contradicted the flush edge at
+   phone width. Above 991px the two sit in separate columns and this does not
+   apply. */
+@media screen and (max-width: 991px) {
+  .property-sogno-wg-orlando-99 .offerwidget { margin-top: 0; }
+}
+
+.property-sogno-wg-orlando-99 .offerwidget::after,
+.property-sogno-wg-orlando-99 .offerdetails::after {
+  content: none;
+  display: none;
+}
+
+/* The blue belongs on the "What You Get" BANNER - the bar that was dark navy -
+   not on the section headings, which keep their normal treatment. */
+.property-sogno-wg-orlando-99 .whyyougetsubtitle.darker {
+  background-color: #2189ce;
+}
+
+/* Tab panel images: the supplied art is a short, wide banner (~4.9:1), so the
+   previous 16:9 viewport cropped it heavily. Match the artwork's proportions
+   and keep all four panels identical. */
+.property-sogno-wg-orlando-99 .rd-slide img {
+  /* NO fixed aspect-ratio, and no cover.
+     These four banners carry baked-in text ("Free BREAKFAST", "WATER PARK"), and
+     they are not all the same shape - bonus is 3:1, the other three are 4.86:1.
+     Any single imposed ratio crops at least one of them, at every viewport, and a
+     cropped word is a broken promise. Each renders at its own proportions instead,
+     so 100% of the artwork is visible at every width. Panel heights differ
+     slightly as a result; that is the correct trade. */
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: fill;
+  border-radius: 0;
+  filter: none;
+}
+
+/* ===========================================================================
+   MOBILE HERO PARITY (<=767px)
+   Reference @377: badge 344w, price circle with the discount pill on the left
+   edge, play button, full-width RESERVE NOW, then a full-bleed bonus banner,
+   then the offer card. Ours had a 128px badge, no pill, the CTA below the card
+   and an inset banner.
+   =========================================================================== */
+@media screen and (max-width: 767px) {
+  /* Massanutten: 780px image inside .ob-group { zoom: 0.5 }. */
+  .property-sogno-wg-orlando-99 .ob-sticker img.hero-title-badge-img,
+  .property-sogno-wg-orlando-99 .ob-sticker img {
+    width: 780px;
+    max-width: none;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  /* Massanutten: 860px image inside .ob-group { zoom: 0.4 } → ~344px at 375. */
+  .property-sogno-wg-orlando-99 .ob-sticker img.hero-title-badge-img,
+  .property-sogno-wg-orlando-99 .ob-sticker img {
+    width: 860px;
+    max-width: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* Massanutten: half-moon is position:absolute; left:0 on .campaignlogoand-price. */
+  .property-sogno-wg-orlando-99 .campaignlogoand-price {
+    position: relative;
+  }
+  .property-sogno-wg-orlando-99 .discount.discount-badge--absolute.hero-pct-badge {
+    display: flex;
+    z-index: 5;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(calc(-50% - 118px));
+    background: #fff;
+    color: #e9654a;
+    /* Mass locks .discount to 80px for "86% OFF!". $540 VALUE is wider —
+       keep the flat left edge, let the tab grow right. */
+    width: auto;
+    min-width: 0;
+    max-width: none;
+    height: auto;
+    box-sizing: border-box;
+    padding: 20px 16px 20px 14px;
+    font-size: 22px;
+    line-height: 0.95;
+    overflow: visible;
+    white-space: nowrap;
+  }
+
+  /* Hero CTA belongs above the banner, not after the card. */
+  .property-sogno-wg-orlando-99 .cta-wrapper {
+    order: 5;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .property-sogno-wg-orlando-99 .cta-wrapper .checkout-cta {
+    width: 100%;
+    max-width: none;
+  }
+
+  /* Banner runs full-bleed under the CTA. */
+
+
+}
+
+@media screen and (max-width: 479px) {
+  .property-sogno-wg-orlando-99 .discount.discount-badge--absolute.hero-pct-badge {
+    transform: translateY(calc(-50% - 97px));
+  }
+  /* $540 VALUE is 23px wider than 86% OFF!, so the centered circle sits under
+     the moon. 58px inside zoom:0.4 = 23px on screen. */
+  .property-sogno-wg-orlando-99 .ob-combo {
+    transform: translateX(58px);
+  }
+  .property-sogno-wg-orlando-99 .flex-block-6 > .video-resort {
+    transform: translateX(23px);
+  }
+}
+@media screen and (max-width: 360px) {
+  .property-sogno-wg-orlando-99 .ob-combo {
+    transform: translateX(64px);
+  }
+}
+@media screen and (max-width: 390px) {
+  .property-sogno-wg-orlando-99 .discount.discount-badge--absolute.hero-pct-badge {
+    transform: translateY(calc(-50% - 77px));
+  }
+}
+@media screen and (max-width: 375px) {
+  .property-sogno-wg-orlando-99 .discount.discount-badge--absolute.hero-pct-badge {
+    transform: translateY(calc(-50% - 74px));
+  }
+}
+
+/* ===========================================================================
+   Dev QA fixes — touch targets, overflow
+   =========================================================================== */
+
+/* WCAG 2.2 AA: 44x44 minimum touch targets on mobile. The anchor-nav pills and
+   the strip carousel arrows measured 32px tall. */
+@media screen and (max-width: 767px) {
+  .property-sogno-wg-orlando-99 .menul2item {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    padding-block: 8px;
+  }
+  .property-sogno-wg-orlando-99 .hero-submenu-arrow {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  /* Sticky bar CTA overflowed its row between 560 and 700px. */
+  .property-sogno-wg-orlando-99 .msc-actions .msc-cta {
+    min-width: 0;
+    flex: 1 1 auto;
+    white-space: normal;
+  }
+}
+
+/* Bonus panel split overflowed its half at 414 and 768: the two panels are a
+   fixed 50/50 with content wider than the column. Let them wrap and contain. */
+.property-sogno-wg-orlando-99 #bonus-cta {
+  flex-wrap: wrap;
+  overflow-x: clip;
+}
+
+.property-sogno-wg-orlando-99 .bch-left,
+.property-sogno-wg-orlando-99 .bch-right {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding-inline: 16px;
+}
+
+.property-sogno-wg-orlando-99 .bch-headline,
+.property-sogno-wg-orlando-99 .bch-eyebrow {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+@media screen and (max-width: 900px) {
+  .property-sogno-wg-orlando-99 .bch-left,
+  .property-sogno-wg-orlando-99 .bch-right { flex: 1 1 100%; }
+  .property-sogno-wg-orlando-99 .bch-divider { display: none; }
+}
+
+@media screen and (max-width: 767px) {
+  /* What's Included tabs measured 38px tall. */
+  .property-sogno-wg-orlando-99 .rd-tab {
+    min-height: 44px;
+    padding-block: 8px;
+  }
+  /* Footer compliance links measured 21px tall - too small to tap reliably. */
+  .property-sogno-wg-orlando-99 .text-block-5,
+  .property-sogno-wg-orlando-99 .text-block-6,
+  .property-sogno-wg-orlando-99 .footer-2 a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}
+
+/* Bonus panel still overflowed its half at 414: force the split to stack below
+   the point where the two headlines stop fitting side by side. */
+@media screen and (max-width: 560px) {
+  .property-sogno-wg-orlando-99 #bonus-cta {
+    display: flex;
+    flex-direction: column;
+  }
+  .property-sogno-wg-orlando-99 .bch-left,
+  .property-sogno-wg-orlando-99 .bch-right {
+    width: 100%;
+    max-width: 100%;
+    flex: 0 0 auto;
+  }
+}
+
+/* The bonus CTA bar overflowed once the panel stacked: its row was still sized
+   for the full-width layout. */
+@media screen and (max-width: 560px) {
+  .property-sogno-wg-orlando-99 .bch-cta-bar {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding-inline: 16px;
+    padding-block: 32px;   /* keep the band symmetric once the panel stacks */
+  }
+  .property-sogno-wg-orlando-99 .bch-cta-actions {
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 100%;
+  }
+  .property-sogno-wg-orlando-99 .bch-cta-actions .bch-cta,
+  .property-sogno-wg-orlando-99 .bch-call {
+    flex: 1 1 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+}
+
+/* ===========================================================================
+   MOBILE STICKY BAR — stacked value, 3-line package, dual entry point
+   =========================================================================== */
+@media screen and (max-width: 767px) {
+  /* "$995" above "VALUE" rather than on one line. */
+  .property-sogno-wg-orlando-99 .msc-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.05;
+    white-space: normal;
+    text-align: center;
+    padding: 6px 10px;
+  }
+
+  /* Package name stacked over three lines. */
+  .property-sogno-wg-orlando-99 .msc-pkg {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.1;
+    white-space: normal;
+  }
+
+  /* Dual entry point: the phone shows its NUMBER beside the reserve CTA rather
+     than collapsing to a bare icon. */
+  .property-sogno-wg-orlando-99 .msc-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 100%;
+  }
+  .property-sogno-wg-orlando-99 .msc-call,
+  .property-sogno-wg-orlando-99 .msc-actions .msc-cta {
+    width: 100%;
+    min-width: 0;
+    min-height: 48px;
+    padding-inline: 8px;
+    font-size: 13px;
+    line-height: 1.15;
+    text-align: center;
+    white-space: normal;
+  }
+  .property-sogno-wg-orlando-99 .msc-call-text {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    clip: auto;
+    overflow: visible;
+    white-space: normal;
+  }
+}
+
+/* ---- Offer card, mobile ---------------------------------------------------
+   Bullet 1 is a single line while 2 and 3 wrap, so a centred list left the
+   short one indented. Left-align every row on a shared axis. */
+.property-sogno-wg-orlando-99 .includingslist {
+  align-items: flex-start;
+}
+
+.property-sogno-wg-orlando-99 .includingslist .listitem {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+  width: 100%;
+  gap: 8px;
+}
+
+.property-sogno-wg-orlando-99 .includingslist .listitem i,
+.property-sogno-wg-orlando-99 .includingslist .listitem .feature-icon {
+  flex: 0 0 auto;
+  margin-top: 2px;
+}
+
+/* "$99" sat higher than "Per Package" because the row aligned on baselines and
+   the qualifier wraps to two lines. Centre them as one unit instead. */
+.property-sogno-wg-orlando-99 .price-family-row {
+  align-items: center;
+}
+
+.property-sogno-wg-orlando-99 .price-family-row .stayperiod-3 {
+  align-self: center;
+}
+
+
+@media screen and (max-width: 767px) {
+  /* "$540 VALUE" tab fills the row's height, as on the reference. */
+  .property-sogno-wg-orlando-99 .msc-badge {
+    align-self: stretch;
+    min-height: 100%;
+    padding: 14px 12px;
+    font-size: 15px;
+    border-radius: 0 14px 14px 0;
+  }
+  .property-sogno-wg-orlando-99 .msc-info {
+    align-items: stretch;
+  }
+  /* Package name stacked under the eyebrow, left aligned. */
+  .property-sogno-wg-orlando-99 .msc-pkg {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .01em;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* The hero CTA sat flush-left inside its wrapper (28px left / 76px right).
+     justify-content wasn't applying, so centre the button with auto margins. */
+  .property-sogno-wg-orlando-99 .hero .cta-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .property-sogno-wg-orlando-99 .hero .cta-wrapper .checkout-cta {
+    margin-inline: auto;
+    display: block;
+    text-align: center;
+    width: 100%;
+    max-width: none;
+  }
+}
+
+/* Tab panel image fit: the slider wrap carried a fixed 300px height while the
+   banner art renders ~218px, leaving a grey band beneath every tab image. Let
+   the container follow the image so all four tabs sit flush. */
+.property-sogno-wg-orlando-99 .rd-slider-wrap,
+.property-sogno-wg-orlando-99 .rd-slide {
+  height: auto;
+  min-height: 0;
+  background-color: transparent;
+  display: block;
+  overflow: hidden;
+}
+
+.property-sogno-wg-orlando-99 .rd-slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 767px) {
+  /* The bonus banner sat 32px above the white card, exposing a band of hero
+     photo. It should rest directly on the card as on the reference. */
+
+  .property-sogno-wg-orlando-99 .offerwidget {
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* 8px remained from the hero column's flex gap; zero it around the banner so
+     it rests directly on the white card. */
+  .property-sogno-wg-orlando-99 .campaignlogoand-price { row-gap: 0; }
+
+
+}
+
+@media screen and (max-width: 767px) {
+  /* The banner and the card sit in different flex parents; the last 8px was
+     .herocontainer's row-gap once the columns stack. */
+  .property-sogno-wg-orlando-99 .herocontainer {
+    row-gap: 0;
+    gap: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* Last 8px traced to the hero column's own bottom padding (set earlier to keep
+     the banner clear of the play button on desktop). Not wanted on mobile. */
+  .property-sogno-wg-orlando-99 .campaignlogoand-price {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+}
+
+/* ===========================================================================
+   GUEST REVIEWS — CTA spacing
+   NOTE: the photo panel's `position: absolute` is load-bearing. Forcing it to
+   relative collapsed the slideshow into a full-width navy void, so that change
+   was reverted. Only the CTA spacing is adjusted here.
+   =========================================================================== */
+
+/* Breathing room under the review cards before the CTA. */
+.property-sogno-wg-orlando-99 #guest-reviews .gr-cta {
+  margin-top: 32px;
+  margin-bottom: 8px;
+}
+
+@media screen and (max-width: 767px) {
+  /* audit #15 - the button spans the section on mobile too, not a centred 340px
+     pill under full-width cards. The ID selector here outranks the class-level
+     rule further down, so the cap has to be lifted at this rule. */
+  .property-sogno-wg-orlando-99 #guest-reviews .gr-cta {
+    margin-top: 24px;
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* Sticky info row: equal height across the value tab, package text and price,
+     so the tab no longer sits short of the block beside it. */
+  .property-sogno-wg-orlando-99 .msc-info {
+    display: flex;
+    align-items: stretch;
+    min-height: 76px;
+  }
+  .property-sogno-wg-orlando-99 .msc-badge,
+  .property-sogno-wg-orlando-99 .msc-info-left,
+  .property-sogno-wg-orlando-99 .msc-price {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+  }
+  .property-sogno-wg-orlando-99 .msc-info-left { align-items: flex-start; }
+  .property-sogno-wg-orlando-99 .msc-price { align-items: flex-end; }
+}
+
+@media screen and (max-width: 767px) {
+  /* "CALL NOW" on the first line, the number on the second, rather than the
+     label wrapping mid-phone-number. */
+  .property-sogno-wg-orlando-99 .msc-call-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.15;
+  }
+  .property-sogno-wg-orlando-99 .msc-call-label,
+  .property-sogno-wg-orlando-99 .msc-call-num {
+    display: block;
+    white-space: nowrap;
+  }
+}
+
+/* ===========================================================================
+   Phone CTAs — one stacked treatment everywhere (label above number)
+   =========================================================================== */
+.bch-call-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.15;
+}
+
+.bch-call-label, .bch-call-num {
+  display: block;
+  white-space: nowrap;
+}
+
+/* The bonus-bar phone button previously collapsed to an icon on phones; it now
+   keeps the label and number like the sticky bar. */
+@media screen and (max-width: 400px) {
+  .property-sogno-wg-orlando-99 .bch-call-text {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    clip: auto;
+    overflow: visible;
+  }
+  .property-sogno-wg-orlando-99 .bch-cta-actions .bch-call { flex: 1 1 100%; }
+}
+
+/* Anchor-nav phone CTA, styled to sit beside "Reserve it now". */
+.property-sogno-wg-orlando-99 .nav-call {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 6px 16px;
+  border: 2px solid #0d1f48;
+  border-radius: 40px;
+  color: #0d1f48;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.property-sogno-wg-orlando-99 .nav-call:hover,
+.property-sogno-wg-orlando-99 .nav-call:focus-visible {
+  background: #0d1f48;
+  color: #fff;
+}
+
+.property-sogno-wg-orlando-99 .nav-call i,
+.property-sogno-wg-orlando-99 .nav-call svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+/* CALL NOW + number on one line at the button's type size — stacking shrank
+   the number. */
+.property-sogno-wg-orlando-99 .nav-call-text {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  line-height: 1.2;
+}
+.property-sogno-wg-orlando-99 .nav-call-label,
+.property-sogno-wg-orlando-99 .nav-call-num {
+  display: inline;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0;
+  opacity: 1;
+  white-space: nowrap;
+}
+
+@media screen and (min-width: 768px) {
+  .property-sogno-wg-orlando-99 .hero-submenu-inner {
+    flex-wrap: nowrap;
+    gap: 10px;
+    max-width: none;
+  }
+  .property-sogno-wg-orlando-99 .nav-call {
+    flex: 0 0 auto;
+    padding-inline: 12px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* No CTAs in the anchor nav on phones - they crowded out the section links.
+     The sticky bar already carries both entry points on mobile. */
+  .property-sogno-wg-orlando-99 .nav-call,
+  .property-sogno-wg-orlando-99 .menul2item.checkout-cta.nav-variant {
+    display: none !important;
+  }
+}
+
+/* ===========================================================================
+   CTA SIZE PARITY
+   ---------------------------------------------------------------------------
+   The page's standard button is .rd-cta / .gr-cta / .checkout-cta, AUTHORED at
+   48px tall (14px padding + 20px line-height). It measures 43px on desktop only
+   because `body { zoom: .9 }` scales it - so parity has to be written in authored
+   pixels, not in the 43px a screenshot reports.
+
+   Three CTAs had drifted larger: .bch-cta and .bch-call (under the breakfast and
+   water park cards) and .hs-cta. Each keeps its own colour, radius and outline;
+   only the box is normalised.
+   =========================================================================== */
+.property-sogno-wg-orlando-99 .bch-cta-actions .bch-cta,
+.property-sogno-wg-orlando-99 .bch-call,
+.property-sogno-wg-orlando-99 .hs-cta {
+  box-sizing: border-box;
+  min-height: 48px;
+  height: 48px;
+  padding-block: 14px;
+  font-size: 17px;
+  line-height: 20px;
+  display: inline-flex;          /* .hs-cta was `block`, which ignores min-height */
+  align-items: center;
+  justify-content: center;
+}
+
+/* .bch-call carries a 2px outline the others do not; trim its padding by that
+   much so the border cannot make it taller than the button beside it. */
+.property-sogno-wg-orlando-99 .bch-call {
+  padding-block: 12px;
+}
+
+/* The pair are flex items in a stretch row, so the taller one was dragging the
+   other up with it regardless of either one's own height. */
+.property-sogno-wg-orlando-99 .bch-cta-actions {
+  align-items: center;
+}
+
+.property-sogno-wg-orlando-99 .hs-cta {
+  display: flex;                 /* full-width block CTA, centred content */
+}
+
+/* ===========================================================================
+   CALL CTAs — label over number
+   ---------------------------------------------------------------------------
+   All four call buttons put "CALL NOW" and the number on one row, which reads as
+   one long string and makes the number hard to pick out at a glance. The label
+   now sits on the first line with the number beneath it, centred, everywhere the
+   treatment appears: the hero card, the nav, the card row and the sticky bar.
+   =========================================================================== */
+.property-sogno-wg-orlando-99 .cta-call-text,
+.property-sogno-wg-orlando-99 .bch-call-text,
+.property-sogno-wg-orlando-99 .msc-call-text {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.1;
+  gap: 1px;
+}
+
+/* The label is the quieter half; the number is what the eye should land on. */
+.property-sogno-wg-orlando-99 .cta-call-label,
+.property-sogno-wg-orlando-99 .bch-call-label,
+.property-sogno-wg-orlando-99 .msc-call-label {
+  font-size: .78em;
+  letter-spacing: .04em;
+  opacity: .9;
+}
+
+.property-sogno-wg-orlando-99 .cta-call-num,
+.property-sogno-wg-orlando-99 .bch-call-num,
+.property-sogno-wg-orlando-99 .msc-call-num {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Two stacked lines still fit the page's standard 48px authored box - .bch-call
+   already proves it - so the call buttons keep size parity with every other CTA
+   rather than growing to fit. */
+.property-sogno-wg-orlando-99 .cta-button--call,
+.property-sogno-wg-orlando-99 .bch-call {
+  box-sizing: border-box;
+  min-height: 48px;
+  height: 48px;
+  padding-block: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===========================================================================
+   CALL CENTRE HOURS
+   ---------------------------------------------------------------------------
+   A "CALL NOW" button that rings out of hours is misleading, so the hours are
+   printed with the button rather than somewhere else on the page. Quiet by
+   design: this is a qualifier, not a second call to action.
+   =========================================================================== */
+.property-sogno-wg-orlando-99 .cta-call-hours,
+.property-sogno-wg-orlando-99 .bch-call-hours {
+  margin: 6px 0 0;
+  font-family: Roboto, sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+  text-align: center;
+  opacity: .85;
+}
+
+/* On the hero card the hours sit on the white panel; in the bonus bar they sit
+   on the dark band, so each inherits a legible colour from its own context. */
+.property-sogno-wg-orlando-99 .cta-call-hours { color: #5a6472; }
+.property-sogno-wg-orlando-99 .bch-call-hours { color: #fff; flex: 1 1 100%; width: 100%; }
+
+/* ===========================================================================
+   BONUS CTA BAR — full-width stacked buttons, hours beneath in white
+   ---------------------------------------------------------------------------
+   The two buttons each span the bar and stack, with the call-centre hours
+   directly under them.
+
+   The bar's navy ground is painted at EVERY width for this. Below 768px the
+   export deliberately left it transparent so the CTA flowed in over white, but
+   white hours on white are invisible - so the ground travels with the white
+   text rather than the text changing colour halfway down the breakpoints.
+   =========================================================================== */
+.property-sogno-wg-orlando-99 .bch-cta-bar {
+  background: #071330;
+  /* The navy band had 18px of breathing room on desktop and NONE above the
+     buttons on mobile (0 / 16 / 40), so the stack sat hard against its top edge.
+     32px on the 8pt grid, symmetric, gives the buttons real blue around them. */
+  padding-block: 32px;
+}
+
+.property-sogno-wg-orlando-99 .bch-cta-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  width: 100%;
+  max-width: 520px;
+  margin-inline: auto;
+}
+
+.property-sogno-wg-orlando-99 .bch-cta-actions .bch-cta,
+.property-sogno-wg-orlando-99 .bch-call {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.property-sogno-wg-orlando-99 .bch-call-hours {
+  color: #fff;
+  width: 100%;
+  margin-top: 10px;
+}
+
+
+/* One guest-review slide is supplied at only 521x261 while the slide renders at
+   573px, so the browser enlarges it and it reads as grainy. Smoothing the upscale
+   is the most that can be done until a higher-resolution file is supplied. */
+.property-sogno-wg-orlando-99 .gr-slide {
+  image-rendering: auto;
+}
+
+/* ===========================================================================
+   GUEST REVIEWS — real two-column layout (audit #15, #8)
+   ---------------------------------------------------------------------------
+   .gr-slideshow was position:absolute over the right half of .gr-reviews-row
+   while .gr-cards spanned the FULL row width, so the third review card ran
+   underneath the photo panel - a 119px overlap at 1920.
+
+   The row is a grid now: cards and CTA in column one, the photo panel in column
+   two as a real grid item. The panel keeps an explicit width and height because
+   taking it out of the overlay without them collapses it into a full-width band.
+   =========================================================================== */
+@media screen and (min-width: 992px) {
+  .property-sogno-wg-orlando-99 .gr-reviews-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 573px;
+    grid-template-rows: auto auto;
+    column-gap: 32px;
+    row-gap: 20px;
+    align-items: start;
+  }
+
+  .property-sogno-wg-orlando-99 .gr-slideshow {
+    position: relative;
+    inset: auto;
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    width: 100%;
+    height: 100%;
+    min-height: 363px;
+  }
+
+  .property-sogno-wg-orlando-99 .gr-cards { grid-column: 1; grid-row: 1; }
+
+  /* #15 - the CTA sat at 200px against a 1332px row. It spans its column now. */
+  .property-sogno-wg-orlando-99 .gr-cta {
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* Below 992px the panel stacks under the cards rather than overlapping them. */
+@media screen and (max-width: 991px) {
+  .property-sogno-wg-orlando-99 .gr-slideshow {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    min-height: 240px;
+    margin-top: 20px;
+  }
+  .property-sogno-wg-orlando-99 .gr-cta { width: 100%; max-width: 100%; }
+}
+
+/* ===========================================================================
+   STORIES FROM RECENT GUESTS — centre the row (audit #8)
+   The track was left-aligned inside a wider rail: 970px of cards in a 1260px
+   row left 286px of dead space on the right, and below 1024 the cards ran off
+   the right edge entirely.
+   =========================================================================== */
+.property-sogno-wg-orlando-99 .gs-track {
+  justify-content: center;
+  flex-wrap: wrap;
+  row-gap: 16px;
+}
+
+/* The cards carried a fixed `flex: 0 0 320px` basis. In the narrower left column
+   that no longer fits three across, so the third wrapped onto its own row. They
+   share the column evenly now, and stretch to a common height. */
+@media screen and (min-width: 992px) {
+  .property-sogno-wg-orlando-99 .gr-cards {
+    align-items: stretch;
+    flex-wrap: nowrap;
+  }
+  .property-sogno-wg-orlando-99 .gr-cards .gr-card {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}
+
+/* ===========================================================================
+   FULL-WIDTH CTAs AND VALUE BAR (audit #3, #4, #7)
+   ---------------------------------------------------------------------------
+   #3/#7 Two RESERVE NOW buttons sat at 265px inside ~1400px sections - the one
+   under "What You Get" and the one under the amenities/attractions block - while
+   every other section CTA already spanned its container. They match now.
+   =========================================================================== */
+.property-sogno-wg-orlando-99 .whatyougetcontainer > .checkout-cta,
+.property-sogno-wg-orlando-99 .amndiv .div-block-21 > .checkout-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.property-sogno-wg-orlando-99 .wyg-extra-nights {
+  width: 100%;
+  margin: 16px 0 0;
+  text-align: center;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #262626;
+}
+
+/* #4 The mid-page "$540 VALUE" bar was 334px beside a 623px button, so the two
+   read as different systems. The price group now spans the same column, which
+   makes the bar and the button the same width. */
+.property-sogno-wg-orlando-99 .hs-price-group {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* ===========================================================================
+   WHITE LINE BELOW THE FOOTER (audit #9)
+   ---------------------------------------------------------------------------
+   The white body outlives the navy footer (zoom: .9 on desktop; sticky-bar
+   spacer and trailing whitespace on phones). Paint html/body and an infinite
+   shadow below the footer in the footer’s own #0d1f48 so nothing white can
+   show under it.
+   =========================================================================== */
+html:has(> .property-sogno-wg-orlando-99),
+.property-sogno-wg-orlando-99 {
+  background-color: #0d1f48;
+}
+
+.property-sogno-wg-orlando-99 .footer-2 {
+  box-shadow: 0 100vh 0 100vh #0d1f48;
+}
+
+@media screen and (max-width: 991px) {
+  .property-sogno-wg-orlando-99 {
+    padding-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .property-sogno-wg-orlando-99 .footer-2 {
+    padding-bottom: 154px;
+  }
+}
+
+/* ===========================================================================
+   OFFER CARD WIDTH ON TABLET AND PHONE (audit #12, #13, #16)
+   ---------------------------------------------------------------------------
+   Once the hero stacks, the card kept a narrow desktop-column width - 340px at
+   940 and 820, 641px at 740 - while the bonus banner directly above it spanned
+   the full content width (892px at 940). The card read as tucked underneath the
+   wider image, which is the "image overlays the offer details" report; they are
+   in fact flush, the card was simply far narrower.
+
+   The card now spans the same content width as the banner above it, so the two
+   share one edge-to-edge column.
+   =========================================================================== */
+@media screen and (max-width: 991px) {
+  .property-sogno-wg-orlando-99 .offerwidget {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    align-self: stretch;
+    /* The export pins the card to a fixed 340px height with overflow:hidden.
+       Its content needs 524px at 940, so the last 184px - the trust seals and
+       the "Prefer to talk" line - was being cut off at the card's edge, which is
+       what the missing bottom padding actually was. */
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+  }
+
+  /* The hero column that holds the card has to allow it, too. */
+  .property-sogno-wg-orlando-99 .herocontainer {
+    align-items: stretch;
+  }
+}
+
+/* ===========================================================================
+   HERO AT 992-1199 — two-column like Massanutten (not stacked).
+   The 416px card lock is for ≥1200. In this band the card may shrink so both
+   columns fit, matching Massanutten's 992px row.
+   =========================================================================== */
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .property-sogno-wg-orlando-99 .herocontainer {
+    flex-direction: row;
+    align-items: stretch;
+    max-width: 100%;
+    column-gap: 32px;
+    padding-inline: 24px;
+  }
+
+  .property-sogno-wg-orlando-99 .offerwidget {
+    flex: 0 1 auto;
+    width: auto;
+    min-width: 0;
+    max-width: 416px;
+    box-sizing: border-box;
+    align-self: stretch;
+    border-radius: 20px;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+  }
+}
+
+/* ===========================================================================
+   CAROUSEL POSITION INDICATOR (audit #17) + TABLET BOTTOM PADDING (audit #14)
+   =========================================================================== */
+.property-sogno-wg-orlando-99 .vv-carousel-dots {
+  display: none;
+}
+
+/* Nine 44px targets need 396px, so on a 375 screen they were being squeezed to
+   42px wide. Wrapping keeps every control at its full size rather than shaving
+   the target down to make the row fit. */
+.property-sogno-wg-orlando-99 .vv-carousel-dot {
+  flex: 0 0 44px;
+}
+
+/* The BUTTON is the 44px target and the dot is painted inside it, rather than an
+   8px button with an invisible overlay - a pseudo-element hit area satisfies a
+   finger but not an audit, because the control's own box is still 8px. */
+.property-sogno-wg-orlando-99 .vv-carousel-dot {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.property-sogno-wg-orlando-99 .vv-carousel-dot::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 50%;
+  background: rgba(7, 19, 48, .22);
+  transition: background .18s ease, transform .18s ease;
+}
+
+.property-sogno-wg-orlando-99 .vv-carousel-dot.is-active::before {
+  background: #e9654a;
+  transform: scale(1.35);
+}
+
+.property-sogno-wg-orlando-99 .vv-carousel-dot:focus-visible::before {
+  box-shadow: 0 0 0 3px rgba(233, 101, 74, .35);
+}
+
+/* ===========================================================================
+   BONUS BAND — the CTA bar must not eat the cards
+   ---------------------------------------------------------------------------
+   The export pins .bch-cta-bar with `position: absolute; bottom: 0` inside
+   #bonus-cta, which has a fixed min-height. That works while the bar is one row
+   of buttons (~100px). Stacking the buttons full width, adding the call-centre
+   hours and giving the band 32px of symmetric padding grew it to 201px, and
+   because it is bottom-pinned it grew UPWARD - covering the bottom 94px of the
+   breakfast and water-park cards.
+
+   The bar joins the flow as a full-width grid row instead, so the section grows
+   to fit it and the photo band keeps its own height. Nothing overlaps, and the
+   navy still reads as a band under the photos, which is how it is drawn.
+   =========================================================================== */
+.property-sogno-wg-orlando-99 #bonus-cta {
+  min-height: 0;
+  grid-template-rows: auto auto;
+}
+
+.property-sogno-wg-orlando-99 #bonus-cta .bch-left,
+.property-sogno-wg-orlando-99 #bonus-cta .bch-right {
+  min-height: 520px;
+}
+
+.property-sogno-wg-orlando-99 .bch-cta-bar {
+  position: static;
+  grid-column: 1 / -1;
+  grid-row: 2;
+}
+
+/* The full-bleed photo covers the whole section, so it would otherwise sit
+   behind the navy band too. Confine it to the photo row. */
+.property-sogno-wg-orlando-99 #bonus-cta::before {
+  bottom: auto;
+  height: 520px;
+}
+
+/* The centre divider spans the section; keep it to the photo row as well. */
+.property-sogno-wg-orlando-99 .bch-divider {
+  bottom: auto;
+  height: 520px;
+}
+
+/* ===========================================================================
+   TOO MUCH SPACE BETWEEN ITEMS (audit #5, #11)
+   ---------------------------------------------------------------------------
+   Not a viewport problem - these rows are already capped at 1332/1404 - but
+   `space-between` and an oversized gap pushing content to the extremes, which
+   leaves a void down the middle and reads as a broken grid at any wide screen.
+   =========================================================================== */
+
+/* The package bar held 738px of content (badge 186 + divider + list 551) in a
+   1332px row under `space-between`, so 594px was dealt out as empty space. The
+   three sit together now, spaced by the 40px gap that was already declared. */
+
+/* The amenities/attractions row carried a 153px gap, putting 138px of air on
+   each side of the hairline divider. */
+.property-sogno-wg-orlando-99 .anatableoflists {
+  gap: 56px;
+}
+
+/* Each column then spread its own two lists apart with `space-between`, so the
+   icons and their labels drifted to opposite edges of the column. */
+.property-sogno-wg-orlando-99 .anacolumn {
+  justify-content: center;
+  gap: 48px;
+}
+
+/* Below 991px the two columns stack. The 2px hairline divider then renders as
+   a stray dot, and 56px above + 2px + 56px below piled up 114px of air between
+   "Featured Resort Amenities" and "Nearby Attractions". */
+@media screen and (max-width: 991px) {
+  .property-sogno-wg-orlando-99 .anatableoflists {
+    gap: 40px;
+  }
+  .property-sogno-wg-orlando-99 .anatableoflists .titlestay2 {
+    display: none;
+  }
+  .property-sogno-wg-orlando-99 .anacolumn {
+    gap: 28px;
+  }
+}
+
+/* The card is a flex item in the stacked hero column, and default `flex-shrink:1`
+   let the container squeeze it to 340px when its content needed 506px - so the
+   trust seals and the "Prefer to talk" line were clipped by overflow:hidden.
+   Nothing about the card should shrink below its content. */
+@media screen and (max-width: 991px) {
+  .property-sogno-wg-orlando-99 .offerwidget {
+    flex: 0 0 auto;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+  }
+}
+
+/* ===========================================================================
+   GUEST REVIEWS AT TABLET AND MOBILE (audit #15)
+   ---------------------------------------------------------------------------
+   Once the section stacks, the cards kept a 480px basis inside an 876px row at
+   940 and a 692px row at 740, leaving a column of dead space to their right, and
+   the CTA sat at 340px under a 692px row. Both span the row now.
+   =========================================================================== */
+@media screen and (max-width: 991px) {
+  .property-sogno-wg-orlando-99 .gr-cards {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .property-sogno-wg-orlando-99 .gr-cards .gr-card {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  /* The CTA carried `max-width: 340px` plus 176px side margins that centred it
+     by brute force, so `width: 100%` had nothing to fill. Both are cleared. */
+  .property-sogno-wg-orlando-99 .gr-reviews-row .gr-cta,
+  .property-sogno-wg-orlando-99 .gr-cta {
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+    box-sizing: border-box;
+  }
+}
+
+/* audit #1 revisited - the hero image stays FULL WIDTH on desktop. Insetting it
+   to the page's content band was the wrong reading; what needs to respect the
+   padding is the hero's own content, handled below. */
+
+/* ===========================================================================
+   HERO TOP ALIGNMENT (audit #1, revised)
+   ---------------------------------------------------------------------------
+   The hero image stays full width. What was ignoring the top padding is the
+   hero's own left column: the badge, the price circle and the play button began
+   at y=78 while the offer card began at y=106, so the left side sat 28px proud
+   of the card and read as pinned to the very top of the photo.
+
+   31px AUTHORED lands at 28px rendered under `body { zoom: .9 }`. Applied to the
+   badge/price/play group only, so the bonus banner below keeps its own position.
+   =========================================================================== */
+@media screen and (min-width: 1200px) {
+  .property-sogno-wg-orlando-99 .campaignlogoand-price > .flex-block-6 {
+    margin-top: 31px;
+  }
+}
+
+/* ===========================================================================
+   TABLET — OFFER CARD FLUSH TO THE HERO EDGES
+   ---------------------------------------------------------------------------
+   The card left a 24px sliver of the background photo down each side and a 32px
+   sliver beneath it, so it read as floating on the image rather than closing the
+   hero off. Two separate sources: `.herocontainer` carried 24px of horizontal
+   padding, and the card carried a 32px bottom margin.
+
+   Both are cleared from 992px down, so the card meets the hero on all four
+   edges. The bonus banner shares that column, so it goes edge to edge with it
+   and the two stay aligned.
+   =========================================================================== */
+@media screen and (max-width: 991px) {
+  .property-sogno-wg-orlando-99 .herocontainer {
+    padding-inline: 0;
+  }
+
+  .property-sogno-wg-orlando-99 .offerwidget {
+    margin-bottom: 0;
+  }
+
+  /* Massanutten centres this column so calc(50% - 50vw) on the banner lands
+     on the viewport edge. Stretch + max-width:640 left-aligned it, which
+     pulled the 100vw banner off-screen at 767. */
+  .property-sogno-wg-orlando-99 .campaignlogoand-price {
+    align-self: center;
+    width: 100%;
+  }
+
+  /* Massanutten: banner is 100vw, pulled out of .campaignlogoand-price's 28px
+     padding with calc(50% - 50vw). Later Orlando rules set width:100% and
+     cancelled that, which left a 28px gutter on each side. */
+
+
+}
+
+/* Under-hero strip: Massanutten's 280×200 clipped tiles. The export's
+   aspect-ratio:4/3 on the <img> made the photo 189px in a 180px tile. */
+.property-sogno-wg-orlando-99 .photostrip-3 .herolightboxstrip-4 {
+  overflow: clip;
+  cursor: default;
+}
+.property-sogno-wg-orlando-99 .photostrip-3 .herostripphoto-3 {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: auto;
+}
+@media screen and (max-width: 767px) {
+  /* Massanutten: the 100vw <img> stretched each tile to the viewport minus
+     the row's 16px gutters (~343px at 375). */
+  .property-sogno-wg-orlando-99 .photostrip-3 .herolightboxstrip-4 {
+    width: calc(100vw - 32px);
+    min-width: calc(100vw - 32px);
+  }
+}
+/* Massanutten uses a lightbox on the whole tile, not an expand chip. */
+.property-sogno-wg-orlando-99 .photostrip-3 .vv-gallery-expand {
+  display: none;
+}
+
+/* ============ REDUCED MOTION (WCAG 2.2 / QA §4) ============
+   Collapse CSS animations and transitions for visitors who ask for less
+   motion. Webflow IX2 scroll effects are JS-driven, but their painted result
+   still transitions via CSS, so this quiets them too. Layout is unaffected. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Order Details | Orlando Getaway Checkout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fe5925">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+  <link href="assets/css/brand.css" rel="stylesheet">
+  <style>
+    /* ---- Step 1 layout ---- */
+    .os-grid { display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 24px; align-items: stretch; width: 100%; max-width: var(--maxw); }
+    @media (max-width: 900px) { .os-grid { grid-template-columns: 1fr; } }
+
+    .os-section + .os-section { margin-top: 28px; padding-top: 28px; border-top: 1px solid var(--line); }
+    .os-form-grid { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+
+    /* Boxed fields with label + hint inside the box (matches Figma) */
+    .os-form-grid .pf-field {
+      position: relative;
+      border: 1px solid var(--field-border); border-radius: var(--radius-sm);
+      background: var(--white); padding: 11px 14px; min-height: 56px;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .os-form-grid .pf-field:focus-within { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(33, 82, 114, .12); }
+    .os-form-grid .pf-field.is-invalid { border-color: var(--coral); box-shadow: 0 0 0 3px rgba(233, 101, 74, .14); }
+    .os-form-grid .pf-field > label { font-size: 15px; font-weight: 600; color: var(--ink); margin: 0; line-height: 1.3; pointer-events: none; }
+    .os-form-grid .pf-field > label .pf-hint { display: block; font-weight: 400; font-size: 12px; color: var(--muted); margin-top: 1px; }
+    /* label doubles as placeholder — on focus/filled it floats to a small
+       top caption (kept visible per QA) and only the hint line hides */
+    .os-form-grid .pf-field:focus-within > label,
+    .os-form-grid .pf-field.is-filled > label {
+      font-size: 11px; font-weight: 700; letter-spacing: .02em; color: var(--muted);
+    }
+    .os-form-grid .pf-field:focus-within > label { color: var(--navy); }
+    .os-form-grid .pf-field:focus-within > label .pf-hint,
+    .os-form-grid .pf-field.is-filled > label .pf-hint { display: none; }
+    /* input overlays the whole box so the empty state stays compact */
+    .os-form-grid .pf-input {
+      position: absolute; inset: 0;
+      border: none; background: transparent; border-radius: inherit;
+      padding: 11px 14px; font-size: 16px; color: var(--text);
+    }
+    /* once the label floats, the input's box starts below the caption so the
+       typed text — and Chrome's opaque autofill paint — can never cover it */
+    .os-form-grid .pf-field:focus-within .pf-input,
+    .os-form-grid .pf-field.is-filled .pf-input { top: 26px; padding-top: 0; padding-bottom: 6px; }
+    /* browser autofill fills the value without firing events: float the caption from CSS too */
+    .os-form-grid .pf-field:has(.pf-input:-webkit-autofill) > label {
+      font-size: 11px; font-weight: 700; letter-spacing: .02em; color: var(--muted);
+    }
+    .os-form-grid .pf-field:has(.pf-input:-webkit-autofill) > label .pf-hint { display: none; }
+    .os-form-grid .pf-field:has(.pf-input:-webkit-autofill) .pf-input { top: 26px; padding-top: 0; padding-bottom: 6px; }
+    /* repaint autofill's opaque tint white so the field matches its siblings */
+    .os-form-grid .pf-input:-webkit-autofill,
+    .os-form-grid .pf-input:-webkit-autofill:hover,
+    .os-form-grid .pf-input:-webkit-autofill:focus {
+      -webkit-box-shadow: 0 0 0 1000px #fff inset;
+      -webkit-text-fill-color: var(--text);
+    }
+    .os-form-grid .pf-input:focus { border: none; box-shadow: none; }
+    .os-form-grid .pf-input.is-invalid { border: none; box-shadow: none; }
+    .os-form-grid .pf-field__error { position: absolute; left: 14px; top: 100%; margin-top: 3px; }
+    /* reserve room for the absolutely-positioned error so it never overlaps the next field */
+    .os-form-grid .pf-field.is-invalid { margin-bottom: 16px; }
+
+    .os-dates-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .os-checkinout { display: flex; gap: 12px; margin-top: 16px; }
+    .os-checkinout .pf-card { flex: 1; text-align: center; padding: 12px; box-shadow: none; }
+    .os-checkinout .lbl { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+    .os-checkinout .val { font-size: 20px; font-weight: 800; color: var(--navy); margin-top: 4px; }
+    .os-hurry { text-align: center; font-weight: 700; color: var(--ink); margin: 20px 0 4px; }
+
+    /* The Continue button sat 9px under the trust badges, which read as cramped.
+       24px on the 8pt grid gives it room without moving anything else. */
+    .os-form .pf-actionbar { margin-top: 24px; }
+
+    .os-consents { display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
+    .pf-check.is-invalid input[type="checkbox"] { border-color: var(--coral); box-shadow: 0 0 0 3px rgba(233, 101, 74, .14); }
+    /* --coral-dark: coral is only 3.3:1 on white — too low for 12px text (WCAG AA). */
+    .pf-check.is-invalid .pf-check__text { color: var(--coral-dark); }
+    .pf-check__error { display: none; margin: -4px 0 0 32px; color: var(--coral-dark); font-size: 12px; font-weight: 700; }
+    .pf-check__error.is-shown { display: block; }
+
+    /* summary sticky on desktop */
+    @media (min-width: 901px) { .os-summary { position: sticky; top: 20px; } }
+    .os-rating { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--muted); }
+    .os-rating .stars { color: #00aa6c; letter-spacing: 1px; font-size: 15px; }
+    .os-dates-mini { display: flex; flex-direction: column; gap: 4px; font-size: 14px; margin: 12px 0; color: var(--text); }
+    .os-badges { display: flex; justify-content: center; gap: 16px; margin: 4px 0; }
+    .os-badges span { width: 52px; height: 52px; border-radius: 50%; background: var(--bg); display: flex; align-items: center; justify-content: center; color: var(--navy); font-size: 22px; border: 1px solid var(--line); }
+    .os-travel { text-align: center; font-size: 13px; color: var(--muted); }
+
+    /* ---- calendar ---- */
+    .cal { --cell: 40px; }
+    .cal-nav { display: flex; justify-content: space-between; margin-bottom: 6px; }
+    .cal-arrow { width: 34px; height: 34px; border-radius: 8px; border: 1px solid var(--line); background: #fff; font-size: 18px; cursor: pointer; color: var(--navy); }
+    .cal-arrow:disabled { opacity: .35; cursor: default; }
+    .cal-months { display: flex; gap: 24px; }
+    @media (max-width: 620px) { .cal-months { flex-direction: column; } }
+    .cal-month { flex: 1; min-width: 0; } /* min-width:0 lets months shrink instead of overflowing the card (QA: 901-950px) */
+    .cal-monthname { text-align: center; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+    .cal-week, .cal-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); }
+    .cal-week span { text-align: center; font-size: 12px; color: var(--muted); padding: 4px 0; }
+    .cal-grid { gap: 2px; }
+    .cal-day { height: var(--cell); border: none; background: none; font-family: var(--font); font-size: 14px; color: var(--text); cursor: pointer; border-radius: 8px; }
+    .cal-day.is-empty { visibility: hidden; }
+    .cal-day.is-disabled { color: #c3c9d1; cursor: default; }
+    .cal-day:not(.is-disabled):not(.is-start):not(.is-end):hover { background: rgba(33,82,114,.08); }
+    .cal-day.is-inrange { background: rgba(233,101,74,.14); border-radius: 0; }
+    .cal-day.is-start, .cal-day.is-end { background: var(--coral); color: #fff; font-weight: 700; }
+
+    /* Mobile vertical compression */
+    @media (max-width: 767px) {
+      .os-section + .os-section { margin-top: 18px; padding-top: 18px; }
+      .os-form-grid { gap: 10px; margin-top: 12px; }
+      .os-form-grid .pf-field { min-height: 52px; padding: 9px 12px; }
+      .os-consents { gap: 12px; }
+      .os-checkinout { margin-top: 12px; }
+      .os-hurry { margin: 14px 0 4px; }
+      .os-dates-mini { margin: 10px 0; }
+      /* 44px touch-target floor (WCAG 2.2 / iOS HIG) */
+      .cal { --cell: 44px; }
+      .cal-arrow { width: 44px; height: 44px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="pf-navbar">
+    <img class="pf-navbar__logo" src="assets/images/vacationvip-logo.svg" alt="VacationVIP" width="254" height="33">
+  </header>
+
+  <!-- ALERT BAR (social-proof ticker) -->
+  <div class="alert-bar" role="status" aria-live="polite" aria-label="Live demand">
+    <div class="alert-ticker">
+      <div class="alert-item" data-key="viewing" data-min="180" data-max="240">
+        <i data-lucide="eye" class="alert-ic" aria-hidden="true"></i>
+        <span><span class="alert-num">211</span> viewing now</span>
+      </div>
+      <div class="alert-item" data-key="booked">
+        <i data-lucide="shopping-bag" class="alert-ic" aria-hidden="true"></i>
+        <span><span class="alert-num">27</span> booked today</span>
+      </div>
+    </div>
+  </div>
+
+  <main class="pf-main">
+
+    <!-- STEPPER -->
+    <div class="pf-stepper">
+      <div class="pf-step is-active"><span class="pf-step__label">Order Details</span><span class="pf-step__bar"></span></div>
+      <div class="pf-step"><span class="pf-step__label">Payment Details</span><span class="pf-step__bar"></span></div>
+    </div>
+
+    <div class="os-grid">
+      <!-- LEFT: FORM -->
+      <form class="pf-card" id="orderForm" novalidate autocomplete="on">
+        <div class="pf-card__pad">
+          <!-- Contact -->
+          <div class="os-section">
+            <h2 class="pf-title">Contact Information</h2>
+            <p class="pf-subtitle">Please enter valid contact information so we can confirm your vacation with the resort.</p>
+            <div class="os-form-grid">
+              <div class="pf-row">
+                <div class="pf-field">
+                  <label for="firstName">First Name <span class="pf-hint">As it appears on your state issued ID</span></label>
+                  <input class="pf-input" name="firstName" id="firstName" type="text" autocomplete="given-name" autocapitalize="words" spellcheck="false" aria-required="true" aria-describedby="firstNameError">
+                  <span class="pf-field__error" id="firstNameError" role="alert">Please enter your first name.</span>
+                </div>
+                <div class="pf-field">
+                  <label for="lastName">Last Name <span class="pf-hint">As it appears on your state issued ID</span></label>
+                  <input class="pf-input" name="lastName" id="lastName" type="text" autocomplete="family-name" autocapitalize="words" spellcheck="false" aria-required="true" aria-describedby="lastNameError">
+                  <span class="pf-field__error" id="lastNameError" role="alert">Please enter your last name.</span>
+                </div>
+              </div>
+              <div class="pf-row">
+                <div class="pf-field">
+                  <label for="email">Valid Email <span class="pf-hint">For confirmation</span></label>
+                  <input class="pf-input" name="email" id="email" type="email" autocomplete="email" spellcheck="false" aria-required="true" aria-describedby="emailError">
+                  <span class="pf-field__error" id="emailError" role="alert">Please enter a valid email.</span>
+                </div>
+                <div class="pf-field">
+                  <label for="phone">Valid Phone Number <span class="pf-hint">(555) 555-5555</span></label>
+                  <input class="pf-input" name="phone" id="phone" type="tel" autocomplete="tel" maxlength="14" inputmode="numeric" aria-required="true" aria-describedby="phoneError">
+                  <span class="pf-field__error" id="phoneError" role="alert">Please enter a 10-digit phone number.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Preferred dates -->
+          <div class="os-section">
+            <div class="os-dates-head">
+              <h2 class="pf-title">Know Your Preferred Travel Dates?</h2>
+              <button type="button" class="os-toggle" id="datesToggle" role="switch" aria-checked="false" aria-label="Do you know your preferred travel dates?">
+                <span class="os-toggle__label">No</span>
+                <span class="os-toggle__knob"></span>
+              </button>
+            </div>
+            <div id="datesReveal" hidden>
+              <div class="cal" id="calendar" style="margin-top:16px;"></div>
+              <div class="os-checkinout">
+                <div class="pf-card"><div class="lbl">Check-In</div><div class="val" id="checkInVal">&mdash;</div></div>
+                <div class="pf-card"><div class="lbl">Check-Out</div><div class="val" id="checkOutVal">&mdash;</div></div>
+              </div>
+              <p class="os-note" style="font-size:12px;color:var(--muted);margin:10px 0 0;">Your package includes a <strong>3-night</strong> stay &mdash; pick a check-in date and we'll set your check-out automatically.</p>
+              <p class="os-hurry">Hurry, the best dates book up fast!</p>
+            </div>
+          </div>
+
+          <!-- Consents -->
+          <div class="os-section">
+            <div class="os-consents">
+              <label class="pf-check">
+                <input type="checkbox" name="marketing" aria-required="true" aria-describedby="marketingError">
+                <span class="pf-check__text">By clicking this checkbox, you agree to the <a href="../terms-and-conditions.html" target="_blank">Terms and Conditions</a> &amp; <a href="../privacy-policy.html" target="_blank">Privacy Policy</a> all of which you agree you have read, understand and agree to. By clicking the checkbox, you also agree and consent to receive promotional emails, SMS texts and calls, including pre-recorded messages and/or calls or texts made from an Auto-dial telephone dialing system from Sogno Tours, LLC d/b/a VacationVIP.com, and its affiliates, parents and subsidiaries (text/data and other charges may apply) at the address/numbers provided regardless of that number being on any Do not Call Registry. Your consent is not a condition of any purchase. As an alternative to the consent above you may enter the Promotion <a href="../terms-and-conditions.html" target="_blank">here</a>.</span>
+              </label>
+              <p class="pf-check__error" id="marketingError" role="alert">Please check the box above to give your consent and continue.</p>
+              <label class="pf-check">
+                <input type="checkbox" name="sms" checked>
+                <span class="pf-check__text">Receive text alerts about this vacation. Message and data rates may apply.</span>
+              </label>
+            </div>
+            <div class="pf-hold" style="margin-top:16px;">
+              <div class="pf-hold__label">We are Holding Your Reservation for:</div>
+              <div class="pf-hold__timer" id="holdTimer">00:10:00</div>
+              <div class="pf-hold__note">This Orlando getaway is in high demand. We have reserved this package for <strong id="holdMins">10 minutes</strong>.</div>
+            </div>
+            <div class="pf-actionbar">
+              <button type="submit" class="pf-btn">Continue</button>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <!-- RIGHT: ORDER SUMMARY -->
+      <aside class="pf-card os-summary">
+        <div class="pf-card__pad">
+          <div class="os-review-head">
+            <img class="pf-summary__img" src="assets/images/resort.webp" alt="Westgate Vacation Villas Resort" width="1024" height="768">
+            <div class="os-review-info">
+              <div class="pf-summary__name" id="sumName">Westgate Vacation Villas Resort</div>
+              <div class="os-rating">
+                <img class="os-rating__bubbles" src="assets/images/ta-rating.webp" alt="Rated 4 out of 5" loading="lazy" width="110" height="22">
+                <span class="os-rating__reviews"><strong id="sumReviews">4,734</strong> reviews</span>
+              </div>
+              <p class="os-purchased">Over 8,239 People Have Purchased This Product</p>
+            </div>
+          </div>
+
+          <ul class="os-includes">
+            <li><i data-lucide="check-circle" class="pf-i"></i>4-Day / 3-Night Stay at Westgate Vacation Villas Resort</li>
+            <li><i data-lucide="check-circle" class="pf-i"></i>Includes: Onsite Water Park &amp; 14 Pools + Hot Tubs</li>
+            <li><i data-lucide="check-circle" class="pf-i"></i>Breakfast or Lunch, On Us</li>
+          </ul>
+
+          <div class="os-dates-mini" style="margin-top:16px;">
+            <div class="pf-price-line"><span id="sumStay">4-Days / 3-Nights</span><span class="pf-strike" id="sumRetail">$540</span></div>
+            <div class="pf-price-line"><span>Your Price</span><span class="pf-save" id="sumSave">Save 82%</span></div>
+            <div class="pf-price-line"><span>Booking Fee</span><span>$0.00</span></div>
+            <div class="pf-price-total"><span>Total</span><span id="sumTotal">$99</span></div>
+          </div>
+
+          <div class="os-dates-mini" id="sumDatesLines" hidden>
+            <div class="os-line"><i data-lucide="calendar-check" class="pf-i"></i>Preferred check-in: <strong id="sumCheckIn">&mdash;</strong></div>
+            <div class="os-line"><i data-lucide="calendar-x" class="pf-i"></i>Preferred check-out: <strong id="sumCheckOut">&mdash;</strong></div>
+          </div>
+
+          <div class="os-badges" style="margin-top:16px;">
+            <img src="assets/images/badge-01.svg" alt="Best Price Guarantee" loading="lazy">
+            <img src="assets/images/badge-02.svg" alt="100% Secure Transaction" loading="lazy">
+            <img src="assets/images/badge-03.webp" alt="12 Months to Book Dates" loading="lazy" width="75" height="77">
+          </div>
+          <p class="os-travel">Take up to 12 months to travel.</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="pf-footer">
+    <img class="pf-footer__logo" src="assets/images/vacationvip-logo-f.svg" alt="VacationVIP" width="154" height="20">
+    <a class="pf-footer__bbb" href="https://www.bbb.org/us/fl/belle-isle/profile/vacation-certificates-and-vouchers/vacationvip-com-0733-235962636/#sealclick" target="_blank" rel="nofollow noopener">
+      <img src="assets/images/bbb-seal.png" alt="VacationVIP.com BBB Business Review" width="250" height="52">
+    </a>
+    <p class="pf-footer__legal">Sogno Tours, LLC d/b/a VacationVIP.com</p>
+    <p class="pf-footer__legal">5900 Lake Ellenor Drive Suite 300, Orlando, FL 32809</p>
+    <p class="pf-footer__legal"><a href="https://vacationvip.com/" target="_blank" rel="noopener">VacationVIP.com</a> | Copyright &copy; <span data-year>2026</span> | All Rights Reserved.</p>
+    <p class="pf-footer__legal">SOT: Florida: ST44683 | Washington: 603354522 | California: 2156600-50 | Hawaii: 7531</p>
+    <p class="pf-footer__legal">Price does not include hotel taxes which vary and are payable upon check-in.</p>
+    <p class="pf-footer__legal">*This FLASH SALE includes 4-days and 3-nights of accommodations at Westgate Vacation Villas Resort in Orlando, Florida</p>
+    <p class="pf-footer__legal">THIS ADVERTISING MATERIAL IS BEING USED FOR THE PURPOSE OF SOLICITING SALES OF TIMESHARE INTERESTS OR PLANS</p>
+    <div class="pf-footer__links">
+      <a href="../terms-and-conditions.html">Terms and Conditions</a>
+      <span>|</span>
+      <a href="../privacy-policy.html">Privacy Policy</a>
+    </div>
+    <img class="pf-footer__eho" src="assets/images/EHO-Logo.svg" alt="Equal Housing Opportunity">
+  </footer>
+
+  <script src="assets/libs/lucide/lucide.min.js"></script>
+  <script src="assets/js/flow-state.js"></script>
+  <script src="assets/js/legal-modal.js"></script>
+  <script src="assets/js/sticky-offer.js"></script>
+  <script src="assets/js/calendar.js"></script>
+  <script>
+  (function () {
+    var s = FlowState.get();
+
+    // ----- Hydrate summary from state (defaults or handoff) -----
+    document.getElementById("sumName").innerHTML = s.resortName;
+    document.getElementById("sumReviews").textContent = s.ratingReviews.toLocaleString();
+    document.getElementById("sumStay").textContent = s.stayLabel;
+    document.getElementById("sumRetail").textContent = FlowState.money(s.retailCents);
+    document.getElementById("sumSave").textContent = "Save " + s.discountPct + "%";
+    document.getElementById("sumTotal").textContent = FlowState.money(FlowState.totalCents());
+    document.getElementById("holdMins").textContent = s.holdMinutes + " minutes";
+    document.querySelectorAll("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
+
+    // ----- Prefill form if returning -----
+    var f = document.getElementById("orderForm");
+    ["firstName","lastName","email","phone"].forEach(function (k) { if (s.guest[k]) f.elements[k].value = s.guest[k]; });
+    // Marketing consent must always be an explicit opt-in — never pre-check it.
+    f.elements.marketing.checked = false;
+    f.elements.sms.checked = s.consent.sms !== false;
+
+    // ----- Hide the inline label/hint once a field has a value -----
+    ["firstName","lastName","email","phone"].forEach(function (k) {
+      var input = f.elements[k], field = input.closest(".pf-field");
+      var sync = function () { field.classList.toggle("is-filled", input.value.trim() !== ""); };
+      input.addEventListener("input", sync);
+      input.addEventListener("change", sync);
+      input.addEventListener("blur", sync);
+      sync();
+    });
+
+    // ----- Phone mask: cap at 10 digits and format as (555) 555-5555 -----
+    f.elements.phone.addEventListener("input", function (e) {
+      var d = e.target.value.replace(/\D/g, "");
+      // Strip a leading US country code before truncating. Browser autofill often
+      // supplies "+1 407 555 1234"; keeping the 1 and cutting the tail turned that
+      // into "(140) 755-5123" - the stray 1 the guest sees in the field.
+      if (d.length === 11 && d.charAt(0) === "1") d = d.slice(1);
+      d = d.slice(0, 10);
+      var out = d;
+      if (d.length > 6) out = "(" + d.slice(0, 3) + ") " + d.slice(3, 6) + "-" + d.slice(6);
+      else if (d.length > 3) out = "(" + d.slice(0, 3) + ") " + d.slice(3);
+      e.target.value = out;
+    });
+
+    // ----- Calendar -----
+    var fmt = function (d) { return d ? d.toLocaleDateString("en-US", { month: "short", day: "numeric" }) : "\u2014"; };
+    // Per Figma dev note: hide the check-in/check-out summary lines until a date is chosen.
+    function updateSummaryDates(checkIn) {
+      document.getElementById("sumDatesLines").hidden = !checkIn;
+    }
+    function syncDates(r) {
+      document.getElementById("checkInVal").textContent = fmt(r.checkIn);
+      document.getElementById("checkOutVal").textContent = fmt(r.checkOut);
+      document.getElementById("sumCheckIn").textContent = fmt(r.checkIn);
+      document.getElementById("sumCheckOut").textContent = fmt(r.checkOut);
+      updateSummaryDates(r.checkIn);
+      FlowState.setIn("dates", {
+        checkIn: r.checkIn ? r.checkIn.getTime() : null,
+        checkOut: r.checkOut ? r.checkOut.getTime() : null
+      });
+    }
+    var cal = new PreferredDates(document.getElementById("calendar"), {
+      checkIn: s.dates.checkIn, checkOut: s.dates.checkOut, nights: s.nights || 3, onChange: syncDates
+    });
+    if (s.dates.checkIn) syncDates({ checkIn: new Date(s.dates.checkIn), checkOut: s.dates.checkOut ? new Date(s.dates.checkOut) : null });
+
+    // ----- "Know your dates?" toggle (Figma dev note: default to NO) -----
+    (function () {
+      var toggle = document.getElementById("datesToggle");
+      var reveal = document.getElementById("datesReveal");
+      var label = toggle.querySelector(".os-toggle__label");
+      function setOpen(on) {
+        toggle.setAttribute("aria-checked", on ? "true" : "false");
+        label.textContent = on ? "Yes" : "No";
+        reveal.hidden = !on;
+      }
+      // Default NO — unless the visitor already picked dates on a prior visit.
+      setOpen(!!s.dates.checkIn);
+      toggle.addEventListener("click", function () {
+        var on = toggle.getAttribute("aria-checked") !== "true";
+        setOpen(on);
+        // Flipping back to "No" means no preferred dates — wipe the pick everywhere.
+        if (!on) cal.clear();
+      });
+    })();
+
+    // ----- Hold timer (display-only urgency; deadline persists across pages/refreshes) -----
+    (function () {
+      var deadline = FlowState.holdDeadline();
+      var el = document.getElementById("holdTimer");
+      function pad(n) { return String(n).padStart(2, "0"); }
+      function tick() {
+        var total = Math.max(0, Math.round((deadline - Date.now()) / 1000));
+        var h = Math.floor(total / 3600), m = Math.floor((total % 3600) / 60), sec = total % 60;
+        el.textContent = pad(h) + ":" + pad(m) + ":" + pad(sec);
+        if (total > 0) setTimeout(tick, 1000);
+      }
+      tick();
+    })();
+
+    // ----- Live alert bar (numbers keep ticking behind the crossfade) -----
+    (function () {
+      var bar = document.querySelector(".alert-bar");
+      if (!bar) return;
+      var viewingItem = bar.querySelector('[data-key="viewing"]');
+      var bookedItem = bar.querySelector('[data-key="booked"]');
+      var viewing = viewingItem && viewingItem.querySelector(".alert-num");
+      var booked = bookedItem && bookedItem.querySelector(".alert-num");
+      if (!viewing) return;
+      var vMin = +viewingItem.dataset.min, vMax = +viewingItem.dataset.max;
+      // viewing: brisk random walk within a believable band — feels live/hot
+      (function viewingLoop() {
+        setTimeout(function () {
+          var v = +viewing.textContent + (Math.random() < 0.5 ? -1 : 1) * (1 + Math.floor(Math.random() * 4));
+          v = Math.max(vMin, Math.min(vMax, v));
+          if (v !== +viewing.textContent) viewing.textContent = v;
+          viewingLoop();
+        }, 900 + Math.random() * 900);
+      })();
+      // booked: frequent +1, only ever up
+      (function bookedLoop() {
+        setTimeout(function () {
+          if (booked && Math.random() < 0.7) booked.textContent = +booked.textContent + 1;
+          bookedLoop();
+        }, 3000 + Math.random() * 3000);
+      })();
+    })();
+
+    // ----- Validation + submit -----
+    function invalidate(name, bad) {
+      var field = f.elements[name].closest(".pf-field");
+      field.classList.toggle("is-invalid", bad);
+      f.elements[name].classList.toggle("is-invalid", bad);
+      if (bad) f.elements[name].setAttribute("aria-invalid", "true");
+      else f.elements[name].removeAttribute("aria-invalid");
+    }
+    f.elements.marketing.addEventListener("change", function () {
+      if (!f.elements.marketing.checked) return;
+      var lbl = f.elements.marketing.closest(".pf-check");
+      if (lbl) lbl.classList.remove("is-invalid");
+      var err = document.getElementById("marketingError");
+      if (err) err.classList.remove("is-shown");
+    });
+    f.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var g = {
+        firstName: f.elements.firstName.value.trim(),
+        lastName: f.elements.lastName.value.trim(),
+        email: f.elements.email.value.trim(),
+        phone: f.elements.phone.value.trim()
+      };
+      var okEmail = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}$/.test(g.email);
+      var phoneDigits = g.phone.replace(/\D/g, "");
+      var okPhone = phoneDigits.length === 10; // markup #15: exactly 10, no more, no less
+      var bad = false;
+      invalidate("firstName", !g.firstName); bad = bad || !g.firstName;
+      invalidate("lastName", !g.lastName); bad = bad || !g.lastName;
+      invalidate("email", !okEmail); bad = bad || !okEmail;
+      invalidate("phone", !okPhone); bad = bad || !okPhone;
+      var consentOk = f.elements.marketing.checked;
+      var consentLabel = f.elements.marketing.closest(".pf-check");
+      var consentError = document.getElementById("marketingError");
+      if (consentLabel) consentLabel.classList.toggle("is-invalid", !consentOk);
+      if (consentError) consentError.classList.toggle("is-shown", !consentOk);
+      if (!consentOk) bad = true;
+      if (bad) {
+        var first = f.querySelector(".pf-field.is-invalid .pf-input");
+        if (first) { first.focus(); }
+        else if (!consentOk && consentLabel) { consentLabel.scrollIntoView({ block: "center", behavior: "smooth" }); }
+        return;
+      }
+
+      FlowState.setIn("guest", g);
+      FlowState.setIn("consent", { marketing: f.elements.marketing.checked, sms: f.elements.sms.checked });
+      FlowState.set({ status: "billing" });
+      window.location.href = "02-billing.html" + window.location.search;
+    });
+  })();
+  </script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

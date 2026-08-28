@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Bonus Trip Offer | Orlando Getaway Checkout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fe5925">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+  <link href="assets/css/brand.css" rel="stylesheet">
+  <style>
+    .up-grid { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 24px; align-items: stretch; width: 100%; max-width: var(--maxw); }
+    @media (max-width: 900px) { .up-grid { grid-template-columns: 1fr; } }
+    /* Both columns share the row height; the summary card fills its stretched column. */
+    .up-summary { display: flex; flex-direction: column; }
+    .up-summary > .pf-card { flex: 1 1 auto; }
+    @media (min-width: 901px) { .up-summary { position: sticky; top: 20px; } }
+
+    /* left offer module — mirrors step 4 (tickets) for a consistent step-to-step layout */
+    .tk-headline { font-size: 30px; font-weight: 800; color: var(--ink); margin: 0 0 20px; line-height: 1.1; }
+    .tk-lead { font-size: 22px; font-weight: 700; color: var(--ink); margin: 0 0 10px; }
+    .tk-desc { font-size: 15px; line-height: 1.6; color: var(--text); margin: 0 0 24px; }
+    .tk-desc strong { color: var(--coral-dark); }
+    .tk-save { font-size: 20px; font-weight: 800; color: var(--ink); margin: 0 0 16px; }
+
+    /* Bonus-vacation intro + destination gallery */
+    .dest-intro { font-size: 15px; line-height: 1.6; color: var(--text); margin: 0 0 16px; }
+    .tk-subhead { font-size: 20px; font-weight: 800; color: var(--ink); margin: 0 0 16px; line-height: 1.25; }
+    .tk-benefits { list-style: none; margin: 0 0 16px; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+    .tk-benefits li { font-size: 15px; line-height: 1.5; color: var(--text); padding-left: 26px; position: relative; }
+    .tk-benefits li::before { content: "\2713"; position: absolute; left: 0; top: 0; font-weight: 700; color: var(--ink); }
+    .dest-intro strong { color: var(--ink); }
+    .dest-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .dest-tile { position: relative; aspect-ratio: 4 / 3; border-radius: 12px; overflow: hidden; }
+    .dest-tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .dest-tile::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0) 55%, rgba(0,0,0,0.8)); }
+    .dest-tile__label { position: absolute; left: 0; right: 0; bottom: 14px; z-index: 1; text-align: center; color: #fff; font-weight: 800; font-size: 18px; letter-spacing: .03em; text-transform: uppercase; padding: 0 8px; }
+
+    /* Action row uses the shared .pf-actionbar (static desktop, fixed thumb-zone bar on mobile). */
+
+    /* summary — guest-reviews head matches steps 1 & 2 (styles shared from brand.css) */
+    .os-rating { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--muted); }
+    .up-list { margin: 16px 0; display: flex; flex-direction: column; gap: 8px; font-size: 14px; }
+    .up-list .row { display: flex; justify-content: space-between; gap: 8px; }
+    .up-list .k { color: var(--text); }
+    .up-list .v { font-weight: 600; color: var(--ink); }
+    .up-upgrades-title { font-weight: 800; color: var(--ink); margin: 14px 0 8px; }
+    .up-total { display: flex; justify-content: space-between; font-size: 20px; font-weight: 900; color: var(--ink); border-top: 1px solid var(--line); padding-top: 12px; margin-top: 6px; }
+
+    /* ---- Booking Protection popup (Add BP window) ---- */
+    .tp-card { max-width: 720px; padding: 0; gap: 0; display: flex; flex-direction: column; align-items: stretch; text-align: left; overflow: hidden; }
+    /* Full-width "Highly Recommended" banner across the top of the card */
+    .tp-banner { display: flex; align-items: center; justify-content: center; gap: 9px; background: var(--navy); color: #fff; font-size: 16px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; padding: 12px 16px; }
+    .tp-banner .pf-i { width: 20px; height: 20px; color: #fff; }
+    .tp-body { padding: 32px 40px; display: flex; flex-direction: column; gap: 22px; }
+    .tp-head { display: flex; gap: 16px; align-items: flex-start; }
+    .tp-icon { width: 44px; height: 44px; color: var(--navy); flex: 0 0 auto; }
+    .tp-title { font-size: 24px; font-weight: 800; color: var(--ink); margin: 0; line-height: 1.2; }
+    .tp-sub { font-size: 16px; line-height: 1.5; color: var(--text); margin: 0; }
+    .tp-sub strong { color: var(--ink); }
+    .tp-choose { font-size: 18px; font-weight: 800; color: var(--ink); }
+    .tp-opt { border-radius: 12px; padding: 20px; cursor: pointer; border: 2px solid transparent; transition: border-color .15s; }
+    .tp-opt--yes { background: #e5f5ff; }
+    .tp-opt--no { background: #f7f7f7; }
+    .tp-opt.is-selected { border-color: var(--navy); }
+    .tp-opt__top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .tp-opt__lead { display: flex; align-items: center; gap: 10px; }
+    .tp-opt__label { font-size: 16px; font-weight: 600; color: var(--ink); }
+    .tp-opt input[type=radio] { width: 24px; height: 24px; accent-color: var(--navy); flex: 0 0 auto; margin: 0; cursor: pointer; }
+    .tp-price { background: rgba(0, 0, 0, .08); border-radius: 6px; padding: 6px 10px; text-align: center; line-height: 1.15; flex: 0 0 auto; }
+    .tp-price strong { display: block; font-size: 16px; color: var(--ink); }
+    .tp-price span { font-size: 12px; color: var(--text); }
+    .tp-reasons { padding-left: 30px; margin-top: 16px; display: flex; flex-direction: column; gap: 10px; }
+    .tp-reasons__title { font-size: 13px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: #205272; margin: 0; }
+    .tp-reason { display: flex; gap: 8px; align-items: flex-start; font-size: 14px; color: #333; }
+    .tp-reason .pf-i { width: 18px; height: 18px; flex: 0 0 auto; margin-top: 1px; color: #1f7a4d; }
+    .tp-reason p { margin: 0; line-height: 1.35; }
+    .tp-reason strong { color: #1a1a1a; }
+    .tp-onlynow { font-size: 14px; line-height: 1.4; color: #333; margin: 12px 0 0; }
+    .tp-reason a { color: #0037eb; text-decoration: underline; }
+    .tp-continue { align-self: flex-start; width: auto; padding-left: 44px; padding-right: 44px; }
+    .tp-continue:disabled { background: #b2b2b2; cursor: not-allowed; box-shadow: none; }
+    @media (max-width: 560px) {
+      /* Stack the label and price, but render the price as a clean inline line
+         (not a floating chip) so it doesn't look detached / "hanging". */
+      .tp-opt__top { flex-direction: column; align-items: stretch; gap: 8px; }
+      .tp-price { display: flex; align-items: baseline; gap: 6px; width: 100%; background: transparent; padding: 0; text-align: left; }
+      .tp-price strong { display: inline; }
+      .tp-continue { align-self: stretch; }
+    }
+
+    /* Mobile vertical compression */
+    @media (max-width: 767px) {
+      /* Travel Protection popup — compact so it fits the phone viewport */
+      .tp-banner { font-size: 14px; letter-spacing: .04em; padding: 10px 14px; }
+      .tp-banner .pf-i { width: 17px; height: 17px; }
+      .tp-body { padding: 20px 16px; gap: 14px; }
+      .tp-head { gap: 12px; }
+      .tp-icon { width: 30px; height: 30px; }
+      .tp-title { font-size: 18px; line-height: 1.25; }
+      .tp-sub { font-size: 13.5px; line-height: 1.4; }
+      .tp-choose { font-size: 15px; }
+      .tp-opt { padding: 14px; border-radius: 10px; }
+      .tp-opt__label { font-size: 14px; }
+      .tp-price strong { font-size: 14px; }
+      .tp-price span { font-size: 11px; }
+      .tp-reasons { padding-left: 4px; margin-top: 12px; gap: 8px; }
+      .tp-reasons__title { font-size: 12px; }
+      .tp-reason { font-size: 12.5px; }
+      .tp-reason .pf-i { width: 16px; height: 16px; }
+    }
+
+    /* Short viewports (iPhone SE class) — compress the TP popup further so it
+       fits 667px without relying on internal scroll. */
+    @media (max-height: 700px) {
+      .tp-banner { font-size: 12px; padding: 8px 12px; }
+      .tp-banner .pf-i { width: 15px; height: 15px; }
+      .tp-body { padding: 14px 14px; gap: 10px; }
+      .tp-icon { width: 24px; height: 24px; }
+      .tp-title { font-size: 16px; }
+      .tp-sub { font-size: 12.5px; line-height: 1.35; }
+      .tp-choose { font-size: 14px; }
+      .tp-opt { padding: 10px 12px; }
+      .tp-opt__label { font-size: 13px; }
+      .tp-reasons { margin-top: 8px; gap: 6px; }
+      .tp-reason { font-size: 12px; }
+      .tp-reason p { line-height: 1.3; }
+      .tp-continue { padding-top: 11px; padding-bottom: 11px; font-size: 14px; }
+    }
+
+    @media (max-width: 767px) {
+
+      .tk-headline { font-size: 22px; margin: 0 0 12px; }
+      .dest-intro { font-size: 14px; margin: 0 0 12px; }
+      .tk-subhead { font-size: 17px; margin: 0 0 12px; }
+      .tk-benefits li { font-size: 14px; }
+      .dest-gallery { gap: 10px; }
+      .dest-tile__label { font-size: 14px; bottom: 10px; }
+      .up-list { margin: 12px 0; }
+      .up-total { font-size: 18px; padding-top: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="pf-navbar">
+    <img class="pf-navbar__logo" src="assets/images/vacationvip-logo.svg" alt="VacationVIP" width="254" height="33">
+  </header>
+
+  <main class="pf-main">
+    <div class="up-grid">
+      <!-- LEFT: OFFER (mirrors step 4 module) -->
+      <section class="pf-card">
+        <div class="pf-card__pad">
+          <h1 class="tk-headline">Bonus Trip &ndash; 3 Days / 2 Nights in 39+ Destinations</h1>
+          <h2 class="tk-subhead">Only <span class="bonus-price">$29</span> &ndash; Choose from 39 U.S. Destinations</h2>
+          <p class="dest-intro">You just scored an unbeatable Orlando deal, now unlock a second trip for only <strong class="bonus-price">$29</strong>!</p>
+          <p class="dest-intro">Enjoy 3 Days/2 Nights at a 3+ star hotel in one of 39 vacation destinations, including Orlando, Myrtle Beach, San Antonio, Gatlinburg, and more.</p>
+          <p class="dest-intro">For just <strong class="bonus-price">$29</strong>, this optional upgrade gives you more freedom and security:</p>
+          <ul class="tk-benefits">
+            <li>Choose when and where you travel</li>
+            <li>Valid for 12 months</li>
+            <li>No hidden fees &ndash; no blackout dates</li>
+          </ul>
+          <p class="dest-intro">Regularly $2647 when booked through Expedia or Booking.com<br>Now just <strong class="bonus-price">$29</strong> &ndash; only during checkout.</p>
+
+          <div class="dest-gallery">
+            <div class="dest-tile"><img src="assets/images/dest-canada.webp" alt="Canada" loading="lazy" width="760" height="506"><span class="dest-tile__label">Canada</span></div>
+            <div class="dest-tile"><img src="assets/images/dest-mexican-riviera.webp" alt="Mexican Riviera" loading="lazy" width="760" height="506"><span class="dest-tile__label">Mexican Riviera</span></div>
+            <div class="dest-tile"><img src="assets/images/dest-orlando.webp" alt="Orlando" loading="lazy" width="760" height="427"><span class="dest-tile__label">Orlando</span></div>
+            <div class="dest-tile"><img src="assets/images/dest-caribbean.webp" alt="Caribbean" loading="lazy" width="760" height="505"><span class="dest-tile__label">Caribbean</span></div>
+          </div>
+
+          <div class="pf-actionbar">
+            <button type="button" class="pf-btn cont" id="addBtn">Yes, Add Bonus Vacation for $29</button>
+            <button type="button" class="pf-btn pf-btn--ghost skip" id="skipBtn">Skip This</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT: PACKAGE SUMMARY -->
+      <aside class="up-summary">
+        <div class="pf-card">
+          <div class="pf-card__pad">
+            <h2 class="pf-title" style="margin-bottom:14px;">Package Summary</h2>
+            <div class="os-review-head">
+              <img class="pf-summary__img" src="assets/images/resort.webp" alt="Westgate Vacation Villas Resort" width="1024" height="768">
+              <div class="os-review-info">
+                <div class="pf-summary__name" id="sumName">Westgate Vacation Villas Resort</div>
+                <div class="os-rating">
+                  <img class="os-rating__bubbles" src="assets/images/ta-rating.webp" alt="Rated 4 out of 5" loading="lazy" width="110" height="22">
+                  <span class="os-rating__reviews"><strong id="sumReviews">4,734</strong> reviews</span>
+                </div>
+                <p class="os-purchased">Over 8,239 People Have Purchased This Product</p>
+              </div>
+            </div>
+
+            <div class="up-paid-banner"><i data-lucide="badge-check" class="pf-i"></i><span>Payment confirmed &mdash; your package is <strong>paid &amp; secured</strong></span></div>
+
+            <div class="up-list">
+              <div class="row"><span class="k"><i data-lucide="badge-check" class="pf-i"></i>Confirmation #</span><span class="v" id="sumConf">&mdash;</span></div>
+              <div class="row"><span class="k"><i data-lucide="users" class="pf-i"></i>Guests</span><span class="v" id="sumGuests">2 Adults, 2 Children</span></div>
+              <div class="row"><span class="k"><i data-lucide="calendar-check" class="pf-i"></i>Preferred check-in</span><span class="v" id="sumCheckIn">&mdash;</span></div>
+              <div class="row"><span class="k"><i data-lucide="calendar-x" class="pf-i"></i>Preferred check-out</span><span class="v" id="sumCheckOut">&mdash;</span></div>
+              <div class="row"><span class="k"><i data-lucide="banknote" class="pf-i"></i>Booking Fee</span><span class="v">$0</span></div>
+              <div class="row"><span class="k"><i data-lucide="package" class="pf-i"></i>Package Price</span><span class="v" id="sumPkg">$99</span></div>
+            </div>
+
+            <div class="up-upgrades-title">Upgrades</div>
+            <div id="upgradeList"></div>
+
+            <div class="up-total"><span>Total price</span><span id="sumTotal">$99</span></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Purchase-confirmed toaster mount -->
+  <div class="pf-toast-wrap" id="toastWrap" aria-live="polite"></div>
+
+  <!-- Booking Protection popup (Add BP window) — auto-opens after payment -->
+  <div class="pf-modal" id="tpModal" role="dialog" aria-modal="true" aria-labelledby="tpTitle" aria-hidden="true">
+    <div class="pf-modal__card tp-card">
+      <div class="tp-banner"><i data-lucide="shield-check" class="pf-i" aria-hidden="true"></i> Highly Recommended</div>
+      <div class="tp-body">
+        <div class="tp-head">
+          <i data-lucide="shield-plus" class="tp-icon" aria-hidden="true"></i>
+          <h2 class="tp-title" id="tpTitle">Add Booking Protection &ndash; Only <span class="tp-amt">$17.95</span></h2>
+        </div>
+        <p class="tp-sub">Protect your plans. Book with peace of mind.</p>
+        <div class="tp-choose">Select Yes or No to continue booking</div>
+
+        <div class="tp-opt tp-opt--yes" id="tpOptYes">
+          <div class="tp-opt__top">
+            <span class="tp-opt__lead"><input type="radio" name="tp" id="tpYes" value="yes"><span class="tp-opt__label">Yes, I want Hotel Booking protection for my vacation</span></span>
+            <span class="tp-price"><strong class="tp-amt">$17.95</strong><span>Total Price</span></span>
+          </div>
+          <div class="tp-reasons">
+            <p class="tp-reasons__title">For just <span class="tp-amt">$17.95</span>, this optional upgrade gives you more freedom and security:</p>
+            <div class="tp-reason"><i data-lucide="check" class="pf-i"></i><p>Change your travel dates without penalty</p></div>
+            <div class="tp-reason"><i data-lucide="check" class="pf-i"></i><p>Transfer your trip to a friend or family member</p></div>
+            <div class="tp-reason"><i data-lucide="check" class="pf-i"></i><p>Receive a travel credit if you need to cancel completely</p></div>
+            <div class="tp-reason"><i data-lucide="check" class="pf-i"></i><p>Keep your discounted rate locked in</p></div>
+            <div class="tp-reason"><i data-lucide="check" class="pf-i"></i><p>Enjoy 24/7 reservation support</p></div>
+            <p class="tp-onlynow">This protection can only be added during checkout. Read <a href="../terms-and-conditions.html" target="_blank">Terms and Conditions</a>.</p>
+          </div>
+        </div>
+
+        <div class="tp-opt tp-opt--no" id="tpOptNo">
+          <span class="tp-opt__lead"><input type="radio" name="tp" id="tpNo" value="no"><span class="tp-opt__label">No, I&rsquo;m willing to risk my vacation valued at <span id="tpRetail">$540</span>.</span></span>
+        </div>
+
+        <button type="button" class="pf-btn tp-continue" id="tpContinue" disabled>Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Retention modal ("wonder why not?") shown when declining the bonus vacation -->
+  <div class="pf-modal" id="retainModal" role="dialog" aria-modal="true" aria-labelledby="retainTitle" aria-hidden="true">
+    <div class="pf-modal__card">
+      <button type="button" class="pf-modal__close" id="retainClose" aria-label="Close">&times;</button>
+      <div class="pf-modal__head">
+        <i data-lucide="sparkles" class="pf-modal__icon" aria-hidden="true"></i>
+        <h2 class="pf-modal__title" id="retainTitle">Wait! Are You Sure?</h2>
+      </div>
+      <div class="pf-modal__body">
+        <p>You&rsquo;ve secured an amazing Orlando getaway&mdash;but why stop there? Add a <strong>bonus 3-day / 2-night trip</strong> in your choice of 39 U.S. destinations for just <strong id="retainPrice">$29</strong>. Regularly $2647 when booked through Expedia or Booking.com.</p>
+        <p><strong>So, do you want to add your bonus vacation?</strong></p>
+      </div>
+      <div class="pf-modal__actions">
+        <button type="button" class="pf-btn" id="retainYes">Yes, Add My Vacation</button>
+        <button type="button" class="pf-btn pf-btn--ghost" id="retainNo">Skip</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="pf-footer">
+    <img class="pf-footer__logo" src="assets/images/vacationvip-logo-f.svg" alt="VacationVIP" width="154" height="20">
+    <a class="pf-footer__bbb" href="https://www.bbb.org/us/fl/belle-isle/profile/vacation-certificates-and-vouchers/vacationvip-com-0733-235962636/#sealclick" target="_blank" rel="nofollow noopener">
+      <img src="assets/images/bbb-seal.png" alt="VacationVIP.com BBB Business Review" width="250" height="52">
+    </a>
+    <p class="pf-footer__legal">Sogno Tours, LLC d/b/a VacationVIP.com</p>
+    <p class="pf-footer__legal">5900 Lake Ellenor Drive Suite 300, Orlando, FL 32809</p>
+    <p class="pf-footer__legal"><a href="https://vacationvip.com/" target="_blank" rel="noopener">VacationVIP.com</a> | Copyright &copy; <span data-year>2026</span> | All Rights Reserved.</p>
+    <p class="pf-footer__legal">SOT: Florida: ST44683 | Washington: 603354522 | California: 2156600-50 | Hawaii: 7531</p>
+    <p class="pf-footer__legal">Price does not include hotel taxes which vary and are payable upon check-in.</p>
+    <p class="pf-footer__legal">*This FLASH SALE includes 4-days and 3-nights of accommodations at Westgate Vacation Villas Resort in Orlando, Florida</p>
+    <p class="pf-footer__legal">THIS ADVERTISING MATERIAL IS BEING USED FOR THE PURPOSE OF SOLICITING SALES OF TIMESHARE INTERESTS OR PLANS</p>
+    <div class="pf-footer__links">
+      <a href="../terms-and-conditions.html">Terms and Conditions</a>
+      <span>|</span>
+      <a href="../privacy-policy.html">Privacy Policy</a>
+    </div>
+    <img class="pf-footer__eho" src="assets/images/EHO-Logo.svg" alt="Equal Housing Opportunity">
+  </footer>
+
+  <script src="assets/libs/lucide/lucide.min.js"></script>
+  <script src="assets/js/flow-state.js"></script>
+  <script src="assets/js/legal-modal.js"></script>
+  <script>
+  (function () {
+    var BONUS_CENTS = 2900; // $29 bonus 3-day / 2-night trip (flat rate — no discount)
+    var s = FlowState.get();
+
+    // Ensure a confirmation number exists once the base order is purchased.
+    if (!s.confirmationNo) {
+      s = FlowState.set({ confirmationNo: "MV" + Math.floor(100000 + Math.random() * 899999) });
+    }
+
+    // every price in the bonus copy comes from BONUS_CENTS — no figure is literal
+    // Prose drops a .00 tail; a real cents value ($17.95) keeps it.
+    function moneyProse(cents) { return FlowState.money(cents).replace(/\.00$/, ""); }
+    Array.prototype.forEach.call(document.querySelectorAll(".bonus-price"), function (el) {
+      el.textContent = moneyProse(BONUS_CENTS);
+    });
+    document.getElementById("addBtn").textContent = "Yes, Add Bonus Vacation for " + moneyProse(BONUS_CENTS);
+    document.getElementById("sumName").innerHTML = s.resortName;
+    document.getElementById("sumConf").textContent = s.confirmationNo;
+    document.getElementById("sumGuests").textContent = s.guestsLabel;
+    document.getElementById("sumPkg").textContent = FlowState.money(s.priceCents);
+    document.querySelectorAll("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
+
+    var fmt = function (t) { return t ? new Date(t).toLocaleDateString("en-US", { year: "numeric", month: "numeric", day: "numeric" }) : "\u2014"; };
+    document.getElementById("sumCheckIn").textContent = fmt(s.dates.checkIn);
+    document.getElementById("sumCheckOut").textContent = fmt(s.dates.checkOut);
+
+    document.getElementById("retainPrice").textContent = moneyProse(BONUS_CENTS);
+
+    function hasBonus() { return !!FlowState.findUpsell("bonus_vacation"); }
+    function updateTotals() { document.getElementById("sumTotal").textContent = FlowState.money(FlowState.totalCents()); }
+    // Static upgrades summary — no add/remove controls.
+    var CART_OPTS = { editable: false };
+    PFUpsells.render("upgradeList", CART_OPTS);
+    updateTotals();
+
+    function goNext() { window.location.href = "04-secured.html" + window.location.search; }
+
+    // mock off-session charge on the stored payment method, then advance
+    function addBonus(cents) {
+      if (!hasBonus()) { FlowState.addUpsell("bonus_vacation", 1, cents); }
+      FlowState.markDecided("bonus_vacation");
+      PFUpsells.render("upgradeList", CART_OPTS);
+      updateTotals();
+      PFToast("Bonus trip added!");
+      setTimeout(goNext, 1800);
+    }
+
+    // Retention modal controls
+    var modal = document.getElementById("retainModal");
+    function openModal() { modal.classList.add("is-open"); modal.setAttribute("aria-hidden", "false"); }
+    function closeModal() { modal.classList.remove("is-open"); modal.setAttribute("aria-hidden", "true"); }
+
+    document.getElementById("addBtn").addEventListener("click", function () { addBonus(BONUS_CENTS); });
+    document.getElementById("skipBtn").addEventListener("click", openModal);
+
+    // Declining the bonus vacation must also clear it from the cart if it was already added.
+    function declineBonus() {
+      closeModal();
+      if (hasBonus()) { FlowState.removeUpsell("bonus_vacation"); }
+      FlowState.markDecided("bonus_vacation");
+      PFUpsells.render("upgradeList", CART_OPTS);
+      updateTotals();
+      goNext();
+    }
+    document.getElementById("retainYes").addEventListener("click", function () { closeModal(); addBonus(BONUS_CENTS); });
+    document.getElementById("retainNo").addEventListener("click", declineBonus);
+    document.getElementById("retainClose").addEventListener("click", closeModal); // X just dismisses; it must not advance the flow
+    // Click outside the card just dismisses the popup (stay on the page).
+    modal.addEventListener("click", function (e) { if (e.target === modal) closeModal(); });
+
+    // ----- Booking Protection popup (Add BP window) -----
+    var TP_CENTS = 1795; // $17.95 flat, one-time per package
+    Array.prototype.forEach.call(document.querySelectorAll(".tp-amt"), function (el) {
+      el.textContent = FlowState.money(TP_CENTS).replace(/\.00$/, "");
+    });
+    var tpModal = document.getElementById("tpModal");
+    var tpContinue = document.getElementById("tpContinue");
+    var tpYes = document.getElementById("tpYes");
+    var tpNo = document.getElementById("tpNo");
+    var tpOptYes = document.getElementById("tpOptYes");
+    var tpOptNo = document.getElementById("tpOptNo");
+    document.getElementById("tpRetail").textContent = FlowState.money(s.retailCents || 54000).replace(/\.00$/, "");
+
+    function hasTP() { return !!FlowState.findUpsell("travel_protection"); }
+
+    function tpSelect() {
+      tpOptYes.classList.toggle("is-selected", tpYes.checked);
+      tpOptNo.classList.toggle("is-selected", tpNo.checked);
+      tpContinue.disabled = !(tpYes.checked || tpNo.checked);
+    }
+    tpYes.addEventListener("change", tpSelect);
+    tpNo.addEventListener("change", tpSelect);
+    // clicking anywhere in a box selects its radio (but let links work)
+    tpOptYes.addEventListener("click", function (e) { if (e.target.tagName !== "A") { tpYes.checked = true; tpSelect(); } });
+    tpOptNo.addEventListener("click", function (e) { if (e.target.tagName !== "A") { tpNo.checked = true; tpSelect(); } });
+
+    function closeTP() { tpModal.classList.remove("is-open"); tpModal.setAttribute("aria-hidden", "true"); }
+    // Booking Protection requires an explicit Yes/No — no outside-click dismiss.
+    tpContinue.addEventListener("click", function () {
+      if (tpYes.checked) {
+        if (!hasTP()) {
+          FlowState.addUpsell("travel_protection", 1, TP_CENTS);
+          PFToast("Booking Protection added!");
+        }
+        FlowState.set({ tpDecision: "yes" });
+      } else {
+        // "No" must also clear it from the cart if it was previously added.
+        if (hasTP()) {
+          FlowState.removeUpsell("travel_protection");
+          PFToast("Booking Protection removed");
+        }
+        FlowState.set({ tpDecision: "no" });
+      }
+      FlowState.markDecided("travel_protection");
+      PFUpsells.render("upgradeList", CART_OPTS);
+      updateTotals();
+      closeTP();
+    });
+
+    // Open on every page load / refresh. Pre-reflect any prior choice so state stays consistent.
+    if (hasTP()) { tpYes.checked = true; tpSelect(); }
+    else if (s.tpDecision === "no") { tpNo.checked = true; tpSelect(); }
+    tpModal.classList.add("is-open");
+    tpModal.setAttribute("aria-hidden", "false");
+  })();
+  </script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

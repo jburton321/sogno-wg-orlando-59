@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>You're All Set! | Orlando Getaway Checkout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fe5925">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+  <link href="assets/css/brand.css" rel="stylesheet">
+  <style>
+    /* ===== Confirmation — mirrors Mass 106's 05-confirmation layout ===== */
+    .ty-wrap { width: 100%; max-width: var(--maxw); }
+    .ty-card { background: var(--white); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow-card); overflow: hidden; }
+
+    /* Topper: hero photo + navy "total paid" strip */
+    .ty-topper { display: flex; flex-direction: column; }
+    .ty-hero { width: 100%; height: 260px; object-fit: cover; display: block; }
+    .ty-paid { background: #1c425c; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 48px; }
+    .ty-paid__logo { height: 16px; width: auto; }
+    .ty-paid__total { color: #fff; font-size: 16px; font-weight: 500; display: flex; align-items: baseline; gap: 8px; }
+    .ty-paid__total strong { font-size: 22px; font-weight: 800; }
+
+    /* Intro + action box */
+    .ty-body { padding: 48px; display: flex; flex-direction: column; gap: 40px; }
+    .ty-intro { display: flex; flex-direction: column; gap: 12px; color: var(--navy); }
+    .ty-h1 { font-size: 52px; font-weight: 900; line-height: 1.1; letter-spacing: -.02em; margin: 0; }
+    .ty-h2 { font-size: 30px; font-weight: 800; line-height: 1.2; margin: 0; }
+    .ty-lead { font-size: 16px; font-weight: 500; line-height: 1.5; color: var(--text); margin: 0; }
+
+    .ty-action { background: #fffda9; border: 1px solid #f0d10a; border-radius: 16px; padding: 32px; display: flex; flex-wrap: wrap; align-items: flex-end; gap: 32px; }
+    .ty-action__main { flex: 1 1 340px; min-width: 280px; display: flex; flex-direction: column; gap: 20px; }
+    .ty-action__head { display: flex; align-items: center; gap: 10px; color: var(--coral); font-size: 18px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+    .ty-action__head .pf-i { width: 24px; height: 24px; color: var(--coral); }
+    .ty-action__body { font-size: 16px; line-height: 1.5; color: #222; }
+    .ty-action__body p { margin: 0 0 8px; }
+    .ty-action__body p:last-child { margin-bottom: 0; }
+    .ty-action__hours { font-size: 16px; color: #222; line-height: 1.4; }
+    .ty-action__hours strong { font-weight: 800; }
+    .ty-action__btn { width: auto; flex: 0 0 auto; align-self: center; }
+
+    /* Vacation summary */
+    .ty-section { border-top: 1px solid var(--line); padding: 48px; }
+    .ty-sec-title { font-size: 24px; font-weight: 800; color: var(--navy); margin: 0 0 24px; }
+    .ty-list { background: #dfdfdf; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; gap: 1px; }
+    .ty-block { background: #f9f9f9; padding: 28px 24px; display: flex; flex-direction: column; gap: 18px; }
+    .ty-block__head { display: flex; align-items: center; gap: 8px; font-size: 18px; font-weight: 800; color: var(--navy); }
+    .ty-block__head .pf-i { width: 24px; height: 24px; color: var(--navy); }
+    .ty-lines { display: flex; flex-direction: column; gap: 8px; }
+    .ty-line { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--navy); }
+    .ty-line .pf-i { width: 20px; height: 20px; flex: 0 0 auto; color: var(--navy); }
+    .ty-line .k { font-weight: 700; }
+    .ty-line .v { font-weight: 500; }
+    /* Extras rows: label left, price pushed right */
+    .ty-extra { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--navy); }
+    .ty-extra .pf-i { width: 20px; height: 20px; flex: 0 0 auto; color: var(--navy); }
+    .ty-extra .k { font-weight: 500; flex: 1 1 auto; }
+    .ty-extra .qty { font-size: 12px; color: var(--muted); font-weight: 500; }
+    .ty-extra .v { font-weight: 800; white-space: nowrap; }
+    .ty-empty { font-size: 14px; color: var(--muted); font-style: italic; }
+
+    /* Temporary card-hold disclaimer */
+    .ty-hold { display: flex; gap: 12px; align-items: flex-start; margin: 0 48px 32px; background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; }
+    .ty-hold .pf-i { width: 20px; height: 20px; flex: 0 0 auto; color: var(--navy); margin-top: 2px; }
+    .ty-hold p { margin: 0; font-size: 13px; line-height: 1.6; color: var(--muted); }
+
+    /* Contacts row */
+    .ty-contacts { border-top: 1px solid var(--line); padding: 32px 48px; display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; font-size: 16px; color: var(--ink); }
+    .ty-contacts p { margin: 0; }
+    .ty-contacts strong { font-weight: 800; }
+    .ty-hours { text-align: right; line-height: 1.5; }
+
+    /* Responsive */
+    @media (max-width: 767px) {
+      .ty-hero { height: 170px; }
+      .ty-paid { padding: 12px 16px; }
+      .ty-paid__total { font-size: 14px; }
+      .ty-paid__total strong { font-size: 18px; }
+      .ty-body { padding: 24px 18px; gap: 28px; }
+      .ty-h1 { font-size: 34px; }
+      .ty-h2 { font-size: 22px; }
+      .ty-lead { font-size: 14px; }
+      .ty-action { padding: 20px; gap: 20px; }
+      .ty-action__main { min-width: 0; gap: 16px; }
+      .ty-action__head { font-size: 16px; }
+      .ty-action__body { font-size: 14px; }
+      .ty-action__hours { font-size: 14px; }
+      .ty-action__btn { width: 100%; align-self: stretch; }
+      .ty-section { padding: 24px 18px; }
+      .ty-sec-title { font-size: 20px; margin-bottom: 16px; }
+      .ty-block { padding: 20px 16px; gap: 14px; }
+      .ty-block__head { font-size: 16px; }
+      .ty-hold { margin: 0 18px 24px; }
+      .ty-contacts { flex-direction: column; align-items: flex-start; padding: 24px 18px; font-size: 14px; }
+      .ty-hours { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="pf-navbar">
+    <img class="pf-navbar__logo" src="assets/images/vacationvip-logo.svg" alt="VacationVIP" width="254" height="33">
+  </header>
+
+  <main class="pf-main">
+    <div class="ty-wrap">
+      <div class="ty-card">
+
+        <!-- Topper: hero + total paid -->
+        <div class="ty-topper">
+          <img class="ty-hero" src="assets/images/resort.webp" alt="Westgate Vacation Villas Resort">
+          <div class="ty-paid">
+            <img class="ty-paid__logo" src="assets/images/vacationvip-logo-f.svg" alt="VacationVIP">
+            <div class="ty-paid__total">Total paid: <strong id="totalPaid">$99</strong></div>
+          </div>
+        </div>
+
+        <!-- Intro + action required -->
+        <div class="ty-body">
+          <div class="ty-intro">
+            <h1 class="ty-h1">Congrats! All set!</h1>
+            <p class="ty-h2">Your Orlando Getaway Has Been Secured!</p>
+            <p class="ty-lead">Here are your vacation package details, bonuses and the travel perks you paid for.</p>
+          </div>
+
+          <div class="ty-action">
+            <div class="ty-action__main">
+              <div class="ty-action__head"><i data-lucide="triangle-alert" class="pf-i" aria-hidden="true"></i> Action Required</div>
+              <div class="ty-action__body">
+                <p>The resort requires additional details before we can confirm your travel dates.</p>
+                <p>Please do <strong>NOT</strong> book your flights yet until we can speak with you!</p>
+                <p>Any additional travel perks that were purchased will be distributed by your vacation agent.</p>
+              </div>
+              <div class="ty-action__hours"><strong>Call Center Hours</strong><br>Monday&ndash;Thursday 9 AM&ndash;10 PM, Friday 9 AM&ndash;8 PM, Saturday &amp; Sunday 10 AM&ndash;6 PM Eastern Time.</div>
+            </div>
+            <a class="pf-btn ty-action__btn" href="tel:8886995003">Call Now 888-699-5003</a>
+          </div>
+        </div>
+
+        <!-- Vacation summary -->
+        <div class="ty-section">
+          <h2 class="ty-sec-title">Your Vacation Summary</h2>
+          <div class="ty-list">
+            <div class="ty-block">
+              <div class="ty-block__head"><i data-lucide="user-round" class="pf-i" aria-hidden="true"></i> Your details</div>
+              <div class="ty-lines">
+                <div class="ty-line"><i data-lucide="user" class="pf-i"></i><span class="k">Name:</span><span class="v" id="guestName">&mdash;</span></div>
+                <div class="ty-line"><i data-lucide="mail" class="pf-i"></i><span class="k">Email:</span><span class="v" id="guestEmail">&mdash;</span></div>
+              </div>
+            </div>
+
+            <div class="ty-block">
+              <div class="ty-block__head"><i data-lucide="luggage" class="pf-i" aria-hidden="true"></i> Vacation package</div>
+              <div class="ty-lines">
+                <div class="ty-line"><i data-lucide="clipboard-check" class="pf-i"></i><span class="k">Receipt #</span><span class="v" id="receiptNo">&mdash;</span></div>
+                <div class="ty-line"><i data-lucide="bed-double" class="pf-i"></i><span class="k">Unit type:</span><span class="v" id="unitType">Studio Villa</span></div>
+                <div class="ty-line"><i data-lucide="moon" class="pf-i"></i><span class="k">Number of nights:</span><span class="v">3 Nights</span></div>
+                <div class="ty-line"><i data-lucide="users" class="pf-i"></i><span class="k">Guests:</span><span class="v" id="sumGuests">2 Adults, 2 Children</span></div>
+                <div class="ty-line"><i data-lucide="calendar" class="pf-i"></i><span class="k">Preferred check-in:</span><span class="v" id="checkIn">&mdash;</span></div>
+                <div class="ty-line"><i data-lucide="calendar" class="pf-i"></i><span class="k">Preferred check-out:</span><span class="v" id="checkOut">&mdash;</span></div>
+                <div class="ty-line"><i data-lucide="gift" class="pf-i"></i><span class="k">Includes:</span><span class="v">Onsite Water Park &amp; 14 Pools + Hot Tubs, Breakfast or Lunch On Us</span></div>
+                <div class="ty-line"><i data-lucide="credit-card" class="pf-i"></i><span class="k">Package Price:</span><span class="v" id="pkgPrice">$99</span></div>
+              </div>
+            </div>
+
+            <div class="ty-block">
+              <div class="ty-block__head"><i data-lucide="sparkles" class="pf-i" aria-hidden="true"></i> Extras</div>
+              <div class="ty-lines" id="extrasList"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Temporary card-hold disclaimer -->
+        <div class="ty-hold" role="note">
+          <i data-lucide="credit-card" class="pf-i" aria-hidden="true"></i>
+          <p>A temporary hold may appear on your card. This is not an additional charge &mdash; it verifies your card and will automatically adjust to your actual purchase total within 3&ndash;5 business days. Any unused portion is released back to your available balance automatically.</p>
+        </div>
+
+        <!-- Contacts -->
+        <div class="ty-contacts">
+          <p>Call now if you have any questions: <strong>888-699-5003</strong></p>
+          <p class="ty-hours"><strong>Hours of Operation:</strong><br>Monday&ndash;Thursday 9 AM&ndash;10 PM, Friday 9 AM&ndash;8 PM,<br>Saturday &amp; Sunday 10 AM&ndash;6 PM Eastern Time.</p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="pf-footer">
+    <img class="pf-footer__logo" src="assets/images/vacationvip-logo-f.svg" alt="VacationVIP" width="154" height="20">
+    <a class="pf-footer__bbb" href="https://www.bbb.org/us/fl/belle-isle/profile/vacation-certificates-and-vouchers/vacationvip-com-0733-235962636/#sealclick" target="_blank" rel="nofollow noopener">
+      <img src="assets/images/bbb-seal.png" alt="VacationVIP.com BBB Business Review" width="250" height="52">
+    </a>
+    <p class="pf-footer__legal">Sogno Tours, LLC d/b/a VacationVIP.com</p>
+    <p class="pf-footer__legal">5900 Lake Ellenor Drive Suite 300, Orlando, FL 32809</p>
+    <p class="pf-footer__legal"><a href="https://vacationvip.com/" target="_blank" rel="noopener">VacationVIP.com</a> | Copyright &copy; <span data-year>2026</span> | All Rights Reserved.</p>
+    <p class="pf-footer__legal">SOT: Florida: ST44683 | Washington: 603354522 | California: 2156600-50 | Hawaii: 7531</p>
+    <p class="pf-footer__legal">Price does not include hotel taxes which vary and are payable upon check-in.</p>
+    <p class="pf-footer__legal">*This FLASH SALE includes 4-days and 3-nights of accommodations at Westgate Vacation Villas Resort in Orlando, Florida</p>
+    <p class="pf-footer__legal">THIS ADVERTISING MATERIAL IS BEING USED FOR THE PURPOSE OF SOLICITING SALES OF TIMESHARE INTERESTS OR PLANS</p>
+    <div class="pf-footer__links">
+      <a href="../terms-and-conditions.html">Terms and Conditions</a>
+      <span>|</span>
+      <a href="../privacy-policy.html">Privacy Policy</a>
+    </div>
+    <img class="pf-footer__eho" src="assets/images/EHO-Logo.svg" alt="Equal Housing Opportunity">
+  </footer>
+
+  <script src="assets/libs/lucide/lucide.min.js"></script>
+  <script src="assets/libs/canvas-confetti/confetti.browser.min.js"></script>
+  <script src="assets/js/celebrate.js"></script>
+  <script src="assets/js/flow-state.js"></script>
+  <script src="assets/js/legal-modal.js"></script>
+  <script>
+  (function () {
+    var s = FlowState.get();
+    if (!s.confirmationNo) s = FlowState.set({ confirmationNo: "MV" + Math.floor(100000 + Math.random() * 899999) });
+
+    document.getElementById("receiptNo").textContent = s.confirmationNo;
+    document.getElementById("sumGuests").textContent = s.guestsLabel;
+    document.getElementById("unitType").textContent = s.roomLabel || "Studio Villa";
+    document.getElementById("totalPaid").textContent = FlowState.money(FlowState.totalCents());
+    document.getElementById("pkgPrice").textContent = FlowState.money(s.priceCents);
+    document.querySelectorAll("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
+
+    // Lead capture — surface the Name + Email collected on the order-details form.
+    var g = s.guest || {};
+    var fullName = ((g.firstName || "") + " " + (g.lastName || "")).trim();
+    document.getElementById("guestName").textContent = fullName || "\u2014";
+    document.getElementById("guestEmail").textContent = g.email || "\u2014";
+
+    var fmt = function (t) { return t ? new Date(t).toLocaleDateString("en-US", { year: "numeric", month: "2-digit", day: "2-digit" }) : "To be scheduled"; };
+    document.getElementById("checkIn").textContent = fmt(s.dates && s.dates.checkIn);
+    document.getElementById("checkOut").textContent = fmt(s.dates && s.dates.checkOut);
+
+    // Extras = purchased upgrades, rendered with the shared catalog labels/icons.
+    var CAT = {};
+    (FlowState.upsellCatalog || []).forEach(function (c) { CAT[c.type] = c; });
+    var LABELS = { extend_stay: "Extra-night upgrades", bonus_vacation: "Bonus Trip (3-Day/2-Night Additional Vacation)", travel_protection: "Booking Protection" };
+    var ICONS = { extend_stay: "moon", bonus_vacation: "palmtree", travel_protection: "shield-check" };
+    var ups = s.upsells || [];
+    var host = document.getElementById("extrasList");
+    if (ups.length) {
+      host.innerHTML = ups.map(function (u) {
+        var label = LABELS[u.type] || (CAT[u.type] && CAT[u.type].label) || u.type;
+        var icon = ICONS[u.type] || (CAT[u.type] && CAT[u.type].icon) || "bookmark";
+        var qtySuffix = (u.qty && u.qty > 1)
+          ? '<span class="qty">(\u00d7 ' + u.qty + (u.type === "extend_stay" ? " nights" : "") + ")</span>"
+          : "";
+        var price = FlowState.money((u.priceCents || 0) * (u.qty || 1));
+        return '<div class="ty-extra"><i data-lucide="' + icon + '" class="pf-i"></i>'
+          + '<span class="k">' + label + " " + qtySuffix + "</span>"
+          + '<span class="v">' + price + "</span></div>";
+      }).join("");
+    } else {
+      host.innerHTML = '<p class="ty-empty">No add-ons purchased.</p>';
+    }
+
+    if (window.lucide) lucide.createIcons();
+
+    // Celebrate the completed booking: brand-colored confetti + a
+    // "cha-ching" cash-register cue (honors prefers-reduced-motion).
+    if (window.Celebrate) {
+      if (document.readyState === "complete") Celebrate.fire();
+      else window.addEventListener("load", function () { Celebrate.fire(); });
+    }
+  })();
+  </script>
+</body>
+</html>
