@@ -617,14 +617,21 @@ img[alt^="Seal"]:hover {
   cursor: pointer;
 }
 
-/* A1 — sticker uses Massanutten's 780/860px widths (then .ob-group zoom),
-   so 375px (iPhone SE) renders ~344px like the reference, not a 137px lockup. */
+/* A1 — badge image at its final on-screen width per breakpoint (no zoom;
+   Safari and Chrome render CSS zoom differently, so it was removed). */
 .ob-sticker img.hero-title-badge-img {
   width: 560px;
   max-width: none;
   height: auto;
   aspect-ratio: 703 / 206;
   object-fit: contain;
+}
+@media screen and (max-width: 991px) {
+  .property-sogno-wg-orlando-99 .ob-sticker img.hero-title-badge-img,
+  .property-sogno-wg-orlando-99 .ob-sticker img {
+    width: 459px;
+    max-width: none;
+  }
 }
 
 /* Nothing on this page may scroll the document sideways on desktop.
@@ -1341,19 +1348,28 @@ img[alt^="Seal"]:hover {
    and an inset banner.
    =========================================================================== */
 @media screen and (max-width: 767px) {
-  /* Massanutten: 780px image inside .ob-group { zoom: 0.5 }. */
+  /* Final on-screen width (matches the old 780px inside zoom 0.5). */
   .property-sogno-wg-orlando-99 .ob-sticker img.hero-title-badge-img,
   .property-sogno-wg-orlando-99 .ob-sticker img {
-    width: 780px;
+    width: 390px;
     max-width: none;
   }
 }
 
 @media screen and (max-width: 479px) {
-  /* Massanutten: 860px image inside .ob-group { zoom: 0.4 } → ~344px at 375. */
+  /* Final on-screen width (matches the old 860px inside zoom 0.4 → ~344px). */
   .property-sogno-wg-orlando-99 .ob-sticker img.hero-title-badge-img,
   .property-sogno-wg-orlando-99 .ob-sticker img {
-    width: 860px;
+    width: 344px;
+    max-width: none;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  /* Final on-screen width (matches the old 860px inside zoom 0.36 → ~310px). */
+  .property-sogno-wg-orlando-99 .ob-sticker img.hero-title-badge-img,
+  .property-sogno-wg-orlando-99 .ob-sticker img {
+    width: 310px;
     max-width: none;
   }
 }
@@ -1408,17 +1424,12 @@ img[alt^="Seal"]:hover {
     transform: translateY(calc(-50% - 97px));
   }
   /* $540 VALUE is 23px wider than 86% OFF!, so the centered circle sits under
-     the moon. 58px inside zoom:0.4 = 23px on screen. */
+     the moon. 23px on screen (no zoom anymore). */
   .property-sogno-wg-orlando-99 .ob-combo {
-    transform: translateX(58px);
+    transform: translateX(23px);
   }
   .property-sogno-wg-orlando-99 .flex-block-6 > .video-resort {
     transform: translateX(23px);
-  }
-}
-@media screen and (max-width: 360px) {
-  .property-sogno-wg-orlando-99 .ob-combo {
-    transform: translateX(64px);
   }
 }
 @media screen and (max-width: 390px) {
