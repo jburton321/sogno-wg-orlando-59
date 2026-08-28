@@ -11,18 +11,18 @@
 (function (global) {
   "use strict";
 
-  var STORAGE_KEY = "pf_order_wg_orlando";
+  var STORAGE_KEY = "pf_order_wg_orlando_59";
 
   // --- Baked-in defaults (the Westgate Vacation Villas / Orlando package) -----------
   var DEFAULTS = {
-    packageId: "sogno-wg-orlando-99",
+    packageId: "sogno-wg-orlando-59",
     resortName: "Westgate Vacation Villas Resort",
-    stayLabel: "4-Days / 3-Nights",
+    stayLabel: "3-Days / 2-Nights",
     roomLabel: "Studio Villa",
-    retailCents: 54000, // $540
-    priceCents: 9900, // $99
+    retailCents: 36000, // $360
+    priceCents: 5900, // $59
     bookingFeeCents: 0,
-    discountPct: 82,
+    discountPct: 84,
     ratingReviews: 4734,
     // holds are display-only urgency; not a real inventory lock
     holdMinutes: 10,
@@ -34,7 +34,7 @@
     // guest + dates get filled in as the user progresses
     guest: { firstName: "", lastName: "", email: "", phone: "" },
     consent: { marketing: false, sms: true },
-    nights: 3, // fixed stay length for this package (check-out auto-locks to check-in + nights)
+    nights: 2, // fixed stay length for this package (check-out auto-locks to check-in + nights)
     dates: { checkIn: null, checkOut: null },
     upsells: [], // { type, qty, priceCents }
     decided: [], // upsell types the guest has already been offered (added OR declined)
@@ -56,7 +56,7 @@
   }
 
   var UPSELL_CATALOG = [
-    { type: "extend_stay", label: "Extra-night upgrades", icon: "moon", priceCents: 4900, perQty: true, min: 1, max: 2, perUnitLabel: "/night" },
+    { type: "extend_stay", label: "Extra-night upgrades", icon: "moon", priceCents: 4900, perQty: true, min: 1, max: 3, perUnitLabel: "/night" },
     { type: "travel_protection", label: "Booking Protection", icon: "shield-check", priceCents: 1795, perQty: false },
     { type: "bonus_vacation", label: "Bonus Trip (3-Day/2-Night Additional Vacation)", icon: "palmtree", priceCents: 2900, perQty: false }
   ];

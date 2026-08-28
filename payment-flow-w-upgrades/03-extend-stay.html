@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Add up to Two Extra Nights! | Orlando Getaway Checkout</title>
+  <title>Add up to Three Extra Nights! | Orlando Getaway Checkout</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#fe5925" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#fe5925" media="(prefers-color-scheme: dark)">
@@ -74,8 +74,8 @@
     <div class="up-grid">
       <section class="pf-card">
         <div class="pf-card__pad">
-          <h1 class="tk-headline">Add up to Two Extra Nights!</h1>
-          <p class="tk-lead">$49/night, up to 2 extra nights</p>
+          <h1 class="tk-headline">Add up to Three Extra Nights!</h1>
+          <p class="tk-lead">$49/night, up to 3 extra nights</p>
           <p class="tk-desc">Want more time? Add extra nights for just <strong class="en-price">$49</strong>/night and make it the vacation you will love even more.</p>
 
           <h2 class="tk-save">How many extra nights?</h2>
@@ -88,6 +88,10 @@
               <span class="en-qty__label">2 extra nights</span>
               <span class="en-qty__price" data-en-total="2">$98</span>
             </button>
+            <button type="button" class="en-qty__opt" data-qty="3" aria-pressed="false">
+              <span class="en-qty__label">3 extra nights</span>
+              <span class="en-qty__price" data-en-total="3">$147</span>
+            </button>
           </div>
 
           <div class="tk-card">
@@ -95,7 +99,7 @@
             <div class="tk-card__body">
               <div class="tk-card__name">Extra nights</div>
               <div class="tk-card__tag">Exclusive online-only rate</div>
-              <p class="tk-card__copy"><strong>Just <span class="en-price">$49</span> per night</strong> &mdash; add up to 2 extra nights during checkout. This price won&rsquo;t be offered again.</p>
+              <p class="tk-card__copy"><strong>Just <span class="en-price">$49</span> per night</strong> &mdash; add up to 3 extra nights during checkout. This price won&rsquo;t be offered again.</p>
             </div>
           </div>
 
@@ -130,13 +134,13 @@
               <div class="row"><span class="k"><i data-lucide="calendar-check" class="pf-i"></i>Preferred check-in</span><span class="v" id="sumCheckIn">&mdash;</span></div>
               <div class="row"><span class="k"><i data-lucide="calendar-x" class="pf-i"></i>Preferred check-out</span><span class="v" id="sumCheckOut">&mdash;</span></div>
               <div class="row"><span class="k"><i data-lucide="banknote" class="pf-i"></i>Booking Fee</span><span class="v">$0</span></div>
-              <div class="row"><span class="k"><i data-lucide="package" class="pf-i"></i>Package Price</span><span class="v" id="sumPkg">$99</span></div>
+              <div class="row"><span class="k"><i data-lucide="package" class="pf-i"></i>Package Price</span><span class="v" id="sumPkg">$59</span></div>
             </div>
 
             <div class="up-upgrades-title">Upgrades</div>
             <div id="upgradeList"></div>
 
-            <div class="up-total"><span>Total price</span><span id="sumTotal">$99</span></div>
+            <div class="up-total"><span>Total price</span><span id="sumTotal">$59</span></div>
           </div>
         </div>
       </aside>
@@ -173,7 +177,7 @@
     <p class="pf-footer__legal"><a href="https://vacationvip.com/" target="_blank" rel="noopener">VacationVIP.com</a> | Copyright &copy; <span data-year>2026</span> | All Rights Reserved.</p>
     <p class="pf-footer__legal">SOT: Florida: ST44683 | Washington: 603354522 | California: 2156600-50 | Hawaii: 7531</p>
     <p class="pf-footer__legal">Price does not include hotel taxes which vary and are payable upon check-in.</p>
-    <p class="pf-footer__legal">*This FLASH SALE includes 4-days and 3-nights of accommodations at Westgate Vacation Villas Resort in Orlando, Florida</p>
+    <p class="pf-footer__legal">*This FLASH SALE includes 3-days and 2-nights of accommodations at Westgate Vacation Villas Resort in Orlando, Florida</p>
     <p class="pf-footer__legal">THIS ADVERTISING MATERIAL IS BEING USED FOR THE PURPOSE OF SOLICITING SALES OF TIMESHARE INTERESTS OR PLANS</p>
     <div class="pf-footer__links">
       <a href="../terms-and-conditions.html">Terms and Conditions</a>
@@ -188,7 +192,7 @@
   <script src="assets/js/legal-modal.js"></script>
   <script>
   (function () {
-    var NIGHT_CENTS = 4900; // $49 per extra night, max 2
+    var NIGHT_CENTS = 4900; // $49 per extra night, max 3
     var qty = 1;
     var s = FlowState.get();
 
@@ -217,7 +221,7 @@
 
     var addBtn = document.getElementById("addBtn");
     function syncAddLabel() {
-      var label = qty === 1 ? "Add 1 extra night" : "Add 2 extra nights";
+      var label = qty === 1 ? "Add 1 extra night" : "Add " + qty + " extra nights";
       addBtn.textContent = label + " \u00b7 " + moneyProse(NIGHT_CENTS * qty);
     }
     syncAddLabel();

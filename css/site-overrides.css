@@ -427,8 +427,8 @@ img[alt^="Seal"]:hover {
 }
 
 /* A7 — half-moon value badge matches Massanutten's percent tab.
-   `$540 VALUE` occupies that slot (`$540` over `VALUE`), not a full-width bar. */
-.property-sogno-wg-orlando-99 .price-family-row {
+   `$360 VALUE` occupies that slot (`$360` over `VALUE`), not a full-width bar. */
+.property-sogno-wg-orlando-59 .price-family-row {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -441,13 +441,13 @@ img[alt^="Seal"]:hover {
 }
 
 @media screen and (max-width: 767px) {
-  .property-sogno-wg-orlando-99 .price-family-row {
+  .property-sogno-wg-orlando-59 .price-family-row {
     padding-left: 137px;
     padding-right: 57px;
   }
 }
 
-.property-sogno-wg-orlando-99 .price-family-row .discount.discount-badge--absolute {
+.property-sogno-wg-orlando-59 .price-family-row .discount.discount-badge--absolute {
   position: absolute;
   left: 0;
   top: 50%;
@@ -470,7 +470,7 @@ img[alt^="Seal"]:hover {
 }
 
 /* The mobile hero copy of the badge stays out of the offer widget entirely. */
-.property-sogno-wg-orlando-99 .price-family-row .discount.discount-badge--absolute.hero-pct-badge {
+.property-sogno-wg-orlando-59 .price-family-row .discount.discount-badge--absolute.hero-pct-badge {
   display: none;
 }
 
@@ -623,12 +623,12 @@ img[alt^="Seal"]:hover {
   width: 560px;
   max-width: none;
   height: auto;
-  aspect-ratio: 703 / 206;
+  aspect-ratio: 797 / 302;
   object-fit: contain;
 }
 @media screen and (max-width: 991px) {
-  .property-sogno-wg-orlando-99 .ob-sticker img.hero-title-badge-img,
-  .property-sogno-wg-orlando-99 .ob-sticker img {
+  .property-sogno-wg-orlando-59 .ob-sticker img.hero-title-badge-img,
+  .property-sogno-wg-orlando-59 .ob-sticker img {
     width: 459px;
     max-width: none;
   }
@@ -637,15 +637,15 @@ img[alt^="Seal"]:hover {
 /* Nothing on this page may scroll the document sideways on desktop.
    On phone Massanutten leaves overflow visible so the 344px sticker and
    left-edge pill can sit flush; clip was shrinking the 375px layout. */
-.property-sogno-wg-orlando-99 .hero,
-.property-sogno-wg-orlando-99 .herocontainer {
+.property-sogno-wg-orlando-59 .hero,
+.property-sogno-wg-orlando-59 .herocontainer {
   max-width: 100%;
 }
 
 @media screen and (min-width: 768px) {
-  .property-sogno-wg-orlando-99 .hero,
-  .property-sogno-wg-orlando-99 .herocontainer,
-  .property-sogno-wg-orlando-99 .campaignlogoand-price {
+  .property-sogno-wg-orlando-59 .hero,
+  .property-sogno-wg-orlando-59 .herocontainer,
+  .property-sogno-wg-orlando-59 .campaignlogoand-price {
     overflow-x: clip;
   }
 }
@@ -670,7 +670,7 @@ img[alt^="Seal"]:hover {
 /* B4 (cont.) — the bonus panel now carries a matching pair of card graphics
    (meal card left, water park card right). Same width so they read as a set;
    a definite width because each wrapper sizes itself from its image. */
-.property-sogno-wg-orlando-99 .bch-card-img {
+.property-sogno-wg-orlando-59 .bch-card-img {
   width: 340px;
   max-width: 100%;
   height: auto;
@@ -680,11 +680,11 @@ img[alt^="Seal"]:hover {
 }
 
 @media screen and (max-width: 767px) {
-  .property-sogno-wg-orlando-99 .bch-card-img { width: 260px; }
+  .property-sogno-wg-orlando-59 .bch-card-img { width: 260px; }
 }
 
 /* §10 (cont.) — sticky bar must fit both CTAs at 375px.
-   The label grew from "Reserve Now" to "RESERVE ONLINE — $99 Per Package", which
+   The label grew from "Reserve Now" to "RESERVE ONLINE — $59 Per Package", which
    overflowed once the CALL NOW button took its share of the row. */
 @media screen and (max-width: 420px) {
   .msc-actions {
@@ -714,18 +714,18 @@ img[alt^="Seal"]:hover {
 /* §1b — hero background from ONE stable path. Swapping the hero is now a
    file replacement at /images/orlando-hero.webp, nothing else.
    TODO: final hero image incoming from Stephan. */
-.property-sogno-wg-orlando-99 .hero {
+.property-sogno-wg-orlando-59 .hero {
   background-image: url('../images/orlando-hero.webp') !important;
 }
 
 @media screen and (max-width: 767px) {
-  .property-sogno-wg-orlando-99 .campaignlogoand-price {
+  .property-sogno-wg-orlando-59 .campaignlogoand-price {
     background-image: url('../images/orlando-hero.webp') !important;
   }
 }
 
 /* §2b — half-moon value badge (Massanutten percent tab, Orlando copy). */
-.property-sogno-wg-orlando-99 .price-family-row .discount.discount-badge--absolute {
+.property-sogno-wg-orlando-59 .price-family-row .discount.discount-badge--absolute {
   position: absolute;
   left: 0;
   top: 50%;
@@ -745,8 +745,8 @@ img[alt^="Seal"]:hover {
   white-space: nowrap;
 }
 
-/* §2c — price cluster: badge | $99 | Per Package, one row. */
-.property-sogno-wg-orlando-99 .price-family-row {
+/* §2c — price cluster: badge | $59 | Per Package, one row. */
+.property-sogno-wg-orlando-59 .price-family-row {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
@@ -758,24 +758,24 @@ img[alt^="Seal"]:hover {
 }
 
 @media screen and (max-width: 767px) {
-  .property-sogno-wg-orlando-99 .price-family-row {
+  .property-sogno-wg-orlando-59 .price-family-row {
     padding-left: 137px;
     padding-right: 57px;
   }
 }
 
-.property-sogno-wg-orlando-99 .price-family-row .newprice-3 {
+.property-sogno-wg-orlando-59 .price-family-row .newprice-3 {
   margin: 0;
 }
 
-.property-sogno-wg-orlando-99 .price-family-row .stayperiod-3 {
+.property-sogno-wg-orlando-59 .price-family-row .stayperiod-3 {
   margin: 0 0 0 12px;
   text-align: left;
   line-height: 1.1;
 }
 
 /* Mid-page block: same one-row treatment as Massanutten. */
-.property-sogno-wg-orlando-99 .hs-price-row {
+.property-sogno-wg-orlando-59 .hs-price-row {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
@@ -784,7 +784,7 @@ img[alt^="Seal"]:hover {
   width: auto;
 }
 
-.property-sogno-wg-orlando-99 .hs-badge {
+.property-sogno-wg-orlando-59 .hs-badge {
   order: 0;
   flex: 0 0 auto;
   width: auto;
@@ -800,41 +800,41 @@ img[alt^="Seal"]:hover {
 }
 
 /* §1c — bonus banner flush to the hero's bottom edge, centred, below the card. */
-.property-sogno-wg-orlando-99 .campaignlogoand-price {
+.property-sogno-wg-orlando-59 .campaignlogoand-price {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 
-.property-sogno-wg-orlando-99 .flex-block-6,
-.property-sogno-wg-orlando-99 .offerwidget {
+.property-sogno-wg-orlando-59 .flex-block-6,
+.property-sogno-wg-orlando-59 .offerwidget {
   position: relative;
   z-index: 2;   /* offer card sits above the banner */
 }
 
 /* §1d — offer card floats inside the hero with visible clearance, including at
    least 24px below its three trust seals. */
-.property-sogno-wg-orlando-99 .offerwidget {
+.property-sogno-wg-orlando-59 .offerwidget {
   margin-block: 28px;
 }
 
-.property-sogno-wg-orlando-99 .sealset.trust-badges {
+.property-sogno-wg-orlando-59 .sealset.trust-badges {
   margin-bottom: 24px;
 }
 
 @media screen and (max-width: 767px) {
-  .property-sogno-wg-orlando-99 .offerwidget { margin-block: 24px; }
-  .property-sogno-wg-orlando-99 .sealset.trust-badges { margin-bottom: 24px; }
+  .property-sogno-wg-orlando-59 .offerwidget { margin-block: 24px; }
+  .property-sogno-wg-orlando-59 .sealset.trust-badges { margin-bottom: 24px; }
 }
 
 /* §6 — uniform image viewport across all four What's Included tab panels. */
-.property-sogno-wg-orlando-99 .rd-slider-wrap,
-.property-sogno-wg-orlando-99 .rd-slide {
+.property-sogno-wg-orlando-59 .rd-slider-wrap,
+.property-sogno-wg-orlando-59 .rd-slide {
   width: 100%;
 }
 
-.property-sogno-wg-orlando-99 .rd-slide img {
+.property-sogno-wg-orlando-59 .rd-slide img {
   display: block;
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -846,7 +846,7 @@ img[alt^="Seal"]:hover {
   filter: none;
   cursor: default;
 }
-.property-sogno-wg-orlando-99 .rd-slide .vv-gallery-expand {
+.property-sogno-wg-orlando-59 .rd-slide .vv-gallery-expand {
   display: none;
 }
 
@@ -919,7 +919,7 @@ img[alt^="Seal"]:hover {
    These rules close that gap. */
 
 /* Banner rests ON the hero's bottom edge, centred, beneath the offer card. */
-.property-sogno-wg-orlando-99 .campaignlogoand-price {
+.property-sogno-wg-orlando-59 .campaignlogoand-price {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -927,32 +927,32 @@ img[alt^="Seal"]:hover {
 }
 
 
-.property-sogno-wg-orlando-99 .flex-block-6,
-.property-sogno-wg-orlando-99 .offerwidget { position: relative; z-index: 2; }
+.property-sogno-wg-orlando-59 .flex-block-6,
+.property-sogno-wg-orlando-59 .offerwidget { position: relative; z-index: 2; }
 
 /* Card compression: trim the vertical padding the extra CTA + third bullet added. */
-.property-sogno-wg-orlando-99 .offerwidget {
+.property-sogno-wg-orlando-59 .offerwidget {
   margin-block: 20px;
   padding-top: 18px;
   padding-bottom: 18px;
 }
 
-.property-sogno-wg-orlando-99 .offerdetails { gap: 10px; }
-.property-sogno-wg-orlando-99 .includingslist { gap: 6px; margin-block: 8px; }
-.property-sogno-wg-orlando-99 .booking-disclaimer { margin-block: 8px; }
-.property-sogno-wg-orlando-99 .booking-disclaimer p { margin: 2px 0; }
-.property-sogno-wg-orlando-99 .cta-button--call { margin-top: 8px; min-height: 46px; padding-block: 11px; }
-.property-sogno-wg-orlando-99 .cta-call-microcopy { margin-top: 6px; }
-.property-sogno-wg-orlando-99 .sealset.trust-badges { margin-top: 10px; margin-bottom: 16px; }
+.property-sogno-wg-orlando-59 .offerdetails { gap: 10px; }
+.property-sogno-wg-orlando-59 .includingslist { gap: 6px; margin-block: 8px; }
+.property-sogno-wg-orlando-59 .booking-disclaimer { margin-block: 8px; }
+.property-sogno-wg-orlando-59 .booking-disclaimer p { margin: 2px 0; }
+.property-sogno-wg-orlando-59 .cta-button--call { margin-top: 8px; min-height: 46px; padding-block: 11px; }
+.property-sogno-wg-orlando-59 .cta-call-microcopy { margin-top: 6px; }
+.property-sogno-wg-orlando-59 .sealset.trust-badges { margin-top: 10px; margin-bottom: 16px; }
 
 /* The banner column was 717px tall inside an 864px hero container, so "bottom of
    the column" was 146px short of the hero's bottom edge. Stretch the column so
    `margin-top:auto` actually pins the banner to the hero. */
-.property-sogno-wg-orlando-99 .herocontainer {
+.property-sogno-wg-orlando-59 .herocontainer {
   align-items: stretch;
 }
 
-.property-sogno-wg-orlando-99 .campaignlogoand-price {
+.property-sogno-wg-orlando-59 .campaignlogoand-price {
   flex: 1 1 auto;
   align-self: stretch;
 }
@@ -970,7 +970,7 @@ img[alt^="Seal"]:hover {
    banner to the hero's bottom edge directly. This is what "resting on the bottom
    of the hero image" needs, and it takes the banner out of flow so the hero's
    height is driven by the offer card alone. */
-.property-sogno-wg-orlando-99 .hero {
+.property-sogno-wg-orlando-59 .hero {
   position: relative;
   /* Reference gives the badge 25px of photo above it (hero padding-top:28px).
      Orlando had 12px, which made the badge read as clipped at the hero's edge. */
@@ -980,15 +980,15 @@ img[alt^="Seal"]:hover {
 
 /* Card compression: measured 828px against the reference's 606px. Trimmed from
    internal padding/gaps only — no required content removed. */
-.property-sogno-wg-orlando-99 .offerdetails { gap: 6px; padding-block: 10px; }
-.property-sogno-wg-orlando-99 .widgettitle { gap: 4px; }
-.property-sogno-wg-orlando-99 .offer-card-logo { max-height: 80px; margin-bottom: 2px; }
-.property-sogno-wg-orlando-99 .priceanddiscount { padding-block: 8px; }
-.property-sogno-wg-orlando-99 .includingslist { gap: 4px; margin-block: 4px; padding-block: 4px; }
-.property-sogno-wg-orlando-99 .includingslist .listitem { line-height: 1.25; }
-.property-sogno-wg-orlando-99 .div-block-22 { padding-block: 6px; }
-.property-sogno-wg-orlando-99 .booking-disclaimer { margin-block: 4px; padding-bottom: 4px; }
-.property-sogno-wg-orlando-99 .sealset.trust-badges { margin-top: 6px; margin-bottom: 10px; padding-bottom: 6px; }
+.property-sogno-wg-orlando-59 .offerdetails { gap: 6px; padding-block: 10px; }
+.property-sogno-wg-orlando-59 .widgettitle { gap: 4px; }
+.property-sogno-wg-orlando-59 .offer-card-logo { max-height: 80px; margin-bottom: 2px; }
+.property-sogno-wg-orlando-59 .priceanddiscount { padding-block: 8px; }
+.property-sogno-wg-orlando-59 .includingslist { gap: 4px; margin-block: 4px; padding-block: 4px; }
+.property-sogno-wg-orlando-59 .includingslist .listitem { line-height: 1.25; }
+.property-sogno-wg-orlando-59 .div-block-22 { padding-block: 6px; }
+.property-sogno-wg-orlando-59 .booking-disclaimer { margin-block: 4px; padding-bottom: 4px; }
+.property-sogno-wg-orlando-59 .sealset.trust-badges { margin-top: 6px; margin-bottom: 10px; padding-bottom: 6px; }
 
 @media screen and (max-width: 767px) {
   /* On phones the banner returns to normal flow, full-bleed under the card. */
@@ -1101,12 +1101,12 @@ img[alt^="Seal"]:hover {
    Orlando's left column spans 0..976 (centre 488) but the banner was absolute to
    the hero, so it centred at 720. Constrain its box to the left column instead.
    =========================================================================== */
-.property-sogno-wg-orlando-99 .hero { position: relative; }
+.property-sogno-wg-orlando-59 .hero { position: relative; }
 
 
 /* §1d — the hero's left column keeps clear space beneath the play button so the
    banner never rides up over the circle or badge. */
-.property-sogno-wg-orlando-99 .campaignlogoand-price {
+.property-sogno-wg-orlando-59 .campaignlogoand-price {
   padding-bottom: 12px;
 }
 
@@ -1131,7 +1131,7 @@ img[alt^="Seal"]:hover {
    32px minimum on both edges without removing any content, plus a right inset so
    the card floats off the viewport edge as it does on the reference.
    =========================================================================== */
-.property-sogno-wg-orlando-99 .offerwidget {
+.property-sogno-wg-orlando-59 .offerwidget {
   /* Centre the card in the hero and let equal margins guarantee the clearance.
      A right margin was tried but it narrowed the left column, which moved the
      price circle off the 488px axis the banner is aligned to - so it is not used. */
@@ -1143,38 +1143,38 @@ img[alt^="Seal"]:hover {
 }
 
 /* Reclaim the ~20px needed for the bottom margin from internal spacing only. */
-.property-sogno-wg-orlando-99 .offerdetails { gap: 4px; padding-block: 8px; }
-.property-sogno-wg-orlando-99 .priceanddiscount { padding-block: 6px; }
-.property-sogno-wg-orlando-99 .includingslist { gap: 3px; margin-block: 3px; padding-block: 3px; }
+.property-sogno-wg-orlando-59 .offerdetails { gap: 4px; padding-block: 8px; }
+.property-sogno-wg-orlando-59 .priceanddiscount { padding-block: 6px; }
+.property-sogno-wg-orlando-59 .includingslist { gap: 3px; margin-block: 3px; padding-block: 3px; }
 
-/* Half-moon hangs ~17px below the $99 row. Massanutten clears it with 16px
+/* Half-moon hangs ~17px below the $59 row. Massanutten clears it with 16px
    price-block padding + 8px list padding. Card compression above collapsed
    that, so the badge overlapped the first amenity. */
-.property-sogno-wg-orlando-99 .priceanddiscount.pricing-section--highlighted {
+.property-sogno-wg-orlando-59 .priceanddiscount.pricing-section--highlighted {
   padding-block: 16px;
 }
-.property-sogno-wg-orlando-99 .includingslist {
+.property-sogno-wg-orlando-59 .includingslist {
   gap: 8px;
   margin-top: 8px;
   margin-bottom: 0;
   padding: 8px 32px;
 }
-.property-sogno-wg-orlando-99 .div-block-22 { padding-block: 4px; }
-.property-sogno-wg-orlando-99 .booking-disclaimer { margin-block: 3px; padding-bottom: 3px; }
-.property-sogno-wg-orlando-99 .sealset.trust-badges { margin-top: 4px; margin-bottom: 6px; padding-bottom: 4px; }
+.property-sogno-wg-orlando-59 .div-block-22 { padding-block: 4px; }
+.property-sogno-wg-orlando-59 .booking-disclaimer { margin-block: 3px; padding-bottom: 3px; }
+.property-sogno-wg-orlando-59 .sealset.trust-badges { margin-top: 4px; margin-bottom: 6px; padding-bottom: 4px; }
 
 @media screen and (max-width: 991px) {
-  .property-sogno-wg-orlando-99 .offerwidget { margin-top: 24px; margin-bottom: 32px; }
+  .property-sogno-wg-orlando-59 .offerwidget { margin-top: 24px; margin-bottom: 32px; }
 }
 
 /* ===========================================================================
    §3 PRICE CLUSTER — centring
    The export left `padding-right: 91px` on the price row (it once made space for
    an absolutely-positioned discount badge). With the badge now in flow, that
-   padding pushed the centred "$99 / Per Package" pair 41px left of the card's
-   centreline and clipped the "$540 VALUE" bar to 293px of the card's 374px.
+   padding pushed the centred "$59 / Per Package" pair 41px left of the card's
+   centreline and clipped the "$360 VALUE" bar to 293px of the card's 374px.
    =========================================================================== */
-.property-sogno-wg-orlando-99 .price-family-row {
+.property-sogno-wg-orlando-59 .price-family-row {
   padding-right: 0;
   padding-left: 0;
   column-gap: 10px;
@@ -1184,13 +1184,13 @@ img[alt^="Seal"]:hover {
 
 /* "Per Package" reads as one unit with the numerals: same baseline, tight gap,
    and its two words stacked so no dead space opens to the right. */
-.property-sogno-wg-orlando-99 .price-family-row .stayperiod-3 {
+.property-sogno-wg-orlando-59 .price-family-row .stayperiod-3 {
   text-align: left;
   line-height: 1.1;
   margin: 0;
 }
 
-.property-sogno-wg-orlando-99 .price-family-row .newprice-3 { margin: 0; }
+.property-sogno-wg-orlando-59 .price-family-row .newprice-3 { margin: 0; }
 
 /* ===========================================================================
    §5c — the expand affordance is a dark chip that sat on every thumbnail at
@@ -1224,7 +1224,7 @@ img[alt^="Seal"]:hover {
    length renders at 0.9x. All values below are divided by 0.9 to land on the
    reference's RENDERED geometry.
    =========================================================================== */
-.property-sogno-wg-orlando-99 .herocontainer {
+.property-sogno-wg-orlando-59 .herocontainer {
   max-width: 1136px;   /* 1022 / 0.9 */
   margin-inline: auto;
   column-gap: 100px;   /* 90 / 0.9 */
@@ -1234,7 +1234,7 @@ img[alt^="Seal"]:hover {
 
 /* The card must not flex-shrink on large desktop, or the band maths collapses. */
 @media screen and (min-width: 1200px) {
-  .property-sogno-wg-orlando-99 .offerwidget {
+  .property-sogno-wg-orlando-59 .offerwidget {
     flex: 0 0 416px;     /* 374 / 0.9 */
     width: 416px;
     min-width: 416px;
@@ -1247,7 +1247,7 @@ img[alt^="Seal"]:hover {
 
 
 @media screen and (max-width: 991px) {
-  .property-sogno-wg-orlando-99 .herocontainer {
+  .property-sogno-wg-orlando-59 .herocontainer {
     max-width: 100%;
     column-gap: 32px;
     padding-inline: 24px;
@@ -1259,8 +1259,8 @@ img[alt^="Seal"]:hover {
 }
 
 @media screen and (max-width: 767px) {
-  .property-sogno-wg-orlando-99 .herocontainer { padding-inline: 0; column-gap: 0; }
-  .property-sogno-wg-orlando-99 .offerwidget {
+  .property-sogno-wg-orlando-59 .herocontainer { padding-inline: 0; column-gap: 0; }
+  .property-sogno-wg-orlando-59 .offerwidget {
     flex: 1 1 auto; width: auto; min-width: 0; max-width: 100%;
   }
 
@@ -1273,7 +1273,7 @@ img[alt^="Seal"]:hover {
 /* The inner card must never cast the outer card's shadow. The inner .offerdetails
    carried the same `0 3px 3px #0003` as the card that wraps it, which read as a
    doubled line under the trust seals. */
-.property-sogno-wg-orlando-99 .offerdetails {
+.property-sogno-wg-orlando-59 .offerdetails {
   box-shadow: none;
 }
 
@@ -1281,13 +1281,13 @@ img[alt^="Seal"]:hover {
    Webflow export already did at <=991px until an unscoped 20px radius here
    overrode it. */
 @media screen and (min-width: 992px) {
-  .property-sogno-wg-orlando-99 .offerwidget { border-radius: 20px; }
-  .property-sogno-wg-orlando-99 .offerdetails { border-radius: 0 0 20px 20px; }
+  .property-sogno-wg-orlando-59 .offerwidget { border-radius: 20px; }
+  .property-sogno-wg-orlando-59 .offerdetails { border-radius: 0 0 20px 20px; }
 }
 
 @media screen and (max-width: 991px) {
-  .property-sogno-wg-orlando-99 .offerwidget,
-  .property-sogno-wg-orlando-99 .offerdetails { border-radius: 0; }
+  .property-sogno-wg-orlando-59 .offerwidget,
+  .property-sogno-wg-orlando-59 .offerdetails { border-radius: 0; }
 }
 
 /* THE 8px SEAM under the mobile bonus bar.
@@ -1296,7 +1296,7 @@ img[alt^="Seal"]:hover {
    (added so the card layers above the banner) made the element positioned and
    woke that dormant 8px up, pushing the card down off the banner. Neutralised
    here so the bonus bar sits flush on the card's top edge. */
-.property-sogno-wg-orlando-99 .offerwidget {
+.property-sogno-wg-orlando-59 .offerwidget {
   top: 0;
 }
 
@@ -1305,25 +1305,25 @@ img[alt^="Seal"]:hover {
    phone width. Above 991px the two sit in separate columns and this does not
    apply. */
 @media screen and (max-width: 991px) {
-  .property-sogno-wg-orlando-99 .offerwidget { margin-top: 0; }
+  .property-sogno-wg-orlando-59 .offerwidget { margin-top: 0; }
 }
 
-.property-sogno-wg-orlando-99 .offerwidget::after,
-.property-sogno-wg-orlando-99 .offerdetails::after {
+.property-sogno-wg-orlando-59 .offerwidget::after,
+.property-sogno-wg-orlando-59 .offerdetails::after {
   content: none;
   display: none;
 }
 
 /* The blue belongs on the "What You Get" BANNER - the bar that was dark navy -
    not on the section headings, which keep their normal treatment. */
-.property-sogno-wg-orlando-99 .whyyougetsubtitle.darker {
+.property-sogno-wg-orlando-59 .whyyougetsubtitle.darker {
   background-color: #2189ce;
 }
 
 /* Tab panel images: the supplied art is a short, wide banner (~4.9:1), so the
    previous 16:9 viewport cropped it heavily. Match the artwork's proportions
    and keep all four panels identical. */
-.property-sogno-wg-orlando-99 .rd-slide img {
+.property-sogno-wg-orlando-59 .rd-slide img {
   /* NO fixed aspect-ratio, and no cover.
      These four banners carry baked-in text ("Free BREAKFAST", "WATER PARK"), and
      they are not all the same shape - bonus is 3:1, the other three are 4.86:1.
@@ -1349,8 +1349,8 @@ img[alt^="Seal"]:hover {
    =========================================================================== */
 @media screen and (max-width: 767px) {
   /* Final on-screen width (matches the old 780px inside zoom 0.5). */
-  .property-sogno-wg-orlando-99 .ob-sticker img.hero-title-badge-img,
-  .property-sogno-wg-orlando-99 .ob-sticker img {
+  .property-sogno-wg-orlando-59 .ob-sticker img.hero-title-badge-img,
+  .property-sogno-wg-orlando-59 .ob-sticker img {
     width: 390px;
     max-width: none;
   }
@@ -1358,8 +1358,8 @@ img[alt^="Seal"]:hover {
 
 @media screen and (max-width: 479px) {
   /* Final on-screen width (matches the old 860px inside zoom 0.4 → ~344px). */
-  .property-sogno-wg-orlando-99 .ob-sticker img.hero-title-badge-img,
-  .property-sogno-wg-orlando-99 .ob-sticker img {
+  .property-sogno-wg-orlando-59 .ob-sticker img.hero-title-badge-img,
+  .property-sogno-wg-orlando-59 .ob-sticker img {
     width: 344px;
     max-width: none;
   }
@@ -1367,8 +1367,8 @@ img[alt^="Seal"]:hover {
 
 @media screen and (max-width: 360px) {
   /* Final on-screen width (matches the old 860px inside zoom 0.36 → ~310px). */
-  .property-sogno-wg-orlando-99 .ob-sticker img.hero-title-badge-img,
-  .property-sogno-wg-orlando-99 .ob-sticker img {
+  .property-sogno-wg-orlando-59 .ob-sticker img.hero-title-badge-img,
+  .property-sogno-wg-orlando-59 .ob-sticker img {
     width: 310px;
     max-width: none;
   }
@@ -1376,10 +1376,10 @@ img[alt^="Seal"]:hover {
 
 @media screen and (max-width: 767px) {
   /* Massanutten: half-moon is position:absolute; left:0 on .campaignlogoand-price. */
-  .property-sogno-wg-orlando-99 .campaignlogoand-price {
+  .property-sogno-wg-orlando-59 .campaignlogoand-price {
     position: relative;
   }
-  .property-sogno-wg-orlando-99 .discount.discount-badge--absolute.hero-pct-badge {
+  .property-sogno-wg-orlando-59 .discount.discount-badge--absolute.hero-pct-badge {
     display: flex;
     z-index: 5;
     position: absolute;
@@ -1388,7 +1388,7 @@ img[alt^="Seal"]:hover {
     transform: translateY(calc(-50% - 118px));
     background: #fff;
     color: #e9654a;
-    /* Mass locks .discount to 80px for "86% OFF!". $540 VALUE is wider —
+    /* Mass locks .discount to 80px for "86% OFF!". $360 VALUE is wider —
        keep the flat left edge, let the tab grow right. */
     width: auto;
     min-width: 0;
@@ -1403,13 +1403,13 @@ img[alt^="Seal"]:hover {
   }
 
   /* Hero CTA belongs above the banner, not after the card. */
-  .property-sogno-wg-orlando-99 .cta-wrapper {
+  .property-sogno-wg-orlando-59 .cta-wrapper {
     order: 5;
     width: 100%;
     display: flex;
     justify-content: center;
   }
-  .property-sogno-wg-orlando-99 .cta-wrapper .checkout-cta {
+  .property-sogno-wg-orlando-59 .cta-wrapper .checkout-cta {
     width: 100%;
     max-width: none;
   }
@@ -1420,25 +1420,25 @@ img[alt^="Seal"]:hover {
 }
 
 @media screen and (max-width: 479px) {
-  .property-sogno-wg-orlando-99 .discount.discount-badge--absolute.hero-pct-badge {
+  .property-sogno-wg-orlando-59 .discount.discount-badge--absolute.hero-pct-badge {
     transform: translateY(calc(-50% - 97px));
   }
-  /* $540 VALUE is 23px wider than 86% OFF!, so the centered circle sits under
+  /* $360 VALUE is 23px wider than 86% OFF!, so the centered circle sits under
      the moon. 23px on screen (no zoom anymore). */
-  .property-sogno-wg-orlando-99 .ob-combo {
+  .property-sogno-wg-orlando-59 .ob-combo {
     transform: translateX(23px);
   }
-  .property-sogno-wg-orlando-99 .flex-block-6 > .video-resort {
+  .property-sogno-wg-orlando-59 .flex-block-6 > .video-resort {
     transform: translateX(23px);
   }
 }
 @media screen and (max-width: 390px) {
-  .property-sogno-wg-orlando-99 .discount.discount-badge--absolute.hero-pct-badge {
+  .property-sogno-wg-orlando-59 .discount.discount-badge--absolute.hero-pct-badge {
     transform: translateY(calc(-50% - 77px));
   }
 }
 @media screen and (max-width: 375px) {
-  .property-sogno-wg-orlando-99 .discount.discount-badge--absolute.hero-pct-badge {
+  .property-sogno-wg-orlando-59 .discount.discount-badge--absolute.hero-pct-badge {
     transform: translateY(calc(-50% - 74px));
   }
 }
@@ -1450,20 +1450,20 @@ img[alt^="Seal"]:hover {
 /* WCAG 2.2 AA: 44x44 minimum touch targets on mobile. The anchor-nav pills and
    the strip carousel arrows measured 32px tall. */
 @media screen and (max-width: 767px) {
-  .property-sogno-wg-orlando-99 .menul2item {
+  .property-sogno-wg-orlando-59 .menul2item {
     min-height: 44px;
     display: inline-flex;
     align-items: center;
     padding-block: 8px;
   }
-  .property-sogno-wg-orlando-99 .hero-submenu-arrow {
+  .property-sogno-wg-orlando-59 .hero-submenu-arrow {
     width: 44px;
     height: 44px;
     min-width: 44px;
     min-height: 44px;
   }
   /* Sticky bar CTA overflowed its row between 560 and 700px. */
-  .property-sogno-wg-orlando-99 .msc-actions .msc-cta {
+  .property-sogno-wg-orlando-59 .msc-actions .msc-cta {
     min-width: 0;
     flex: 1 1 auto;
     white-space: normal;
@@ -1472,41 +1472,41 @@ img[alt^="Seal"]:hover {
 
 /* Bonus panel split overflowed its half at 414 and 768: the two panels are a
    fixed 50/50 with content wider than the column. Let them wrap and contain. */
-.property-sogno-wg-orlando-99 #bonus-cta {
+.property-sogno-wg-orlando-59 #bonus-cta {
   flex-wrap: wrap;
   overflow-x: clip;
 }
 
-.property-sogno-wg-orlando-99 .bch-left,
-.property-sogno-wg-orlando-99 .bch-right {
+.property-sogno-wg-orlando-59 .bch-left,
+.property-sogno-wg-orlando-59 .bch-right {
   min-width: 0;
   max-width: 100%;
   box-sizing: border-box;
   padding-inline: 16px;
 }
 
-.property-sogno-wg-orlando-99 .bch-headline,
-.property-sogno-wg-orlando-99 .bch-eyebrow {
+.property-sogno-wg-orlando-59 .bch-headline,
+.property-sogno-wg-orlando-59 .bch-eyebrow {
   max-width: 100%;
   overflow-wrap: anywhere;
 }
 
 @media screen and (max-width: 900px) {
-  .property-sogno-wg-orlando-99 .bch-left,
-  .property-sogno-wg-orlando-99 .bch-right { flex: 1 1 100%; }
-  .property-sogno-wg-orlando-99 .bch-divider { display: none; }
+  .property-sogno-wg-orlando-59 .bch-left,
+  .property-sogno-wg-orlando-59 .bch-right { flex: 1 1 100%; }
+  .property-sogno-wg-orlando-59 .bch-divider { display: none; }
 }
 
 @media screen and (max-width: 767px) {
   /* What's Included tabs measured 38px tall. */
-  .property-sogno-wg-orlando-99 .rd-tab {
+  .property-sogno-wg-orlando-59 .rd-tab {
     min-height: 44px;
     padding-block: 8px;
   }
   /* Footer compliance links measured 21px tall - too small to tap reliably. */
-  .property-sogno-wg-orlando-99 .text-block-5,
-  .property-sogno-wg-orlando-99 .text-block-6,
-  .property-sogno-wg-orlando-99 .footer-2 a {
+  .property-sogno-wg-orlando-59 .text-block-5,
+  .property-sogno-wg-orlando-59 .text-block-6,
+  .property-sogno-wg-orlando-59 .footer-2 a {
     display: inline-flex;
     align-items: center;
     min-height: 44px;
@@ -1516,12 +1516,12 @@ img[alt^="Seal"]:hover {
 /* Bonus panel still overflowed its half at 414: force the split to stack below
    the point where the two headlines stop fitting side by side. */
 @media screen and (max-width: 560px) {
-  .property-sogno-wg-orlando-99 #bonus-cta {
+  .property-sogno-wg-orlando-59 #bonus-cta {
     display: flex;
     flex-direction: column;
   }
-  .property-sogno-wg-orlando-99 .bch-left,
-  .property-sogno-wg-orlando-99 .bch-right {
+  .property-sogno-wg-orlando-59 .bch-left,
+  .property-sogno-wg-orlando-59 .bch-right {
     width: 100%;
     max-width: 100%;
     flex: 0 0 auto;
@@ -1531,20 +1531,20 @@ img[alt^="Seal"]:hover {
 /* The bonus CTA bar overflowed once the panel stacked: its row was still sized
    for the full-width layout. */
 @media screen and (max-width: 560px) {
-  .property-sogno-wg-orlando-99 .bch-cta-bar {
+  .property-sogno-wg-orlando-59 .bch-cta-bar {
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
     padding-inline: 16px;
     padding-block: 32px;   /* keep the band symmetric once the panel stacks */
   }
-  .property-sogno-wg-orlando-99 .bch-cta-actions {
+  .property-sogno-wg-orlando-59 .bch-cta-actions {
     flex-wrap: wrap;
     width: 100%;
     max-width: 100%;
   }
-  .property-sogno-wg-orlando-99 .bch-cta-actions .bch-cta,
-  .property-sogno-wg-orlando-99 .bch-call {
+  .property-sogno-wg-orlando-59 .bch-cta-actions .bch-cta,
+  .property-sogno-wg-orlando-59 .bch-call {
     flex: 1 1 100%;
     min-width: 0;
     box-sizing: border-box;
@@ -1555,8 +1555,8 @@ img[alt^="Seal"]:hover {
    MOBILE STICKY BAR — stacked value, 3-line package, dual entry point
    =========================================================================== */
 @media screen and (max-width: 767px) {
-  /* "$995" above "VALUE" rather than on one line. */
-  .property-sogno-wg-orlando-99 .msc-badge {
+  /* "$595" above "VALUE" rather than on one line. */
+  .property-sogno-wg-orlando-59 .msc-badge {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1568,7 +1568,7 @@ img[alt^="Seal"]:hover {
   }
 
   /* Package name stacked over three lines. */
-  .property-sogno-wg-orlando-99 .msc-pkg {
+  .property-sogno-wg-orlando-59 .msc-pkg {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -1578,14 +1578,14 @@ img[alt^="Seal"]:hover {
 
   /* Dual entry point: the phone shows its NUMBER beside the reserve CTA rather
      than collapsing to a bare icon. */
-  .property-sogno-wg-orlando-99 .msc-actions {
+  .property-sogno-wg-orlando-59 .msc-actions {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
     width: 100%;
   }
-  .property-sogno-wg-orlando-99 .msc-call,
-  .property-sogno-wg-orlando-99 .msc-actions .msc-cta {
+  .property-sogno-wg-orlando-59 .msc-call,
+  .property-sogno-wg-orlando-59 .msc-actions .msc-cta {
     width: 100%;
     min-width: 0;
     min-height: 48px;
@@ -1595,7 +1595,7 @@ img[alt^="Seal"]:hover {
     text-align: center;
     white-space: normal;
   }
-  .property-sogno-wg-orlando-99 .msc-call-text {
+  .property-sogno-wg-orlando-59 .msc-call-text {
     position: static;
     width: auto;
     height: auto;
@@ -1609,11 +1609,11 @@ img[alt^="Seal"]:hover {
 /* ---- Offer card, mobile ---------------------------------------------------
    Bullet 1 is a single line while 2 and 3 wrap, so a centred list left the
    short one indented. Left-align every row on a shared axis. */
-.property-sogno-wg-orlando-99 .includingslist {
+.property-sogno-wg-orlando-59 .includingslist {
   align-items: flex-start;
 }
 
-.property-sogno-wg-orlando-99 .includingslist .listitem {
+.property-sogno-wg-orlando-59 .includingslist .listitem {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -1622,37 +1622,37 @@ img[alt^="Seal"]:hover {
   gap: 8px;
 }
 
-.property-sogno-wg-orlando-99 .includingslist .listitem i,
-.property-sogno-wg-orlando-99 .includingslist .listitem .feature-icon {
+.property-sogno-wg-orlando-59 .includingslist .listitem i,
+.property-sogno-wg-orlando-59 .includingslist .listitem .feature-icon {
   flex: 0 0 auto;
   margin-top: 2px;
 }
 
-/* "$99" sat higher than "Per Package" because the row aligned on baselines and
+/* "$59" sat higher than "Per Package" because the row aligned on baselines and
    the qualifier wraps to two lines. Centre them as one unit instead. */
-.property-sogno-wg-orlando-99 .price-family-row {
+.property-sogno-wg-orlando-59 .price-family-row {
   align-items: center;
 }
 
-.property-sogno-wg-orlando-99 .price-family-row .stayperiod-3 {
+.property-sogno-wg-orlando-59 .price-family-row .stayperiod-3 {
   align-self: center;
 }
 
 
 @media screen and (max-width: 767px) {
-  /* "$540 VALUE" tab fills the row's height, as on the reference. */
-  .property-sogno-wg-orlando-99 .msc-badge {
+  /* "$360 VALUE" tab fills the row's height, as on the reference. */
+  .property-sogno-wg-orlando-59 .msc-badge {
     align-self: stretch;
     min-height: 100%;
     padding: 14px 12px;
     font-size: 15px;
     border-radius: 0 14px 14px 0;
   }
-  .property-sogno-wg-orlando-99 .msc-info {
+  .property-sogno-wg-orlando-59 .msc-info {
     align-items: stretch;
   }
   /* Package name stacked under the eyebrow, left aligned. */
-  .property-sogno-wg-orlando-99 .msc-pkg {
+  .property-sogno-wg-orlando-59 .msc-pkg {
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: .01em;
@@ -1662,12 +1662,12 @@ img[alt^="Seal"]:hover {
 @media screen and (max-width: 767px) {
   /* The hero CTA sat flush-left inside its wrapper (28px left / 76px right).
      justify-content wasn't applying, so centre the button with auto margins. */
-  .property-sogno-wg-orlando-99 .hero .cta-wrapper {
+  .property-sogno-wg-orlando-59 .hero .cta-wrapper {
     display: flex;
     justify-content: center;
     width: 100%;
   }
-  .property-sogno-wg-orlando-99 .hero .cta-wrapper .checkout-cta {
+  .property-sogno-wg-orlando-59 .hero .cta-wrapper .checkout-cta {
     margin-inline: auto;
     display: block;
     text-align: center;
@@ -1679,8 +1679,8 @@ img[alt^="Seal"]:hover {
 /* Tab panel image fit: the slider wrap carried a fixed 300px height while the
    banner art renders ~218px, leaving a grey band beneath every tab image. Let
    the container follow the image so all four tabs sit flush. */
-.property-sogno-wg-orlando-99 .rd-slider-wrap,
-.property-sogno-wg-orlando-99 .rd-slide {
+.property-sogno-wg-orlando-59 .rd-slider-wrap,
+.property-sogno-wg-orlando-59 .rd-slide {
   height: auto;
   min-height: 0;
   background-color: transparent;
@@ -1688,7 +1688,7 @@ img[alt^="Seal"]:hover {
   overflow: hidden;
 }
 
-.property-sogno-wg-orlando-99 .rd-slide img {
+.property-sogno-wg-orlando-59 .rd-slide img {
   display: block;
   width: 100%;
   height: auto;
@@ -1698,7 +1698,7 @@ img[alt^="Seal"]:hover {
   /* The bonus banner sat 32px above the white card, exposing a band of hero
      photo. It should rest directly on the card as on the reference. */
 
-  .property-sogno-wg-orlando-99 .offerwidget {
+  .property-sogno-wg-orlando-59 .offerwidget {
     margin-top: 0;
   }
 }
@@ -1706,7 +1706,7 @@ img[alt^="Seal"]:hover {
 @media screen and (max-width: 767px) {
   /* 8px remained from the hero column's flex gap; zero it around the banner so
      it rests directly on the white card. */
-  .property-sogno-wg-orlando-99 .campaignlogoand-price { row-gap: 0; }
+  .property-sogno-wg-orlando-59 .campaignlogoand-price { row-gap: 0; }
 
 
 }
@@ -1714,7 +1714,7 @@ img[alt^="Seal"]:hover {
 @media screen and (max-width: 767px) {
   /* The banner and the card sit in different flex parents; the last 8px was
      .herocontainer's row-gap once the columns stack. */
-  .property-sogno-wg-orlando-99 .herocontainer {
+  .property-sogno-wg-orlando-59 .herocontainer {
     row-gap: 0;
     gap: 0;
   }
@@ -1723,7 +1723,7 @@ img[alt^="Seal"]:hover {
 @media screen and (max-width: 767px) {
   /* Last 8px traced to the hero column's own bottom padding (set earlier to keep
      the banner clear of the play button on desktop). Not wanted on mobile. */
-  .property-sogno-wg-orlando-99 .campaignlogoand-price {
+  .property-sogno-wg-orlando-59 .campaignlogoand-price {
     padding-bottom: 0;
     margin-bottom: 0;
   }
@@ -1737,7 +1737,7 @@ img[alt^="Seal"]:hover {
    =========================================================================== */
 
 /* Breathing room under the review cards before the CTA. */
-.property-sogno-wg-orlando-99 #guest-reviews .gr-cta {
+.property-sogno-wg-orlando-59 #guest-reviews .gr-cta {
   margin-top: 32px;
   margin-bottom: 8px;
 }
@@ -1746,7 +1746,7 @@ img[alt^="Seal"]:hover {
   /* audit #15 - the button spans the section on mobile too, not a centred 340px
      pill under full-width cards. The ID selector here outranks the class-level
      rule further down, so the cap has to be lifted at this rule. */
-  .property-sogno-wg-orlando-99 #guest-reviews .gr-cta {
+  .property-sogno-wg-orlando-59 #guest-reviews .gr-cta {
     margin-top: 24px;
     width: 100%;
     max-width: none;
@@ -1757,35 +1757,35 @@ img[alt^="Seal"]:hover {
 @media screen and (max-width: 767px) {
   /* Sticky info row: equal height across the value tab, package text and price,
      so the tab no longer sits short of the block beside it. */
-  .property-sogno-wg-orlando-99 .msc-info {
+  .property-sogno-wg-orlando-59 .msc-info {
     display: flex;
     align-items: stretch;
     min-height: 76px;
   }
-  .property-sogno-wg-orlando-99 .msc-badge,
-  .property-sogno-wg-orlando-99 .msc-info-left,
-  .property-sogno-wg-orlando-99 .msc-price {
+  .property-sogno-wg-orlando-59 .msc-badge,
+  .property-sogno-wg-orlando-59 .msc-info-left,
+  .property-sogno-wg-orlando-59 .msc-price {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     align-self: stretch;
   }
-  .property-sogno-wg-orlando-99 .msc-info-left { align-items: flex-start; }
-  .property-sogno-wg-orlando-99 .msc-price { align-items: flex-end; }
+  .property-sogno-wg-orlando-59 .msc-info-left { align-items: flex-start; }
+  .property-sogno-wg-orlando-59 .msc-price { align-items: flex-end; }
 }
 
 @media screen and (max-width: 767px) {
   /* "CALL NOW" on the first line, the number on the second, rather than the
      label wrapping mid-phone-number. */
-  .property-sogno-wg-orlando-99 .msc-call-text {
+  .property-sogno-wg-orlando-59 .msc-call-text {
     display: flex;
     flex-direction: column;
     align-items: center;
     line-height: 1.15;
   }
-  .property-sogno-wg-orlando-99 .msc-call-label,
-  .property-sogno-wg-orlando-99 .msc-call-num {
+  .property-sogno-wg-orlando-59 .msc-call-label,
+  .property-sogno-wg-orlando-59 .msc-call-num {
     display: block;
     white-space: nowrap;
   }
@@ -1809,7 +1809,7 @@ img[alt^="Seal"]:hover {
 /* The bonus-bar phone button previously collapsed to an icon on phones; it now
    keeps the label and number like the sticky bar. */
 @media screen and (max-width: 400px) {
-  .property-sogno-wg-orlando-99 .bch-call-text {
+  .property-sogno-wg-orlando-59 .bch-call-text {
     position: static;
     width: auto;
     height: auto;
@@ -1817,11 +1817,11 @@ img[alt^="Seal"]:hover {
     clip: auto;
     overflow: visible;
   }
-  .property-sogno-wg-orlando-99 .bch-cta-actions .bch-call { flex: 1 1 100%; }
+  .property-sogno-wg-orlando-59 .bch-cta-actions .bch-call { flex: 1 1 100%; }
 }
 
 /* Anchor-nav phone CTA, styled to sit beside "Reserve it now". */
-.property-sogno-wg-orlando-99 .nav-call {
+.property-sogno-wg-orlando-59 .nav-call {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -1835,26 +1835,26 @@ img[alt^="Seal"]:hover {
   white-space: nowrap;
 }
 
-.property-sogno-wg-orlando-99 .nav-call:hover,
-.property-sogno-wg-orlando-99 .nav-call:focus-visible {
+.property-sogno-wg-orlando-59 .nav-call:hover,
+.property-sogno-wg-orlando-59 .nav-call:focus-visible {
   background: #0d1f48;
   color: #fff;
 }
 
-.property-sogno-wg-orlando-99 .nav-call i,
-.property-sogno-wg-orlando-99 .nav-call svg { width: 18px; height: 18px; flex-shrink: 0; }
+.property-sogno-wg-orlando-59 .nav-call i,
+.property-sogno-wg-orlando-59 .nav-call svg { width: 18px; height: 18px; flex-shrink: 0; }
 
 /* CALL NOW + number on one line at the button's type size — stacking shrank
    the number. */
-.property-sogno-wg-orlando-99 .nav-call-text {
+.property-sogno-wg-orlando-59 .nav-call-text {
   display: inline-flex;
   flex-direction: row;
   align-items: center;
   gap: 6px;
   line-height: 1.2;
 }
-.property-sogno-wg-orlando-99 .nav-call-label,
-.property-sogno-wg-orlando-99 .nav-call-num {
+.property-sogno-wg-orlando-59 .nav-call-label,
+.property-sogno-wg-orlando-59 .nav-call-num {
   display: inline;
   font-size: 15px;
   font-weight: 700;
@@ -1864,12 +1864,12 @@ img[alt^="Seal"]:hover {
 }
 
 @media screen and (min-width: 768px) {
-  .property-sogno-wg-orlando-99 .hero-submenu-inner {
+  .property-sogno-wg-orlando-59 .hero-submenu-inner {
     flex-wrap: nowrap;
     gap: 10px;
     max-width: none;
   }
-  .property-sogno-wg-orlando-99 .nav-call {
+  .property-sogno-wg-orlando-59 .nav-call {
     flex: 0 0 auto;
     padding-inline: 12px;
   }
@@ -1878,8 +1878,8 @@ img[alt^="Seal"]:hover {
 @media screen and (max-width: 767px) {
   /* No CTAs in the anchor nav on phones - they crowded out the section links.
      The sticky bar already carries both entry points on mobile. */
-  .property-sogno-wg-orlando-99 .nav-call,
-  .property-sogno-wg-orlando-99 .menul2item.checkout-cta.nav-variant {
+  .property-sogno-wg-orlando-59 .nav-call,
+  .property-sogno-wg-orlando-59 .menul2item.checkout-cta.nav-variant {
     display: none !important;
   }
 }
@@ -1896,9 +1896,9 @@ img[alt^="Seal"]:hover {
    water park cards) and .hs-cta. Each keeps its own colour, radius and outline;
    only the box is normalised.
    =========================================================================== */
-.property-sogno-wg-orlando-99 .bch-cta-actions .bch-cta,
-.property-sogno-wg-orlando-99 .bch-call,
-.property-sogno-wg-orlando-99 .hs-cta {
+.property-sogno-wg-orlando-59 .bch-cta-actions .bch-cta,
+.property-sogno-wg-orlando-59 .bch-call,
+.property-sogno-wg-orlando-59 .hs-cta {
   box-sizing: border-box;
   min-height: 48px;
   height: 48px;
@@ -1912,17 +1912,17 @@ img[alt^="Seal"]:hover {
 
 /* .bch-call carries a 2px outline the others do not; trim its padding by that
    much so the border cannot make it taller than the button beside it. */
-.property-sogno-wg-orlando-99 .bch-call {
+.property-sogno-wg-orlando-59 .bch-call {
   padding-block: 12px;
 }
 
 /* The pair are flex items in a stretch row, so the taller one was dragging the
    other up with it regardless of either one's own height. */
-.property-sogno-wg-orlando-99 .bch-cta-actions {
+.property-sogno-wg-orlando-59 .bch-cta-actions {
   align-items: center;
 }
 
-.property-sogno-wg-orlando-99 .hs-cta {
+.property-sogno-wg-orlando-59 .hs-cta {
   display: flex;                 /* full-width block CTA, centred content */
 }
 
@@ -1934,9 +1934,9 @@ img[alt^="Seal"]:hover {
    now sits on the first line with the number beneath it, centred, everywhere the
    treatment appears: the hero card, the nav, the card row and the sticky bar.
    =========================================================================== */
-.property-sogno-wg-orlando-99 .cta-call-text,
-.property-sogno-wg-orlando-99 .bch-call-text,
-.property-sogno-wg-orlando-99 .msc-call-text {
+.property-sogno-wg-orlando-59 .cta-call-text,
+.property-sogno-wg-orlando-59 .bch-call-text,
+.property-sogno-wg-orlando-59 .msc-call-text {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
@@ -1946,17 +1946,17 @@ img[alt^="Seal"]:hover {
 }
 
 /* The label is the quieter half; the number is what the eye should land on. */
-.property-sogno-wg-orlando-99 .cta-call-label,
-.property-sogno-wg-orlando-99 .bch-call-label,
-.property-sogno-wg-orlando-99 .msc-call-label {
+.property-sogno-wg-orlando-59 .cta-call-label,
+.property-sogno-wg-orlando-59 .bch-call-label,
+.property-sogno-wg-orlando-59 .msc-call-label {
   font-size: .78em;
   letter-spacing: .04em;
   opacity: .9;
 }
 
-.property-sogno-wg-orlando-99 .cta-call-num,
-.property-sogno-wg-orlando-99 .bch-call-num,
-.property-sogno-wg-orlando-99 .msc-call-num {
+.property-sogno-wg-orlando-59 .cta-call-num,
+.property-sogno-wg-orlando-59 .bch-call-num,
+.property-sogno-wg-orlando-59 .msc-call-num {
   font-weight: 700;
   white-space: nowrap;
 }
@@ -1964,8 +1964,8 @@ img[alt^="Seal"]:hover {
 /* Two stacked lines still fit the page's standard 48px authored box - .bch-call
    already proves it - so the call buttons keep size parity with every other CTA
    rather than growing to fit. */
-.property-sogno-wg-orlando-99 .cta-button--call,
-.property-sogno-wg-orlando-99 .bch-call {
+.property-sogno-wg-orlando-59 .cta-button--call,
+.property-sogno-wg-orlando-59 .bch-call {
   box-sizing: border-box;
   min-height: 48px;
   height: 48px;
@@ -1982,8 +1982,8 @@ img[alt^="Seal"]:hover {
    printed with the button rather than somewhere else on the page. Quiet by
    design: this is a qualifier, not a second call to action.
    =========================================================================== */
-.property-sogno-wg-orlando-99 .cta-call-hours,
-.property-sogno-wg-orlando-99 .bch-call-hours {
+.property-sogno-wg-orlando-59 .cta-call-hours,
+.property-sogno-wg-orlando-59 .bch-call-hours {
   margin: 6px 0 0;
   font-family: Roboto, sans-serif;
   font-size: 12px;
@@ -1994,8 +1994,8 @@ img[alt^="Seal"]:hover {
 
 /* On the hero card the hours sit on the white panel; in the bonus bar they sit
    on the dark band, so each inherits a legible colour from its own context. */
-.property-sogno-wg-orlando-99 .cta-call-hours { color: #5a6472; }
-.property-sogno-wg-orlando-99 .bch-call-hours { color: #fff; flex: 1 1 100%; width: 100%; }
+.property-sogno-wg-orlando-59 .cta-call-hours { color: #5a6472; }
+.property-sogno-wg-orlando-59 .bch-call-hours { color: #fff; flex: 1 1 100%; width: 100%; }
 
 /* ===========================================================================
    BONUS CTA BAR — full-width stacked buttons, hours beneath in white
@@ -2008,7 +2008,7 @@ img[alt^="Seal"]:hover {
    white hours on white are invisible - so the ground travels with the white
    text rather than the text changing colour halfway down the breakpoints.
    =========================================================================== */
-.property-sogno-wg-orlando-99 .bch-cta-bar {
+.property-sogno-wg-orlando-59 .bch-cta-bar {
   background: #071330;
   /* The navy band had 18px of breathing room on desktop and NONE above the
      buttons on mobile (0 / 16 / 40), so the stack sat hard against its top edge.
@@ -2016,7 +2016,7 @@ img[alt^="Seal"]:hover {
   padding-block: 32px;
 }
 
-.property-sogno-wg-orlando-99 .bch-cta-actions {
+.property-sogno-wg-orlando-59 .bch-cta-actions {
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -2026,8 +2026,8 @@ img[alt^="Seal"]:hover {
   margin-inline: auto;
 }
 
-.property-sogno-wg-orlando-99 .bch-cta-actions .bch-cta,
-.property-sogno-wg-orlando-99 .bch-call {
+.property-sogno-wg-orlando-59 .bch-cta-actions .bch-cta,
+.property-sogno-wg-orlando-59 .bch-call {
   flex: 0 0 auto;
   width: 100%;
   max-width: 100%;
@@ -2035,7 +2035,7 @@ img[alt^="Seal"]:hover {
   box-sizing: border-box;
 }
 
-.property-sogno-wg-orlando-99 .bch-call-hours {
+.property-sogno-wg-orlando-59 .bch-call-hours {
   color: #fff;
   width: 100%;
   margin-top: 10px;
@@ -2045,7 +2045,7 @@ img[alt^="Seal"]:hover {
 /* One guest-review slide is supplied at only 521x261 while the slide renders at
    573px, so the browser enlarges it and it reads as grainy. Smoothing the upscale
    is the most that can be done until a higher-resolution file is supplied. */
-.property-sogno-wg-orlando-99 .gr-slide {
+.property-sogno-wg-orlando-59 .gr-slide {
   image-rendering: auto;
 }
 
@@ -2061,7 +2061,7 @@ img[alt^="Seal"]:hover {
    taking it out of the overlay without them collapses it into a full-width band.
    =========================================================================== */
 @media screen and (min-width: 992px) {
-  .property-sogno-wg-orlando-99 .gr-reviews-row {
+  .property-sogno-wg-orlando-59 .gr-reviews-row {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 573px;
     grid-template-rows: auto auto;
@@ -2070,7 +2070,7 @@ img[alt^="Seal"]:hover {
     align-items: start;
   }
 
-  .property-sogno-wg-orlando-99 .gr-slideshow {
+  .property-sogno-wg-orlando-59 .gr-slideshow {
     position: relative;
     inset: auto;
     grid-column: 2;
@@ -2080,10 +2080,10 @@ img[alt^="Seal"]:hover {
     min-height: 363px;
   }
 
-  .property-sogno-wg-orlando-99 .gr-cards { grid-column: 1; grid-row: 1; }
+  .property-sogno-wg-orlando-59 .gr-cards { grid-column: 1; grid-row: 1; }
 
   /* #15 - the CTA sat at 200px against a 1332px row. It spans its column now. */
-  .property-sogno-wg-orlando-99 .gr-cta {
+  .property-sogno-wg-orlando-59 .gr-cta {
     grid-column: 1;
     grid-row: 2;
     width: 100%;
@@ -2093,7 +2093,7 @@ img[alt^="Seal"]:hover {
 
 /* Below 992px the panel stacks under the cards rather than overlapping them. */
 @media screen and (max-width: 991px) {
-  .property-sogno-wg-orlando-99 .gr-slideshow {
+  .property-sogno-wg-orlando-59 .gr-slideshow {
     position: relative;
     inset: auto;
     width: 100%;
@@ -2101,7 +2101,7 @@ img[alt^="Seal"]:hover {
     min-height: 240px;
     margin-top: 20px;
   }
-  .property-sogno-wg-orlando-99 .gr-cta { width: 100%; max-width: 100%; }
+  .property-sogno-wg-orlando-59 .gr-cta { width: 100%; max-width: 100%; }
 }
 
 /* ===========================================================================
@@ -2110,7 +2110,7 @@ img[alt^="Seal"]:hover {
    row left 286px of dead space on the right, and below 1024 the cards ran off
    the right edge entirely.
    =========================================================================== */
-.property-sogno-wg-orlando-99 .gs-track {
+.property-sogno-wg-orlando-59 .gs-track {
   justify-content: center;
   flex-wrap: wrap;
   row-gap: 16px;
@@ -2120,11 +2120,11 @@ img[alt^="Seal"]:hover {
    that no longer fits three across, so the third wrapped onto its own row. They
    share the column evenly now, and stretch to a common height. */
 @media screen and (min-width: 992px) {
-  .property-sogno-wg-orlando-99 .gr-cards {
+  .property-sogno-wg-orlando-59 .gr-cards {
     align-items: stretch;
     flex-wrap: nowrap;
   }
-  .property-sogno-wg-orlando-99 .gr-cards .gr-card {
+  .property-sogno-wg-orlando-59 .gr-cards .gr-card {
     flex: 1 1 0;
     min-width: 0;
   }
@@ -2137,8 +2137,8 @@ img[alt^="Seal"]:hover {
    under "What You Get" and the one under the amenities/attractions block - while
    every other section CTA already spanned its container. They match now.
    =========================================================================== */
-.property-sogno-wg-orlando-99 .whatyougetcontainer > .checkout-cta,
-.property-sogno-wg-orlando-99 .amndiv .div-block-21 > .checkout-cta {
+.property-sogno-wg-orlando-59 .whatyougetcontainer > .checkout-cta,
+.property-sogno-wg-orlando-59 .amndiv .div-block-21 > .checkout-cta {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2147,7 +2147,7 @@ img[alt^="Seal"]:hover {
   box-sizing: border-box;
 }
 
-.property-sogno-wg-orlando-99 .wyg-extra-nights {
+.property-sogno-wg-orlando-59 .wyg-extra-nights {
   width: 100%;
   margin: 16px 0 0;
   text-align: center;
@@ -2158,10 +2158,10 @@ img[alt^="Seal"]:hover {
   color: #262626;
 }
 
-/* #4 The mid-page "$540 VALUE" bar was 334px beside a 623px button, so the two
+/* #4 The mid-page "$360 VALUE" bar was 334px beside a 623px button, so the two
    read as different systems. The price group now spans the same column, which
    makes the bar and the button the same width. */
-.property-sogno-wg-orlando-99 .hs-price-group {
+.property-sogno-wg-orlando-59 .hs-price-group {
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
@@ -2175,23 +2175,23 @@ img[alt^="Seal"]:hover {
    shadow below the footer in the footer’s own #0d1f48 so nothing white can
    show under it.
    =========================================================================== */
-html:has(> .property-sogno-wg-orlando-99),
-.property-sogno-wg-orlando-99 {
+html:has(> .property-sogno-wg-orlando-59),
+.property-sogno-wg-orlando-59 {
   background-color: #0d1f48;
 }
 
-.property-sogno-wg-orlando-99 .footer-2 {
+.property-sogno-wg-orlando-59 .footer-2 {
   box-shadow: 0 100vh 0 100vh #0d1f48;
 }
 
 @media screen and (max-width: 991px) {
-  .property-sogno-wg-orlando-99 {
+  .property-sogno-wg-orlando-59 {
     padding-bottom: 0;
   }
 }
 
 @media screen and (max-width: 767px) {
-  .property-sogno-wg-orlando-99 .footer-2 {
+  .property-sogno-wg-orlando-59 .footer-2 {
     padding-bottom: 154px;
   }
 }
@@ -2209,7 +2209,7 @@ html:has(> .property-sogno-wg-orlando-99),
    share one edge-to-edge column.
    =========================================================================== */
 @media screen and (max-width: 991px) {
-  .property-sogno-wg-orlando-99 .offerwidget {
+  .property-sogno-wg-orlando-59 .offerwidget {
     width: 100%;
     max-width: 100%;
     min-width: 0;
@@ -2225,7 +2225,7 @@ html:has(> .property-sogno-wg-orlando-99),
   }
 
   /* The hero column that holds the card has to allow it, too. */
-  .property-sogno-wg-orlando-99 .herocontainer {
+  .property-sogno-wg-orlando-59 .herocontainer {
     align-items: stretch;
   }
 }
@@ -2236,7 +2236,7 @@ html:has(> .property-sogno-wg-orlando-99),
    columns fit, matching Massanutten's 992px row.
    =========================================================================== */
 @media screen and (min-width: 992px) and (max-width: 1199px) {
-  .property-sogno-wg-orlando-99 .herocontainer {
+  .property-sogno-wg-orlando-59 .herocontainer {
     flex-direction: row;
     align-items: stretch;
     max-width: 100%;
@@ -2244,7 +2244,7 @@ html:has(> .property-sogno-wg-orlando-99),
     padding-inline: 24px;
   }
 
-  .property-sogno-wg-orlando-99 .offerwidget {
+  .property-sogno-wg-orlando-59 .offerwidget {
     flex: 0 1 auto;
     width: auto;
     min-width: 0;
@@ -2261,21 +2261,21 @@ html:has(> .property-sogno-wg-orlando-99),
 /* ===========================================================================
    CAROUSEL POSITION INDICATOR (audit #17) + TABLET BOTTOM PADDING (audit #14)
    =========================================================================== */
-.property-sogno-wg-orlando-99 .vv-carousel-dots {
+.property-sogno-wg-orlando-59 .vv-carousel-dots {
   display: none;
 }
 
 /* Nine 44px targets need 396px, so on a 375 screen they were being squeezed to
    42px wide. Wrapping keeps every control at its full size rather than shaving
    the target down to make the row fit. */
-.property-sogno-wg-orlando-99 .vv-carousel-dot {
+.property-sogno-wg-orlando-59 .vv-carousel-dot {
   flex: 0 0 44px;
 }
 
 /* The BUTTON is the 44px target and the dot is painted inside it, rather than an
    8px button with an invisible overlay - a pseudo-element hit area satisfies a
    finger but not an audit, because the control's own box is still 8px. */
-.property-sogno-wg-orlando-99 .vv-carousel-dot {
+.property-sogno-wg-orlando-59 .vv-carousel-dot {
   position: relative;
   width: 44px;
   height: 44px;
@@ -2286,7 +2286,7 @@ html:has(> .property-sogno-wg-orlando-99),
   -webkit-tap-highlight-color: transparent;
 }
 
-.property-sogno-wg-orlando-99 .vv-carousel-dot::before {
+.property-sogno-wg-orlando-59 .vv-carousel-dot::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -2299,12 +2299,12 @@ html:has(> .property-sogno-wg-orlando-99),
   transition: background .18s ease, transform .18s ease;
 }
 
-.property-sogno-wg-orlando-99 .vv-carousel-dot.is-active::before {
+.property-sogno-wg-orlando-59 .vv-carousel-dot.is-active::before {
   background: #e9654a;
   transform: scale(1.35);
 }
 
-.property-sogno-wg-orlando-99 .vv-carousel-dot:focus-visible::before {
+.property-sogno-wg-orlando-59 .vv-carousel-dot:focus-visible::before {
   box-shadow: 0 0 0 3px rgba(233, 101, 74, .35);
 }
 
@@ -2322,17 +2322,17 @@ html:has(> .property-sogno-wg-orlando-99),
    to fit it and the photo band keeps its own height. Nothing overlaps, and the
    navy still reads as a band under the photos, which is how it is drawn.
    =========================================================================== */
-.property-sogno-wg-orlando-99 #bonus-cta {
+.property-sogno-wg-orlando-59 #bonus-cta {
   min-height: 0;
   grid-template-rows: auto auto;
 }
 
-.property-sogno-wg-orlando-99 #bonus-cta .bch-left,
-.property-sogno-wg-orlando-99 #bonus-cta .bch-right {
+.property-sogno-wg-orlando-59 #bonus-cta .bch-left,
+.property-sogno-wg-orlando-59 #bonus-cta .bch-right {
   min-height: 520px;
 }
 
-.property-sogno-wg-orlando-99 .bch-cta-bar {
+.property-sogno-wg-orlando-59 .bch-cta-bar {
   position: static;
   grid-column: 1 / -1;
   grid-row: 2;
@@ -2340,13 +2340,13 @@ html:has(> .property-sogno-wg-orlando-99),
 
 /* The full-bleed photo covers the whole section, so it would otherwise sit
    behind the navy band too. Confine it to the photo row. */
-.property-sogno-wg-orlando-99 #bonus-cta::before {
+.property-sogno-wg-orlando-59 #bonus-cta::before {
   bottom: auto;
   height: 520px;
 }
 
 /* The centre divider spans the section; keep it to the photo row as well. */
-.property-sogno-wg-orlando-99 .bch-divider {
+.property-sogno-wg-orlando-59 .bch-divider {
   bottom: auto;
   height: 520px;
 }
@@ -2365,13 +2365,13 @@ html:has(> .property-sogno-wg-orlando-99),
 
 /* The amenities/attractions row carried a 153px gap, putting 138px of air on
    each side of the hairline divider. */
-.property-sogno-wg-orlando-99 .anatableoflists {
+.property-sogno-wg-orlando-59 .anatableoflists {
   gap: 56px;
 }
 
 /* Each column then spread its own two lists apart with `space-between`, so the
    icons and their labels drifted to opposite edges of the column. */
-.property-sogno-wg-orlando-99 .anacolumn {
+.property-sogno-wg-orlando-59 .anacolumn {
   justify-content: center;
   gap: 48px;
 }
@@ -2380,13 +2380,13 @@ html:has(> .property-sogno-wg-orlando-99),
    a stray dot, and 56px above + 2px + 56px below piled up 114px of air between
    "Featured Resort Amenities" and "Nearby Attractions". */
 @media screen and (max-width: 991px) {
-  .property-sogno-wg-orlando-99 .anatableoflists {
+  .property-sogno-wg-orlando-59 .anatableoflists {
     gap: 40px;
   }
-  .property-sogno-wg-orlando-99 .anatableoflists .titlestay2 {
+  .property-sogno-wg-orlando-59 .anatableoflists .titlestay2 {
     display: none;
   }
-  .property-sogno-wg-orlando-99 .anacolumn {
+  .property-sogno-wg-orlando-59 .anacolumn {
     gap: 28px;
   }
 }
@@ -2396,7 +2396,7 @@ html:has(> .property-sogno-wg-orlando-99),
    trust seals and the "Prefer to talk" line were clipped by overflow:hidden.
    Nothing about the card should shrink below its content. */
 @media screen and (max-width: 991px) {
-  .property-sogno-wg-orlando-99 .offerwidget {
+  .property-sogno-wg-orlando-59 .offerwidget {
     flex: 0 0 auto;
     height: auto;
     min-height: 0;
@@ -2412,13 +2412,13 @@ html:has(> .property-sogno-wg-orlando-99),
    the CTA sat at 340px under a 692px row. Both span the row now.
    =========================================================================== */
 @media screen and (max-width: 991px) {
-  .property-sogno-wg-orlando-99 .gr-cards {
+  .property-sogno-wg-orlando-59 .gr-cards {
     flex-direction: column;
     align-items: stretch;
     width: 100%;
   }
 
-  .property-sogno-wg-orlando-99 .gr-cards .gr-card {
+  .property-sogno-wg-orlando-59 .gr-cards .gr-card {
     flex: 0 0 auto;
     width: 100%;
     max-width: 100%;
@@ -2428,8 +2428,8 @@ html:has(> .property-sogno-wg-orlando-99),
 
   /* The CTA carried `max-width: 340px` plus 176px side margins that centred it
      by brute force, so `width: 100%` had nothing to fill. Both are cleared. */
-  .property-sogno-wg-orlando-99 .gr-reviews-row .gr-cta,
-  .property-sogno-wg-orlando-99 .gr-cta {
+  .property-sogno-wg-orlando-59 .gr-reviews-row .gr-cta,
+  .property-sogno-wg-orlando-59 .gr-cta {
     width: 100%;
     max-width: none;
     margin-left: 0;
@@ -2454,7 +2454,7 @@ html:has(> .property-sogno-wg-orlando-99),
    badge/price/play group only, so the bonus banner below keeps its own position.
    =========================================================================== */
 @media screen and (min-width: 1200px) {
-  .property-sogno-wg-orlando-99 .campaignlogoand-price > .flex-block-6 {
+  .property-sogno-wg-orlando-59 .campaignlogoand-price > .flex-block-6 {
     margin-top: 31px;
   }
 }
@@ -2472,18 +2472,18 @@ html:has(> .property-sogno-wg-orlando-99),
    and the two stay aligned.
    =========================================================================== */
 @media screen and (max-width: 991px) {
-  .property-sogno-wg-orlando-99 .herocontainer {
+  .property-sogno-wg-orlando-59 .herocontainer {
     padding-inline: 0;
   }
 
-  .property-sogno-wg-orlando-99 .offerwidget {
+  .property-sogno-wg-orlando-59 .offerwidget {
     margin-bottom: 0;
   }
 
   /* Massanutten centres this column so calc(50% - 50vw) on the banner lands
      on the viewport edge. Stretch + max-width:640 left-aligned it, which
      pulled the 100vw banner off-screen at 767. */
-  .property-sogno-wg-orlando-99 .campaignlogoand-price {
+  .property-sogno-wg-orlando-59 .campaignlogoand-price {
     align-self: center;
     width: 100%;
   }
@@ -2497,11 +2497,11 @@ html:has(> .property-sogno-wg-orlando-99),
 
 /* Under-hero strip: Massanutten's 280×200 clipped tiles. The export's
    aspect-ratio:4/3 on the <img> made the photo 189px in a 180px tile. */
-.property-sogno-wg-orlando-99 .photostrip-3 .herolightboxstrip-4 {
+.property-sogno-wg-orlando-59 .photostrip-3 .herolightboxstrip-4 {
   overflow: clip;
   cursor: default;
 }
-.property-sogno-wg-orlando-99 .photostrip-3 .herostripphoto-3 {
+.property-sogno-wg-orlando-59 .photostrip-3 .herostripphoto-3 {
   display: block;
   width: 100%;
   height: 100%;
@@ -2511,13 +2511,13 @@ html:has(> .property-sogno-wg-orlando-99),
 @media screen and (max-width: 767px) {
   /* Massanutten: the 100vw <img> stretched each tile to the viewport minus
      the row's 16px gutters (~343px at 375). */
-  .property-sogno-wg-orlando-99 .photostrip-3 .herolightboxstrip-4 {
+  .property-sogno-wg-orlando-59 .photostrip-3 .herolightboxstrip-4 {
     width: calc(100vw - 32px);
     min-width: calc(100vw - 32px);
   }
 }
 /* Massanutten uses a lightbox on the whole tile, not an expand chip. */
-.property-sogno-wg-orlando-99 .photostrip-3 .vv-gallery-expand {
+.property-sogno-wg-orlando-59 .photostrip-3 .vv-gallery-expand {
   display: none;
 }
 
