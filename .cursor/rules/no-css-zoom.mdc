@@ -1,0 +1,44 @@
+---
+description: Never use CSS zoom for responsive scaling — Safari renders it differently than Chrome
+globs: **/*.html, **/*.css
+alwaysApply: false
+---
+
+# No CSS `zoom` for responsive scaling
+
+Safari and Chrome implement the CSS `zoom` property differently. Safari
+double-scales inherited font sizes inside a zoomed subtree, so any component
+that sizes its text with `em` units explodes on iPhone/iPad while looking
+perfect in Chrome and in Chromium-based device emulation.
+
+This actually happened: the hero offer group (`.ob-group` — badge image +
+`.pb-container` price disc) was shrunk on mobile with
+`@media { .ob-group { zoom: 0.5 } }`. Chrome rendered it correctly; iOS Safari
+blew the "Retail $540 / $99 / PER PACKAGE" text up ~2.5× (1/zoom) while the
+circle stayed the right size.
+
+## The fix pattern
+
+Give each element its final on-screen size per breakpoint — the same mechanism
+the working `.rd-badge-wrap .pb-container` discs use:
+
+```css
+/* ❌ BAD — scale a group with zoom */
+@media (max-width: 767px) { .ob-group { zoom: 0.5; } }
+
+/* ✅ GOOD — explicit final sizes; em-based internals scale from font-size */
+@media (max-width: 767px) {
+  .ob-combo .pb-container { font-size: 8px; }   /* disc = 19.4em */
+  .ob-sticker img { width: 390px; }
+}
+```
+
+Notes:
+
+- `body { zoom: 0.9 }` at ≥992px still exists in these sites (desktop-only,
+  legacy Webflow parity). Don't add new dependencies on it, and don't copy the
+  pattern to new components.
+- Offsets tuned "pre-zoom" (e.g. `translateX(58px)` inside zoom 0.4) must be
+  converted to on-screen values (23px) when removing zoom.
+- Chromium emulation will NOT catch this bug. Verify hero/mobile layouts in
+  the iOS Simulator: `xcrun simctl openurl booted <url>`.
