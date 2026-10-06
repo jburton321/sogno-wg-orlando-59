@@ -58,7 +58,7 @@
   var UPSELL_CATALOG = [
     { type: "extend_stay", label: "Extra-night upgrades", icon: "moon", priceCents: 4900, perQty: true, min: 1, max: 3, perUnitLabel: "/night" },
     { type: "travel_protection", label: "Booking Protection", icon: "shield-check", priceCents: 1795, perQty: false },
-    { type: "bonus_vacation", label: "Bonus Trip (3-Day/2-Night Additional Vacation)", icon: "palmtree", priceCents: 3900, perQty: false }
+    { type: "bonus_vacation", label: "Bonus Trip (3-Day/2-Night Additional Vacation)", icon: "palmtree", priceCents: 2900, perQty: false }
   ];
 
   /** Current catalogue entry for an upgrade type, or null if it is unknown. */

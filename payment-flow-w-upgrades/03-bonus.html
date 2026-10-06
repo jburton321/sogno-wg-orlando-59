@@ -34,7 +34,6 @@
     .tk-benefits li { font-size: 15px; line-height: 1.5; color: var(--text); padding-left: 26px; position: relative; }
     .tk-benefits li::before { content: "\2713"; position: absolute; left: 0; top: 0; font-weight: 700; color: var(--ink); }
     .dest-intro strong { color: var(--ink); }
-    .dest-fine { font-size: 13px; line-height: 1.5; color: #6b7280; margin: 0 0 16px; }
     .dest-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .dest-tile { position: relative; aspect-ratio: 4 / 3; border-radius: 12px; overflow: hidden; }
     .dest-tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -157,27 +156,27 @@
       <!-- LEFT: OFFER (mirrors step 4 module) -->
       <section class="pf-card">
         <div class="pf-card__pad">
-          <h1 class="tk-headline">Share the Vacation: Gift a Bonus Trip to Someone You Love</h1>
-          <h2 class="tk-subhead">Only <span class="bonus-price">$39</span> &ndash; Choose from 39 U.S. Destinations</h2>
-          <p class="dest-intro">Excited about your vacation? Add a bonus 3-day/2-night trip to gift to a friend or family member so they can travel to a destination of their choice.</p>
-          <p class="dest-intro">Choose from 39 U.S. destinations, including Orlando, Myrtle Beach, San Antonio, Gatlinburg, and more. For just <strong class="bonus-price">$39</strong>, this optional add-on lets you give the gift of travel:</p>
+          <h1 class="tk-headline">Bonus Trip &ndash; 3 Days / 2 Nights in 39+ Destinations</h1>
+          <h2 class="tk-subhead">Only <span class="bonus-price">$29</span> &ndash; Choose from 39 U.S. Destinations</h2>
+          <p class="dest-intro">You just scored an unbeatable Orlando deal, now unlock a second trip for only <strong class="bonus-price">$29</strong>!</p>
+          <p class="dest-intro">Enjoy 3 Days/2 Nights at a 3+ star hotel in one of 39 vacation destinations, including Orlando, Myrtle Beach, San Antonio, Gatlinburg, and more.</p>
+          <p class="dest-intro">For just <strong class="bonus-price">$29</strong>, this optional upgrade gives you more freedom and security:</p>
           <ul class="tk-benefits">
-            <li>Gift it to a friend or family member</li>
-            <li>They choose when and where to travel</li>
+            <li>Choose when and where you travel</li>
             <li>Valid for 12 months</li>
+            <li>No hidden fees &ndash; no blackout dates</li>
           </ul>
-          <p class="dest-intro">Available only during checkout.</p>
-          <p class="dest-fine">Group travel is strictly prohibited.</p>
+          <p class="dest-intro">Regularly $2647 when booked through Expedia or Booking.com<br>Now just <strong class="bonus-price">$29</strong> &ndash; only during checkout.</p>
 
           <div class="dest-gallery">
+            <div class="dest-tile"><img src="assets/images/dest-canada.webp" alt="Canada" loading="lazy" width="760" height="506"><span class="dest-tile__label">Canada</span></div>
+            <div class="dest-tile"><img src="assets/images/dest-mexican-riviera.webp" alt="Mexican Riviera" loading="lazy" width="760" height="506"><span class="dest-tile__label">Mexican Riviera</span></div>
             <div class="dest-tile"><img src="assets/images/dest-orlando.webp" alt="Orlando" loading="lazy" width="760" height="427"><span class="dest-tile__label">Orlando</span></div>
-            <div class="dest-tile"><img src="assets/images/dest-myrtle-beach.webp" alt="Myrtle Beach" loading="lazy" width="760" height="428"><span class="dest-tile__label">Myrtle Beach</span></div>
-            <div class="dest-tile"><img src="assets/images/dest-gatlinburg.webp" alt="Gatlinburg" loading="lazy" width="760" height="570"><span class="dest-tile__label">Gatlinburg</span></div>
-            <div class="dest-tile"><img src="assets/images/dest-las-vegas.webp" alt="Las Vegas" loading="lazy" width="760" height="507"><span class="dest-tile__label">Las Vegas</span></div>
+            <div class="dest-tile"><img src="assets/images/dest-caribbean.webp" alt="Caribbean" loading="lazy" width="760" height="505"><span class="dest-tile__label">Caribbean</span></div>
           </div>
 
           <div class="pf-actionbar">
-            <button type="button" class="pf-btn cont" id="addBtn">Yes, Add Bonus Vacation for $39</button>
+            <button type="button" class="pf-btn cont" id="addBtn">Yes, Add Bonus Vacation for $29</button>
             <button type="button" class="pf-btn pf-btn--ghost skip" id="skipBtn">Skip This</button>
           </div>
         </div>
@@ -270,7 +269,7 @@
         <h2 class="pf-modal__title" id="retainTitle">Wait! Are You Sure?</h2>
       </div>
       <div class="pf-modal__body">
-        <p>You&rsquo;ve secured an amazing Orlando getaway&mdash;but why stop there? Add a <strong>bonus 3-day / 2-night trip</strong> in your choice of 39 U.S. destinations for just <strong id="retainPrice">$39</strong>. Regularly $2647 when booked through Expedia or Booking.com.</p>
+        <p>You&rsquo;ve secured an amazing Orlando getaway&mdash;but why stop there? Add a <strong>bonus 3-day / 2-night trip</strong> in your choice of 39 U.S. destinations for just <strong id="retainPrice">$29</strong>. Regularly $2647 when booked through Expedia or Booking.com.</p>
         <p><strong>So, do you want to add your bonus vacation?</strong></p>
       </div>
       <div class="pf-modal__actions">
@@ -305,7 +304,7 @@
   <script src="assets/js/legal-modal.js"></script>
   <script>
   (function () {
-    var BONUS_CENTS = 3900; // $39 bonus 3-day / 2-night trip (flat rate — no discount)
+    var BONUS_CENTS = 2900; // $29 bonus 3-day / 2-night trip (flat rate — no discount)
     var s = FlowState.get();
 
     // Ensure a confirmation number exists once the base order is purchased.
